@@ -116,7 +116,7 @@ if (opt$cluster) {
     theme(legend.position = "none")  # Ocultar leyenda de colores
   # Guardar el gráfico en un archivo PDF con dimensiones especificadas
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
-  ggsave(output_pdf, plot = p, device = "pdf", width = opt$width, height = opt$height)
+  ggsave(output_pdf, plot = p, device = "pdf", width = opt$width*3, height = opt$height*3)
   
   # Mostrar mensaje de éxito
   cat("El gráfico se ha guardado en", output_pdf, "\n")
