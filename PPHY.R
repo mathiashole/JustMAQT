@@ -5,18 +5,6 @@ source("quick_off_init.R")
 
 required_packages <- c("ggtree", "treeio", "ape", "RColorBrewer", "optparse", "cluster", "factoextra")
 manage_packages(required_packages)
-# # Cargar paquetes necesarios
-# library(ggtree)
-# library(treeio)
-# library(ape)
-# library(RColorBrewer)
-# library(optparse)
-
-# ## culster
-
-# library(cluster)
-# library(factoextra)
-
 
 # Definir opciones de línea de comandos
 option_list <- list(
