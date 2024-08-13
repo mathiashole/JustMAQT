@@ -1,16 +1,21 @@
 #!/usr/bin/env Rscript
 
-# Cargar paquetes necesarios
-library(ggtree)
-library(treeio)
-library(ape)
-library(RColorBrewer)
-library(optparse)
+# Load functions from functions.R
+source("quick_off_init.R")
 
-## culster
+required_packages <- c("ggtree", "treeio", "ape", "RColorBrewer", "optparse", "cluster", "factoextra")
+manage_packages(required_packages)
+# # Cargar paquetes necesarios
+# library(ggtree)
+# library(treeio)
+# library(ape)
+# library(RColorBrewer)
+# library(optparse)
 
-library(cluster)
-library(factoextra)
+# ## culster
+
+# library(cluster)
+# library(factoextra)
 
 
 # Definir opciones de línea de comandos
