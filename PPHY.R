@@ -6,7 +6,7 @@ source("quick_off_init.R")
 required_packages <- c("ggtree", "treeio", "ape", "RColorBrewer", "optparse", "cluster", "factoextra")
 manage_packages(required_packages)
 
-# Definir opciones de línea de comandos
+# Define command line options
 option_list <- list(
   make_option(c("--phy"), type = "character", default = NULL, help = "Archivo de filogenia", metavar = "FILE"),
   make_option(c("--keyword"), type = "character", default = NULL, help = "Palabras para colorear separadas por espacios", metavar = "WORDS"),
@@ -18,10 +18,10 @@ option_list <- list(
   make_option(c("--cluster"), type = "logical", default = FALSE, help = "Activar clustering automático", action = "store_true")
 )
 
-# Parsear argumentos
+# Parse arguments
 opt <- parse_args(OptionParser(option_list = option_list))
 
-# Verificar argumentos requeridos
+# Check required arguments
 if (is.null(opt$phy)) {
   stop("Debe especificar un archivo de filogenia con --phy")
 }
