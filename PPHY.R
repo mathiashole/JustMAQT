@@ -23,7 +23,7 @@ opt <- parse_args(OptionParser(option_list = option_list))
 
 # Check required arguments
 if (is.null(opt$phy)) {
-  stop("Debe especificar un archivo de filogenia con --phy")
+  stop("You must specify a phylogeny file with --phy")
 }
 
 # Leer árbol filogenético
@@ -31,7 +31,7 @@ tree <- read.tree(opt$phy)
 
 # Verificar si el árbol contiene etiquetas
 if (length(tree$tip.label) == 0) {
-  stop("El árbol no contiene etiquetas de tips.")
+  stop("The tree does not contain tip tags.")
 }
 
 # Crear un dataframe con la información de los nombres y los colores
@@ -58,7 +58,7 @@ if (!is.null(opt$root)) {
 
 # Ejemplo de uso de la opción --cluster
 if (opt$cluster) {
-  cat("Clustering automático activado.\n")
+  cat("Automatic clustering activated.\n")
   
   # Suponiendo que ya tienes la matriz de distancias calculada
   dist_matrix <- cophenetic(tree)
@@ -112,10 +112,10 @@ if (opt$cluster) {
   ggsave(output_pdf, plot = p, device = "pdf", width = opt$width*3, height = opt$height*3)
   
   # Mostrar mensaje de éxito
-  cat("El gráfico se ha guardado en", output_pdf, "\n")
+  cat("The graph has been saved to", output_pdf, "\n")
   
 } else {
-  cat("Clustering automático desactivado.\n")
+  cat("Automatic clustering disabled.\n")
   
   # Crear objeto ggtree con layout especificado
   p <- ggtree(tree, layout = opt$layout)
@@ -131,6 +131,6 @@ if (opt$cluster) {
   ggsave(output_pdf, plot = p, device = "pdf", width = opt$width*3, height = opt$height*3)
   
   # Mostrar mensaje de éxito
-  cat("El gráfico se ha guardado en", output_pdf, "\n")
+  cat("The graph has been saved to", output_pdf, "\n")
 }
 
