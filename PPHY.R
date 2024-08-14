@@ -59,15 +59,15 @@ if (!is.null(opt$root)) {
 pdf_width <- 20  # Ancho del PDF en pulgadas
 pdf_height <- 20 # Alto del PDF en pulgadas
 
-# Ejemplo de uso de la opción --cluster
+# Example of using the --cluster option
 if (opt$cluster) {
   cat("Automatic clustering activated.\n")
   
-  # Suponiendo que ya tienes la matriz de distancias calculada
+  # Assuming you already have the distance matrix calculated
   dist_matrix <- cophenetic(tree)
   data_matrix <- as.matrix(dist_matrix)
   
-  # Realizar agrupamiento jerárquico
+  # Perform hierarchical clustering
   hc <- hclust(as.dist(dist_matrix), method = "average")
   
   optclus <- sapply(2:9, function(x) summary(silhouette(cutree(hc, k = x), data_matrix))$avg.width)
@@ -75,20 +75,20 @@ if (opt$cluster) {
   
   print(optnclust)
   
-  # Realizar corte basado en k
+  # Perform cut based on k
   clusters <- cutree(hc, k = optnclust)
   
-  # Obtener etiquetas de las hojas
+  # Obtain leaf labels
   tip_labels <- tree$tip.label
   
-  # Crear lista de grupos
+  # Create a list of groups
   groups <- list()
   for (i in 1:optnclust) {
     group_name <- paste("Cluster", i)
     groups[[group_name]] <- tip_labels[clusters == i]
   }
   
-  # Identificar nodos para cada clado
+  # Identify nodes for each clade
   nodes <- lapply(groups, function(tips) {
     MRCA(tree, tips)
   })
@@ -98,7 +98,7 @@ if (opt$cluster) {
   
   p <- ggtree(tree, layout = opt$layout)
   
-  # Añadir geom_hilight y geom_cladelabel basado en los nodos
+  # Add geom_hilight and geom_cladelabel based on nodes
   for (i in seq_along(nodes)) {
     p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.2) +
       geom_cladelabel(node = nodes[[i]], label = names(nodes)[i], 
@@ -107,33 +107,34 @@ if (opt$cluster) {
   }
   
   p <- p %<+% data + 
-    geom_tiplab(aes(color = I(color))) +  # Pintar las etiquetas de las especies
-    geom_text2(aes(subset = !isTip, label = label), hjust = -.3) +  # Mostrar los valores de bootstrap
-    theme(legend.position = "none")  # Ocultar leyenda de colores
-  # Guardar el gráfico en un archivo PDF con dimensiones especificadas
+    geom_tiplab(aes(color = I(color))) +  # Paint species labels
+    geom_text2(aes(subset = !isTip, label = label), hjust = -.3) +  # Show bootstrap values
+    theme(legend.position = "none")  # Hide color legend
+
+  # Save the graph to a PDF file with specified dimensions
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
   ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
   
-  # Mostrar mensaje de éxito
+  # Show success message
   cat("The graph has been saved to", output_pdf, "\n")
   
 } else {
   cat("Automatic clustering disabled.\n")
   
-  # Crear objeto ggtree con layout especificado
+  # Create ggtree object with specified layout
   p <- ggtree(tree, layout = opt$layout)
   
-  # Añadir colores a las ramas del árbol
+  # Add colors to tree branches
   p <- p %<+% data + 
-    geom_tiplab(aes(color = I(color))) +  # Pintar las etiquetas de las especies
-    geom_text2(aes(subset = !isTip, label = label), hjust = -.3) +  # Mostrar los valores de bootstrap
-    theme(legend.position = "none")  # Ocultar leyenda de colores
+    geom_tiplab(aes(color = I(color))) +  # Paint species labels
+    geom_text2(aes(subset = !isTip, label = label), hjust = -.3) + # Show bootstrap values
+    theme(legend.position = "none")  # Hide color legend
   
-  # Guardar el gráfico en un archivo PDF con dimensiones especificadas
+  # Save the graph to a PDF file with specified dimensions
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
   ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
   
-  # Mostrar mensaje de éxito
+  # Show success message
   cat("The graph has been saved to", output_pdf, "\n")
 }
 
