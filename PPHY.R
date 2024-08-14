@@ -16,6 +16,7 @@ option_list <- list(
   # make_option(c("--width"), type = "numeric", default = 10, help = "Ancho del PDF en pulgadas", metavar = "WIDTH"),
   # make_option(c("--height"), type = "numeric", default = 10, help = "Alto del PDF en pulgadas", metavar = "HEIGHT"),
   make_option(c("--cluster"), type = "logical", default = FALSE, help = "Activar clustering automático", action = "store_true")
+  # make_option(c("--cluster"), type = "character", default = "no", help = "Clustering automático: AUTO, número para especificar k, o NO para desactivar", metavar = "CLUSTER")
 )
 
 # Parse arguments
@@ -56,8 +57,8 @@ if (!is.null(opt$root)) {
 }
 
 # Set constant dimensions for the PDF
-pdf_width <- 20  # Ancho del PDF en pulgadas
-pdf_height <- 20 # Alto del PDF en pulgadas
+pdf_width <- 20  
+pdf_height <- 20 
 
 # Example of using the --cluster option
 if (opt$cluster) {
