@@ -26,23 +26,23 @@ if (is.null(opt$phy)) {
   stop("You must specify a phylogeny file with --phy")
 }
 
-# Leer árbol filogenético
+# Read phylogenetic tree
 tree <- read.tree(opt$phy)
 
-# Verificar si el árbol contiene etiquetas
+# Check if the tree contains tags
 if (length(tree$tip.label) == 0) {
   stop("The tree does not contain tip tags.")
 }
 
-# Crear un dataframe con la información de los nombres y los colores
+# Create a dataframe with the names and colors information
 data <- data.frame(label = tree$tip.label)
-data$color <- "grey"  # Color por defecto
+data$color <- "grey"  # Default color
 
-# Generar una paleta de colores para las palabras
+# Generate a color palette for the words
 if (!is.null(opt$keyword)) {
   palabras <- unlist(strsplit(opt$keyword, " "))
   n_palabras <- length(palabras)
-  colores <- brewer.pal(min(n_palabras, 12), "Dark2")  # Limitar al tamaño máximo de la paleta
+  colores <- brewer.pal(min(n_palabras, 12), "Dark2")  # Limit maximum palette size
   
   for (i in 1:n_palabras) {
     palabra <- palabras[i]
