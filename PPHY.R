@@ -13,8 +13,8 @@ option_list <- list(
   make_option(c("--alignment"), type = "character", default = NULL, help = "Archivo de alineamiento", metavar = "FILE"),
   make_option(c("--root"), type = "character", default = NULL, help = "Raíz del árbol", metavar = "NODE"),
   make_option(c("--layout"), type = "character", default = "rectangular", help = "Tipo de layout del árbol (rectangular, equal_angle, daylight)", metavar = "LAYOUT"),
-  make_option(c("--width"), type = "numeric", default = 10, help = "Ancho del PDF en pulgadas", metavar = "WIDTH"),
-  make_option(c("--height"), type = "numeric", default = 10, help = "Alto del PDF en pulgadas", metavar = "HEIGHT"),
+  # make_option(c("--width"), type = "numeric", default = 10, help = "Ancho del PDF en pulgadas", metavar = "WIDTH"),
+  # make_option(c("--height"), type = "numeric", default = 10, help = "Alto del PDF en pulgadas", metavar = "HEIGHT"),
   make_option(c("--cluster"), type = "logical", default = FALSE, help = "Activar clustering automático", action = "store_true")
 )
 
@@ -55,6 +55,9 @@ if (!is.null(opt$root)) {
   tree <- root(tree, outgroup = opt$root)
 }
 
+# Set constant dimensions for the PDF
+pdf_width <- 15  # Ancho del PDF en pulgadas
+pdf_height <- 15 # Alto del PDF en pulgadas
 
 # Ejemplo de uso de la opción --cluster
 if (opt$cluster) {
@@ -109,7 +112,7 @@ if (opt$cluster) {
     theme(legend.position = "none")  # Ocultar leyenda de colores
   # Guardar el gráfico en un archivo PDF con dimensiones especificadas
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
-  ggsave(output_pdf, plot = p, device = "pdf", width = opt$width*3, height = opt$height*3)
+  ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
   
   # Mostrar mensaje de éxito
   cat("The graph has been saved to", output_pdf, "\n")
@@ -128,7 +131,7 @@ if (opt$cluster) {
   
   # Guardar el gráfico en un archivo PDF con dimensiones especificadas
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
-  ggsave(output_pdf, plot = p, device = "pdf", width = opt$width*3, height = opt$height*3)
+  ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
   
   # Mostrar mensaje de éxito
   cat("The graph has been saved to", output_pdf, "\n")
