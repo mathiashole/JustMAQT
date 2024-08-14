@@ -56,8 +56,8 @@ if (!is.null(opt$root)) {
 }
 
 # Set constant dimensions for the PDF
-pdf_width <- 15  # Ancho del PDF en pulgadas
-pdf_height <- 15 # Alto del PDF en pulgadas
+pdf_width <- 20  # Ancho del PDF en pulgadas
+pdf_height <- 20 # Alto del PDF en pulgadas
 
 # Ejemplo de uso de la opción --cluster
 if (opt$cluster) {
