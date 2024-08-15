@@ -197,6 +197,13 @@ if (opt$cluster) {
   #   geom_text2(aes(subset = !isTip, label = label), hjust = -.3) +  # Show bootstrap values
   #   theme(legend.position = "none")  # Hide color legend
 
+  # # Save the graph to a PDF file with specified dimensions
+  # output_pdf <- sub("\\..+$", ".pdf", opt$phy)
+  # ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
+  
+  # # Show success message
+  # cat("The graph has been saved to", output_pdf, "\n")
+
   
 # } else if (grepl("^[0-9]+$", cluster_option)) {
 #   k <- as.numeric(cluster_option)
@@ -243,5 +250,12 @@ if (opt$cluster) {
 #     geom_tiplab(aes(color = I(color))) +  # Color the species labels
 #     geom_text2(aes(subset = !isTip, label = label), hjust = -.3) +  # Show bootstrap values
 #     theme(legend.position = "none")  # Hide color legend
+
+# # Save the graph to a PDF file with specified dimensions
+#   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
+#   ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
+  
+#   # Show success message
+#   cat("The graph has been saved to", output_pdf, "\n")
 
 # } else {}
