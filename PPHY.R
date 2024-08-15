@@ -159,6 +159,44 @@ if (opt$cluster) {
 #   optnclust <- which(optclus == max(optclus))
   
 #   cat("Optimal number of clusters:", optnclust, "\n")
+
+  
+  # # Perform cut based on k
+  # clusters <- cutree(hc, k = optnclust)
+  
+  # # Obtain leaf labels
+  # tip_labels <- tree$tip.label
+  
+  # # Create a list of groups
+  # groups <- list()
+  # for (i in 1:optnclust) {
+  #   group_name <- paste("Cluster", i)
+  #   groups[[group_name]] <- tip_labels[clusters == i]
+  # }
+  
+  # # Identify nodes for each clade
+  # nodes <- lapply(groups, function(tips) {
+  #   MRCA(tree, tips)
+  # })
+  
+  # num_colors <- length(groups)
+  # colors <- brewer.pal(num_colors, "Set3")
+  
+  # p <- ggtree(tree, layout = opt$layout)
+  
+  # # Add geom_hilight and geom_cladelabel based on nodes
+  # for (i in seq_along(nodes)) {
+  #   p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.2) +
+  #     geom_cladelabel(node = nodes[[i]], label = names(nodes)[i], 
+  #                     color = colors[i], offset = .1, barsize = 2,
+  #                     fontsize = 5, align = TRUE, alpha = 0.5)
+  # }
+  
+  # p <- p %<+% data + 
+  #   geom_tiplab(aes(color = I(color))) +  # Paint species labels
+  #   geom_text2(aes(subset = !isTip, label = label), hjust = -.3) +  # Show bootstrap values
+  #   theme(legend.position = "none")  # Hide color legend
+
   
 # } else if (grepl("^[0-9]+$", cluster_option)) {
 #   k <- as.numeric(cluster_option)
