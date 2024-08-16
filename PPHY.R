@@ -60,86 +60,6 @@ if (!is.null(opt$root)) {
 pdf_width <- 20  
 pdf_height <- 20 
 
-# # Example of using the --cluster option
-# if (opt$cluster) {
-#   cat("Automatic clustering activated.\n")
-  
-#   # Assuming you already have the distance matrix calculated
-#   dist_matrix <- cophenetic(tree)
-#   data_matrix <- as.matrix(dist_matrix)
-  
-#   # Perform hierarchical clustering
-#   hc <- hclust(as.dist(dist_matrix), method = "average")
-  
-#   optclus <- sapply(2:9, function(x) summary(silhouette(cutree(hc, k = x), data_matrix))$avg.width)
-#   optnclust <- which(optclus == max(optclus))
-  
-#   print(optnclust)
-  
-#   # Perform cut based on k
-#   clusters <- cutree(hc, k = optnclust)
-  
-#   # Obtain leaf labels
-#   tip_labels <- tree$tip.label
-  
-#   # Create a list of groups
-#   groups <- list()
-#   for (i in 1:optnclust) {
-#     group_name <- paste("Cluster", i)
-#     groups[[group_name]] <- tip_labels[clusters == i]
-#   }
-  
-#   # Identify nodes for each clade
-#   nodes <- lapply(groups, function(tips) {
-#     MRCA(tree, tips)
-#   })
-  
-#   num_colors <- length(groups)
-#   colors <- brewer.pal(num_colors, "Set3")
-  
-#   p <- ggtree(tree, layout = opt$layout)
-  
-#   # Add geom_hilight and geom_cladelabel based on nodes
-#   for (i in seq_along(nodes)) {
-#     p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.2) +
-#       geom_cladelabel(node = nodes[[i]], label = names(nodes)[i], 
-#                       color = colors[i], offset = .1, barsize = 2,
-#                       fontsize = 5, align = TRUE, alpha = 0.5)
-#   }
-  
-#   p <- p %<+% data + 
-#     geom_tiplab(aes(color = I(color))) +  # Paint species labels
-#     geom_text2(aes(subset = !isTip, label = label), hjust = -.3) +  # Show bootstrap values
-#     theme(legend.position = "none")  # Hide color legend
-
-#   # Save the graph to a PDF file with specified dimensions
-#   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
-#   ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
-  
-#   # Show success message
-#   cat("The graph has been saved to", output_pdf, "\n")
-  
-# } else {
-#   cat("Automatic clustering disabled.\n")
-  
-#   # Create ggtree object with specified layout
-#   p <- ggtree(tree, layout = opt$layout)
-  
-#   # Add colors to tree branches
-#   p <- p %<+% data + 
-#     geom_tiplab(aes(color = I(color))) +  # Paint species labels
-#     geom_text2(aes(subset = !isTip, label = label), hjust = -.3) + # Show bootstrap values
-#     theme(legend.position = "none")  # Hide color legend
-  
-#   # Save the graph to a PDF file with specified dimensions
-#   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
-#   ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
-  
-#   # Show success message
-#   cat("The graph has been saved to", output_pdf, "\n")
-# }
-
-
 
 # Convert cluster option to lowercase to handle case insensitivity
 cluster_option <- tolower(opt$cluster)
@@ -277,3 +197,86 @@ if (cluster_option == "auto") {
   # Show success message
   cat("The graph has been saved to", output_pdf, "\n")
 }
+
+
+# # Example of using the --cluster option
+# if (opt$cluster) {
+#   cat("Automatic clustering activated.\n")
+  
+#   # Assuming you already have the distance matrix calculated
+#   dist_matrix <- cophenetic(tree)
+#   data_matrix <- as.matrix(dist_matrix)
+  
+#   # Perform hierarchical clustering
+#   hc <- hclust(as.dist(dist_matrix), method = "average")
+  
+#   optclus <- sapply(2:9, function(x) summary(silhouette(cutree(hc, k = x), data_matrix))$avg.width)
+#   optnclust <- which(optclus == max(optclus))
+  
+#   print(optnclust)
+  
+#   # Perform cut based on k
+#   clusters <- cutree(hc, k = optnclust)
+  
+#   # Obtain leaf labels
+#   tip_labels <- tree$tip.label
+  
+#   # Create a list of groups
+#   groups <- list()
+#   for (i in 1:optnclust) {
+#     group_name <- paste("Cluster", i)
+#     groups[[group_name]] <- tip_labels[clusters == i]
+#   }
+  
+#   # Identify nodes for each clade
+#   nodes <- lapply(groups, function(tips) {
+#     MRCA(tree, tips)
+#   })
+  
+#   num_colors <- length(groups)
+#   colors <- brewer.pal(num_colors, "Set3")
+  
+#   p <- ggtree(tree, layout = opt$layout)
+  
+#   # Add geom_hilight and geom_cladelabel based on nodes
+#   for (i in seq_along(nodes)) {
+#     p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.2) +
+#       geom_cladelabel(node = nodes[[i]], label = names(nodes)[i], 
+#                       color = colors[i], offset = .1, barsize = 2,
+#                       fontsize = 5, align = TRUE, alpha = 0.5)
+#   }
+  
+#   p <- p %<+% data + 
+#     geom_tiplab(aes(color = I(color))) +  # Paint species labels
+#     geom_text2(aes(subset = !isTip, label = label), hjust = -.3) +  # Show bootstrap values
+#     theme(legend.position = "none")  # Hide color legend
+
+#   # Save the graph to a PDF file with specified dimensions
+#   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
+#   ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
+  
+#   # Show success message
+#   cat("The graph has been saved to", output_pdf, "\n")
+  
+# } else {
+#   cat("Automatic clustering disabled.\n")
+  
+#   # Create ggtree object with specified layout
+#   p <- ggtree(tree, layout = opt$layout)
+  
+#   # Add colors to tree branches
+#   p <- p %<+% data + 
+#     geom_tiplab(aes(color = I(color))) +  # Paint species labels
+#     geom_text2(aes(subset = !isTip, label = label), hjust = -.3) + # Show bootstrap values
+#     theme(legend.position = "none")  # Hide color legend
+  
+#   # Save the graph to a PDF file with specified dimensions
+#   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
+#   ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
+  
+#   # Show success message
+#   cat("The graph has been saved to", output_pdf, "\n")
+# }
+
+
+
