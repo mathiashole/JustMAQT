@@ -124,7 +124,7 @@ if (cluster_option == "auto") {
   
   # Add geom_hilight and geom_cladelabel based on nodes
   for (i in seq_along(nodes)) {
-    p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.5) +
+    p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.3) +
       geom_cladelabel(node = nodes[[i]], label = names(nodes)[i], 
                       color = colors[i], offset = .1, barsize = 2,
                       fontsize = 5, align = TRUE, alpha = 0.9)
@@ -181,7 +181,7 @@ p <- apply_alignment(p, opt$alignment, opt$layout)
   
   # Add geom_hilight and geom_cladelabel based on nodes
   for (i in seq_along(nodes)) {
-    p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.5) +
+    p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.3) +
       geom_cladelabel(node = nodes[[i]], label = names(nodes)[i], 
                       color = colors[i], offset = .1, barsize = 2,
                       fontsize = 5, align = TRUE, alpha = 0.9)
@@ -267,10 +267,10 @@ p <- apply_alignment(p, opt$alignment, opt$layout)
   
 #   # Add geom_hilight and geom_cladelabel based on nodes
 #   for (i in seq_along(nodes)) {
-#     p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.5) +
+#     p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.3) +
 #       geom_cladelabel(node = nodes[[i]], label = names(nodes)[i], 
 #                       color = colors[i], offset = .1, barsize = 2,
-#                       fontsize = 5, align = TRUE, alpha = 0.5)
+#                       fontsize = 5, align = TRUE, alpha = 0.3)
 #   }
   
 #   p <- p %<+% data + 
