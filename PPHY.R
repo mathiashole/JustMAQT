@@ -62,7 +62,14 @@ if (!is.null(opt$root)) {
 #   return(p)
 # }
 # Function to apply alignment to the tree plot if alignment file is specified
-apply_alignment <- function(p, alignment_file) {
+apply_alignment <- function(p, alignment_file, layout_option) {
+
+  # Check if layout is "daylight" or "equal_angle"
+  if (layout_option %in% c("daylight", "equal_angle")) {
+    warning("Alignment cannot be applied with 'daylight' or 'equal_angle' layout. The function will not be executed.")
+    return(p)  # Return the original plot without applying alignment
+  }
+
   if (!is.null(alignment_file)) {
     tryCatch({
       p <- msaplot(p, fasta = alignment_file)
@@ -136,7 +143,7 @@ if (cluster_option == "auto") {
     theme(legend.position = "none")  # Hide color legend
 
 # Apply alignment if specified
-p <- apply_alignment(p, opt$alignment)
+p <- apply_alignment(p, opt$alignment, opt$layout)
 
   # Save the graph to a PDF file with specified dimensions
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
@@ -215,7 +222,7 @@ p <- apply_alignment(p, opt$alignment)
     theme(legend.position = "none")  # Hide color legend
 
   # Apply alignment if specified
-  p <- apply_alignment(p, opt$alignment)
+  p <- apply_alignment(p, opt$alignment, opt$layout)
   
   # Save the graph to a PDF file with specified dimensions
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
