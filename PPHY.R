@@ -54,14 +54,24 @@ if (!is.null(opt$root)) {
   tree <- root(tree, outgroup = opt$root)
 }
 
+# # Function to apply alignment to the tree plot if alignment file is specified
+# apply_alignment <- function(p, alignment_file) {
+#   if (!is.null(alignment_file)) {
+#     p <- msaplot(p, fasta = alignment_file)
+#   }
+#   return(p)
+# }
 # Function to apply alignment to the tree plot if alignment file is specified
 apply_alignment <- function(p, alignment_file) {
   if (!is.null(alignment_file)) {
-    p <- msaplot(p, fasta = alignment_file)
+    tryCatch({
+      p <- msaplot(p, fasta = alignment_file)
+    }, error = function(e) {
+      stop("Error applying alignment: Check if the IDs in the alignment file match the tree tip labels.")
+    })
   }
   return(p)
 }
-
 
 # Set constant dimensions for the PDF
 pdf_width <- 20  
