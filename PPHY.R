@@ -78,7 +78,7 @@ apply_alignment <- function(p, alignment_file, layout_option) {
     })
   }
   return(p)
-} # WE NEED FIX ALIGNMENT WITH CIRCULAR PLOT BECAUSE THER ARE A BUG
+}
 
 
 # Set constant dimensions for the PDF
@@ -200,7 +200,7 @@ p <- apply_alignment(p, opt$alignment, opt$layout)
     theme(legend.position = "none")  # Hide color legend
 
   # Apply alignment if specified
-  p <- apply_alignment(p, opt$alignment)
+  p <- apply_alignment(p, opt$alignment, opt$layout)
 
 # Save the graph to a PDF file with specified dimensions
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
