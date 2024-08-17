@@ -57,7 +57,7 @@ if (!is.null(opt$root)) {
 # Function to apply alignment to the tree plot if alignment file is specified
 apply_alignment <- function(p, alignment_file) {
   if (!is.null(alignment_file)) {
-    p <- msaplot(p, alignment_file)
+    p <- msaplot(p, fasta = alignment_file)
   }
   return(p)
 }
