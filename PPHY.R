@@ -71,7 +71,8 @@ apply_alignment <- function(p, alignment_file) {
     })
   }
   return(p)
-}
+} # WE NEED FIX ALIGNMENT WITH CIRCULAR PLOT BECAUSE THER ARE A BUG
+
 
 # Set constant dimensions for the PDF
 pdf_width <- 20  
