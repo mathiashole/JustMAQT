@@ -12,7 +12,7 @@ option_list <- list(
   make_option(c("--keyword"), type = "character", default = NULL, help = "Palabras para colorear separadas por espacios", metavar = "WORDS"),
   make_option(c("--alignment"), type = "character", default = NULL, help = "Archivo de alineamiento", metavar = "FILE"),
   make_option(c("--root"), type = "character", default = NULL, help = "Raíz del árbol", metavar = "NODE"),
-  make_option(c("--layout"), type = "character", default = "rectangular", help = "Tipo de layout del árbol (rectangular, equal_angle, daylight)", metavar = "LAYOUT"),
+  make_option(c("--layout"), type = "character", default = "rectangular", help = "Tipo de layout del árbol (rectangular, equal_angle, daylight, circular, roundrect)", metavar = "LAYOUT"),
    # make_option(c("--cluster"), type = "logical", default = FALSE, help = "Activar clustering automático", action = "store_true")
   make_option(c("--cluster"), type = "character", default = "no", help = "Clustering automático: AUTO, número para especificar k, o NO para desactivar", metavar = "CLUSTER")
 )
@@ -124,10 +124,10 @@ if (cluster_option == "auto") {
   
   # Add geom_hilight and geom_cladelabel based on nodes
   for (i in seq_along(nodes)) {
-    p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.2) +
+    p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.5) +
       geom_cladelabel(node = nodes[[i]], label = names(nodes)[i], 
                       color = colors[i], offset = .1, barsize = 2,
-                      fontsize = 5, align = TRUE, alpha = 0.5)
+                      fontsize = 5, align = TRUE, alpha = 0.9)
   }
   
   p <- p %<+% data + 
@@ -181,10 +181,10 @@ p <- apply_alignment(p, opt$alignment, opt$layout)
   
   # Add geom_hilight and geom_cladelabel based on nodes
   for (i in seq_along(nodes)) {
-    p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.2) +
+    p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.5) +
       geom_cladelabel(node = nodes[[i]], label = names(nodes)[i], 
                       color = colors[i], offset = .1, barsize = 2,
-                      fontsize = 5, align = TRUE, alpha = 0.5)
+                      fontsize = 5, align = TRUE, alpha = 0.9)
   }
   
   p <- p %<+% data + 
@@ -267,7 +267,7 @@ p <- apply_alignment(p, opt$alignment, opt$layout)
   
 #   # Add geom_hilight and geom_cladelabel based on nodes
 #   for (i in seq_along(nodes)) {
-#     p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.2) +
+#     p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.5) +
 #       geom_cladelabel(node = nodes[[i]], label = names(nodes)[i], 
 #                       color = colors[i], offset = .1, barsize = 2,
 #                       fontsize = 5, align = TRUE, alpha = 0.5)
