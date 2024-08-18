@@ -96,7 +96,7 @@ if (cluster_option == "auto") {
   optclus <- sapply(2:9, function(x) summary(silhouette(cutree(hc, k = x), data_matrix))$avg.width)
   optnclust <- which(optclus == max(optclus))
   
-  cat("Optimal number of clusters:", optnclust, "\n")
+  cat("Optimal number of clusters k=", optnclust, "\n")
 
   
   # Perform cut based on k
