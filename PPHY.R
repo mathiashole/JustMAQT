@@ -17,6 +17,10 @@ option_list <- list(
   make_option(c("--cluster"), type = "character", default = "no", help = "Clustering automático: AUTO, número para especificar k, o NO para desactivar", metavar = "CLUSTER")
 )
 
+############
+# FUNCTION #
+############
+
 # Parse arguments
 opt <- parse_args(OptionParser(option_list = option_list))
 
@@ -81,6 +85,9 @@ apply_alignment <- function(p, alignment_file, layout_option) {
 pdf_width <- 20  
 pdf_height <- 20 
 
+#############
+# EXECUTION #
+#############
 
 # Convert cluster option to lowercase to handle case insensitivity
 cluster_option <- tolower(opt$cluster)
