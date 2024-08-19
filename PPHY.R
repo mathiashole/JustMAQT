@@ -84,17 +84,21 @@ apply_alignment <- function(p, alignment_file, layout_option) {
 # # Function to create a gheatmap
 # plot_gheatmap <- function(tree_plot, genotype_file, offset = 5, width = 0.5, font_size = 3, 
 #                           colnames_angle = -45, hjust = 0, color_palette = "Set3") {
-#   if (!is.null(genotype_file)) {                          
-#     # Get the unique values ​​of the genotype
-#     unique_phenotypes <- unique(unlist(phenotype_data))
-    
-#     # Create the color palette using RColorBrewer
-#     colors <- brewer.pal(length(unique_phenotypes), color_palette)
-    
-#     # Generate the heat map
-#     p <- gheatmap(tree_plot, phenotype_data, offset = offset, width = width, font.size = font_size, 
-#                   colnames_angle = colnames_angle, hjust = hjust) +
-#       scale_fill_manual(breaks = unique_phenotypes, values = colors, name = "Phenotype")
+#   if (!is.null(genotype_file)) {
+#     tryCatch({                          
+#       # Get the unique values ​​of the genotype
+#       unique_phenotypes <- unique(unlist(phenotype_data))
+      
+#       # Create the color palette using RColorBrewer
+#       colors <- brewer.pal(length(unique_phenotypes), color_palette)
+      
+#       # Generate the heat map
+#       p <- gheatmap(tree_plot, phenotype_data, offset = offset, width = width, font.size = font_size, 
+#                     colnames_angle = colnames_angle, hjust = hjust) +
+#         scale_fill_manual(breaks = unique_phenotypes, values = colors, name = "Phenotype")
+#     }, error = function(e) {
+#       stop("Error applying alignment: Check if the IDs in the genotype file match the tree tip labels.")
+#     })
 #   }  
 #   return(p)
 # }
