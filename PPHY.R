@@ -3,7 +3,7 @@
 # Load functions from functions.R
 source("quick_off_init.R")
 
-required_packages <- c("ggtree", "treeio", "ape", "RColorBrewer", "optparse", "cluster", "factoextra")
+required_packages <- c("ggtree", "treeio", "ape", "RColorBrewer", "optparse", "cluster", "factoextra") # , "DECIPHER"
 manage_packages(required_packages)
 
 # Define command line options
@@ -66,6 +66,7 @@ apply_alignment <- function(p, alignment_file, layout_option) {
   if (!is.null(alignment_file)) {
     tryCatch({
       p <- msaplot(p, fasta = alignment_file)
+      
     }, error = function(e) {
       stop("Error applying alignment: Check if the IDs in the alignment file match the tree tip labels.")
     })
