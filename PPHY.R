@@ -82,7 +82,7 @@ apply_alignment <- function(p, alignment_file, layout_option) {
 }
 
 # # Function to create a gheatmap
-# plot_gheatmap <- function(tree_plot, phenotype_data, offset = 5, width = 0.5, font_size = 3, 
+# plot_gheatmap <- function(tree_plot, genotype_file, offset = 5, width = 0.5, font_size = 3, 
 #                           colnames_angle = -45, hjust = 0, color_palette = "Set3") {
 #   if (!is.null(genotype_file)) {                          
 #     # Get the unique values ​​of the genotype
