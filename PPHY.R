@@ -237,6 +237,9 @@ p <- plot_gheatmap(p, opt$genotype, opt$alignment)
   # Apply alignment if specified
   p <- apply_alignment(p, opt$alignment, opt$layout)
 
+  # Apply genotype heatmap plot on phylogenetic
+p <- plot_gheatmap(p, opt$genotype, opt$alignment)
+
 # Save the graph to a PDF file with specified dimensions
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
   ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
@@ -258,6 +261,9 @@ p <- plot_gheatmap(p, opt$genotype, opt$alignment)
 
   # Apply alignment if specified
   p <- apply_alignment(p, opt$alignment, opt$layout)
+
+  # Apply genotype heatmap plot on phylogenetic
+  p <- plot_gheatmap(p, opt$genotype, opt$alignment)
   
   # Save the graph to a PDF file with specified dimensions
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
