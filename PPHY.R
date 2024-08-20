@@ -14,7 +14,7 @@ option_list <- list(
   make_option(c("--root"), type = "character", default = NULL, help = "Raíz del árbol", metavar = "NODE"),
   make_option(c("--layout"), type = "character", default = "rectangular", help = "Tipo de layout del árbol (rectangular, equal_angle, daylight, circular, roundrect)", metavar = "LAYOUT"),
    # make_option(c("--cluster"), type = "logical", default = FALSE, help = "Activar clustering automático", action = "store_true")
-  # make_option(c("--genotype"), type = "character", default = NULL, help = "Archivo de genotipo", metavar = "FILE"),
+  make_option(c("--genotype"), type = "character", default = NULL, help = "Archivo de genotipo", metavar = "FILE"),
   make_option(c("--cluster"), type = "character", default = "no", help = "Clustering automático: AUTO, número para especificar k, o NO para desactivar", metavar = "CLUSTER")
 )
 
@@ -176,6 +176,9 @@ if (cluster_option == "auto") {
 
 # Apply alignment if specified
 p <- apply_alignment(p, opt$alignment, opt$layout)
+
+# Apply genotype heatmap plot on phylogenetic
+p <- plot_gheatmap(p, opt$genotype, opt$alignment)
 
   # Save the graph to a PDF file with specified dimensions
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
