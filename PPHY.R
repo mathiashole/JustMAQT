@@ -106,7 +106,10 @@ plot_gheatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, 
     }, error = function(e) {
       stop("Error applying alignment: Check if the IDs in the genotype file match the tree tip labels.")
     })
-  }  
+  } else {
+    p <- tree_plot  # Return the original tree_plot if genotype_file is not provided
+  }
+   
   return(p)
 }
 
