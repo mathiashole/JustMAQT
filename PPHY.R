@@ -105,9 +105,14 @@ apply_alignment <- function(p, alignment_file, layout_option) {
 plot_gheatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, width = 0.5, font_size = 3, 
                           colnames_angle = -45, hjust = 0, color_palette = "Set3") {
 
-  # Check if alignment file is provided
-  if (!is.null(alignment_file)) {
-    warning("Genotype cannot be applied with alignment file. The function will not be executed.")
+  # # Check if alignment file is provided
+  # if (!is.null(alignment_file)) {
+  #   warning("Genotype cannot be applied with alignment file. The function will not be executed.")
+  #   return(tree_plot)
+  # }
+  # Check if both alignment_file and genotype_file are provided or if neither is provided
+  if ((!is.null(alignment_file) && !is.null(genotype_file)) || is.null(genotype_file)) {
+    warning("The function cannot be executed if both an alignment file and a genotype file are provided, or if the genotype file is missing.")
     return(tree_plot)
   }
 
@@ -130,9 +135,9 @@ plot_gheatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, 
     }, error = function(e) {
       stop("Error applying alignment: Check if the IDs in the genotype file match the tree tip labels.")
     })
-  } else {
-    p <- tree_plot  # Return the original tree_plot if genotype_file is not provided
-  }
+  # } else {
+  #   p <- tree_plot  # Return the original tree_plot if genotype_file is not provided
+  # }
 
   return(p)
 }
