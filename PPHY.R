@@ -115,6 +115,7 @@ plot_gheatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, 
     tryCatch({
       # Read the genotype file into phenotype_data (assuming it's a data frame)
       # phenotype_data <- read.csv(genotype_file, row.names = 1) # NEED FIX THIS PROBLEM OF DIFERENT FORMAT
+      phenotype_data <- read_genotype_data(genotype_file)
 
       # Get the unique values ​​of the genotype
       unique_phenotypes <- unique(unlist(phenotype_data))
