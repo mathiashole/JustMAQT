@@ -66,7 +66,7 @@ read_genotype_data <- function(file) {
   if (file_ext == "csv") {
     genotype_data <- read.csv(file, row.names = 1)
   } else if (file_ext %in% c("tsv", "txt")) {
-    genotype_data <- read.delim(file, row.names = 1)
+    genotype_data <- read.delim(file, row.names = 1, sep = "\t")
   # } else if (file_ext %in% c("xlsx", "xls")) {
   #   library(readxl)
   #   genotype_data <- read_excel(file, col_names = TRUE)
