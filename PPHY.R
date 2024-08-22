@@ -111,7 +111,7 @@ plot_gheatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, 
   #   return(tree_plot)
   # }
   # Check if both alignment_file and genotype_file are provided or if neither is provided
-  if ((!is.null(alignment_file) && !is.null(genotype_file)) || is.null(genotype_file)) {
+  if ((!is.null(alignment_file) && !is.null(genotype_file))) {
     warning("The function cannot be executed if both an alignment file and a genotype file are provided, or if the genotype file is missing.")
     return(tree_plot)
   }
