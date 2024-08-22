@@ -135,6 +135,7 @@ plot_gheatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, 
   return(p)
 }
 
+# NEED ADD NEW Function to create a gheatmap, BUT WITH A CONTINEOUS VARIABLE
 
 # Set constant dimensions for the PDF
 pdf_width <- 20  
