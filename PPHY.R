@@ -59,6 +59,26 @@ if (!is.null(opt$root)) {
   tree <- root(tree, outgroup = opt$root)
 }
 
+# Function to read genotype data from different formats without using the tools library
+read_genotype_data <- function(file) {
+  file_ext <- tolower(sub(".*\\.", "", basename(file)))
+  
+  if (file_ext == "csv") {
+    genotype_data <- read.csv(file, row.names = 1)
+  } else if (file_ext %in% c("tsv", "txt")) {
+    genotype_data <- read.delim(file, row.names = 1)
+  # } else if (file_ext %in% c("xlsx", "xls")) {
+  #   library(readxl)
+  #   genotype_data <- read_excel(file, col_names = TRUE)
+  #   row.names(genotype_data) <- genotype_data[[1]]
+  #   genotype_data <- genotype_data[-1]
+  } else {
+    stop("Unsupported file format. Please provide a csv, tsv, txt, or Excel file.")
+  }
+  
+  return(genotype_data)
+}
+
 # Function to apply alignment to the tree plot if alignment file is specified
 apply_alignment <- function(p, alignment_file, layout_option) {
 
