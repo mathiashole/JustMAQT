@@ -102,7 +102,7 @@ apply_alignment <- function(p, alignment_file, layout_option) {
 }
 
 # Function to create a gheatmap
-plot_gheatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, width = 0.5, font_size = 3, 
+plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, width = 0.5, font_size = 3, 
                           colnames_angle = -45, hjust = 0, color_palette = "Set3") {
 
   # Check if both alignment_file and genotype_file are provided or if neither is provided
@@ -206,7 +206,7 @@ if (cluster_option == "auto") {
 p <- apply_alignment(p, opt$alignment, opt$layout)
 
 # Apply genotype heatmap plot on phylogenetic
-p <- plot_gheatmap(p, opt$genotype, opt$alignment)
+p <- plot_genotype_heatmap(p, opt$genotype, opt$alignment)
 
   # Save the graph to a PDF file with specified dimensions
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
@@ -267,7 +267,7 @@ p <- plot_gheatmap(p, opt$genotype, opt$alignment)
   p <- apply_alignment(p, opt$alignment, opt$layout)
 
   # Apply genotype heatmap plot on phylogenetic
-  p <- plot_gheatmap(p, opt$genotype, opt$alignment)
+  p <- plot_genotype_heatmap(p, opt$genotype, opt$alignment)
 
 # Save the graph to a PDF file with specified dimensions
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
@@ -293,7 +293,7 @@ p <- plot_gheatmap(p, opt$genotype, opt$alignment)
   p <- apply_alignment(p, opt$alignment, opt$layout)
 
   # Apply genotype heatmap plot on phylogenetic
-  p <- plot_gheatmap(p, opt$genotype, opt$alignment)
+  p <- plot_genotype_heatmap(p, opt$genotype, opt$alignment)
   
   # Save the graph to a PDF file with specified dimensions
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
