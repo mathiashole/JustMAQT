@@ -137,22 +137,22 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
 
 # NEED ADD NEW Function to create a gheatmap, BUT WITH A CONTINEOUS VARIABLE
 # Function to create a continuous value heatmap
-plot_continuous_heatmap <- function(){
+# plot_continuous_heatmap <- function(){
   
-  # Check if both alignment_file and genotype_file are provided or if neither is provided
-  if ((!is.null(alignment_file) && !is.null(genotype_file))) {
-    warning("The function cannot be executed if both an alignment file and a contineous value file are provided, or if the contineous file is missing.")
-    return(tree_plot)
-  }
+#   # Check if both alignment_file and genotype_file are provided or if neither is provided
+#   if ((!is.null(alignment_file) && !is.null(genotype_file))) {
+#     warning("The function cannot be executed if both an alignment file and a contineous value file are provided, or if the contineous file is missing.")
+#     return(tree_plot)
+#   }
 
-    if (!is.null(genotype_file)) {
-    tryCatch({
-      # Read the contineous data file (assuming it's a data frame)
-    }, error = function(e) {
-      stop("Error applying contineous plot on phylogenetic: Check if the IDs in the contineous file match the tree tip labels.")
-    })
-  }
-}
+#     if (!is.null(genotype_file)) {
+#     tryCatch({
+#       # Read the contineous data file (assuming it's a data frame)
+#     }, error = function(e) {
+#       stop("Error applying contineous plot on phylogenetic: Check if the IDs in the contineous file match the tree tip labels.")
+#     })
+#   }
+# }
 
 # Set constant dimensions for the PDF
 pdf_width <- 20  
