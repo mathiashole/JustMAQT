@@ -128,7 +128,7 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
                     colnames_angle = colnames_angle, hjust = hjust) +
         scale_fill_manual(breaks = unique_phenotypes, values = colors, name = "Phenotype")
     }, error = function(e) {
-      stop("Error applying alignment: Check if the IDs in the genotype file match the tree tip labels.")
+      stop("Error applying genotype plot on phylogenetics tree: Check if the IDs in the genotype file match the tree tip labels.")
     })
   }
 
