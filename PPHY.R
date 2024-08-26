@@ -137,7 +137,8 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
 
 # NEED ADD NEW Function to create a gheatmap, BUT WITH A CONTINEOUS VARIABLE
 # Function to create a continuous value heatmap
-plot_continuous_heatmap <- function(){
+plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, offset = 5, width = 0.5, font_size = 3, 
+                          colnames_angle = -45, hjust = 0){
   
   # Check if both alignment_file and genotype_file are provided or if neither is provided
   if ((!is.null(alignment_file) && !is.null(contineous_file))) {
@@ -150,8 +151,8 @@ plot_continuous_heatmap <- function(){
       # Read the contineous data file (assuming it's a data frame)
       contineous_data <- read_data_table(contineous_file)
 
-      p <- gheatmap(tree_plot, contineous_data, offset=15, width=.3,
-                        colnames_angle=90, colnames_offset_y = .25) +
+      p <- gheatmap(tree_plot, contineous_data, offset=15, width=.3, font_size = 3,
+                        colnames_angle=90, colnames_offset_y = .25, hjust = hjust) +
         scale_fill_viridis_c(option="A", name="continuous\nvalue")
 
     }, error = function(e) {
