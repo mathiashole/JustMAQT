@@ -158,6 +158,9 @@ plot_continuous_heatmap <- function(){
       stop("Error applying contineous plot on phylogenetic: Check if the IDs in the contineous file match the tree tip labels.")
     })
   }
+
+  return(p)
+
 }
 
 # Set constant dimensions for the PDF
