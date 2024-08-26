@@ -140,7 +140,7 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
 plot_continuous_heatmap <- function(){
   
   # Check if both alignment_file and genotype_file are provided or if neither is provided
-  if ((!is.null(alignment_file) && !is.null(genotype_file))) {
+  if ((!is.null(alignment_file) && !is.null(contineous_file))) {
     warning("The function cannot be executed if both an alignment file and a contineous value file are provided, or if the contineous file is missing.")
     return(tree_plot)
   }
@@ -148,7 +148,7 @@ plot_continuous_heatmap <- function(){
     if (!is.null(genotype_file)) {
     tryCatch({
       # Read the contineous data file (assuming it's a data frame)
-      contineous_data <- read_data_table(genotype_file)
+      contineous_data <- read_data_table(contineous_file)
 
     }, error = function(e) {
       stop("Error applying contineous plot on phylogenetic: Check if the IDs in the contineous file match the tree tip labels.")
