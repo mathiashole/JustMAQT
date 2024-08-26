@@ -3,7 +3,7 @@
 # Load functions from functions.R
 source("quick_off_init.R")
 
-required_packages <- c("ggtree", "treeio", "ape", "RColorBrewer", "optparse", "cluster", "factoextra") # , "DECIPHER"
+required_packages <- c("ggtree", "treeio", "ape", "RColorBrewer", "optparse", "cluster", "factoextra", "ggplot2") # , "DECIPHER"
 manage_packages(required_packages)
 
 # Define command line options
