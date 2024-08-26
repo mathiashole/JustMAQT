@@ -146,7 +146,7 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
     return(tree_plot)
   }
 
-    if (!is.null(genotype_file)) {
+    if (!is.null(contineous_file)) {
     tryCatch({
       # Read the contineous data file (assuming it's a data frame)
       contineous_data <- read_data_table(contineous_file)
