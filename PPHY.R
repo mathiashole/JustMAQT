@@ -156,7 +156,7 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
 
       p <- gheatmap(tree_plot, contineous_data, offset = offset, width = width, font_size = font_size,
                         colnames_angle = colnames_angle, hjust = hjust, colnames_offset_y = 0.25) +
-        scale_fill_viridis_c(option="A", name="continuous\nvalue")
+        scale_fill_viridis_c(option="B", name="continuous\nvalue")
 
     }, error = function(e) {
       stop("Error applying contineous plot on phylogenetic: Check if the IDs in the contineous file match the tree tip labels.")
