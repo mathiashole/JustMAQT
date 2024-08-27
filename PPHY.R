@@ -324,6 +324,9 @@ p <- plot_genotype_heatmap(p, opt$genotype, opt$alignment)
 
   # Apply genotype heatmap plot on phylogenetic
   p <- plot_genotype_heatmap(p, opt$genotype, opt$alignment)
+
+  # Apply contineous heatmap plot on phylogenetic
+  p <- plot_continuous_heatmap(p, opt$countineous, opt$alignment) #NEED CHECK
   
   # Save the graph to a PDF file with specified dimensions
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
