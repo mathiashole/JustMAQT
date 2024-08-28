@@ -115,7 +115,6 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
   if (!is.null(genotype_file)) {
     tryCatch({
       # Read the genotype file into phenotype_data (assuming it's a data frame)
-      # phenotype_data <- read.csv(genotype_file, row.names = 1) # NEED FIX THIS PROBLEM OF DIFERENT FORMAT
       phenotype_data <- read_data_table(genotype_file)
 
       # Get the unique values ​​of the genotype
