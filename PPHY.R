@@ -232,14 +232,14 @@ if (cluster_option == "auto") {
     geom_treescale() +
     theme(legend.position = "none")  # Hide color legend
 
-# Apply alignment if specified
-p <- apply_alignment(p, opt$alignment, opt$layout)
+  # Apply alignment if specified
+  p <- apply_alignment(p, opt$alignment, opt$layout)
 
-# Apply genotype heatmap plot on phylogenetic
-p <- plot_genotype_heatmap(p, opt$genotype, opt$alignment)
+  # Apply genotype heatmap plot on phylogenetic
+  p <- plot_genotype_heatmap(p, opt$genotype, opt$alignment)
 
-# Apply contineous heatmap plot on phylogenetic
-p <- plot_continuous_heatmap(p, opt$countineous, opt$alignment)
+  # Apply contineous heatmap plot on phylogenetic
+  p <- plot_continuous_heatmap(p, opt$countineous, opt$alignment)
 
   # Save the graph to a PDF file with specified dimensions
   output_pdf <- sub("\\..+$", ".pdf", opt$phy)
