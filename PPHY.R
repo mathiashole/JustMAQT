@@ -167,7 +167,11 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
 }
 
 check_both_heatmaps <- function(genotype_file, contineous_file){
-  # Check
+  # Check if both contineous_file and genotype_file are provided
+  if ((!is.null(genotype_file) && !is.null(contineous_file))) {
+    newscale_package <- "ggnewscale"
+    manage_packages(newscale_package)
+  }
 }
 
 # Set constant dimensions for the PDF
