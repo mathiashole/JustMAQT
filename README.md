@@ -16,7 +16,7 @@
 
 ## :mega: Contact
 
-:bird: [@JoaquinMangino](https://twitter.com/joaquinmangino)
+:bird: [Mathias](https://twitter.com/joaquinmangino)
 
 ## License
 MIT &copy; [Mathias Mangino](https://github.com/mathiashole)
