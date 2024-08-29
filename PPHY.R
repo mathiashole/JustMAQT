@@ -166,7 +166,7 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
 
 }
 
-plot_both_heatmaps <- function(tree_plot, another_heatmap, x){
+check_both_heatmaps <- function(genotype_file, contineous_file){
   # Check
 }
 
