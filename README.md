@@ -16,9 +16,7 @@
 
 ## :mega: Contact
 
-:mailbox: joacomangino@gmail.com
-
-:bird: Twitter [@JoaquinMangino](https://twitter.com/joaquinmangino)
+:bird: [@JoaquinMangino](https://twitter.com/joaquinmangino)
 
 ## License
 MIT &copy; [Mathias Mangino](https://github.com/mathiashole)
