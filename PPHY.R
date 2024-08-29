@@ -166,6 +166,10 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
 
 }
 
+plot_both_heatmaps <- function(tree_plot, another_heatmap, x){
+  # Check
+}
+
 # Set constant dimensions for the PDF
 pdf_width <- 20  
 pdf_height <- 20 
