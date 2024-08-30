@@ -180,7 +180,7 @@ check_both_heatmaps <- function(genotype_file, contineous_file){
   #   p2 <- p1 + new_scale_fill()
   #   plot_genotype_heatmap(genotype_file)
   # }
-
+  # NEED NEW PLOT ONLY THIS FUNCTION
 }
 
 # Set constant dimensions for the PDF
