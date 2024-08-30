@@ -135,8 +135,6 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
   return(p)
 }
 
-# NEED ADD NEW Function to create a gheatmap, BUT WITH A CONTINEOUS VARIABLE
-# IMPORTANT: NEED ADD ARGS MAIN
 # NEED ADVICED TO SCALE
 # Function to create a continuous value heatmap
 plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, offset = 5, width = 0.5, font_size = 3, 
