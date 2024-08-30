@@ -8,7 +8,7 @@
 
 ## :book: Features
 
-## :hammer: in progress
+## :hammer: in progress ...
 
 
 ## :sparkling_heart: Contributing
