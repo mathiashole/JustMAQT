@@ -173,10 +173,12 @@ check_both_heatmaps <- function(genotype_file, contineous_file){
 
   # if (first_genotype) {
   #   plot_genotype_heatmap(first_genotype)
-  #   plot_both
+  #   p2 <- p + new_scale_fill()
+  #   plot_continuous_heatmap(first_contineous)
   # } else if (first_contineous) {
   #   plot_continuous_heatmap(first_contineous)
-  #   plot_both
+  #   p2 <- p + new_scale_fill()
+  #   plot_genotype_heatmap(first_genotype)
   # }
 
 }
