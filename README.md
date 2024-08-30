@@ -5,6 +5,8 @@
 
 `JustMAQT` is an R script for customizing and visualizing phylogenetic trees.
 
+## :book: Features
+
 ## :hammer: in progress
 
 
