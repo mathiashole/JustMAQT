@@ -170,6 +170,15 @@ check_both_heatmaps <- function(genotype_file, contineous_file){
     newscale_package <- "ggnewscale"
     manage_packages(newscale_package)
   }
+
+  # if (first_genotype) {
+  #   plot_genotype_heatmap(first_genotype)
+  #   plot_both
+  # } else if (first_contineous) {
+  #   plot_continuous_heatmap(first_contineous)
+  #   plot_both
+  # }
+
 }
 
 # Set constant dimensions for the PDF
