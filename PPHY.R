@@ -164,24 +164,24 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
 
 }
 
-check_both_heatmaps <- function(genotype_file, contineous_file){
-  # Check if both contineous_file and genotype_file are provided
-  if ((!is.null(genotype_file) && !is.null(contineous_file))) {
-    newscale_package <- "ggnewscale"
-    manage_packages(newscale_package)
-  }
+# check_both_heatmaps <- function(genotype_file, contineous_file){
+#   # Check if both contineous_file and genotype_file are provided
+#   if ((!is.null(genotype_file) && !is.null(contineous_file))) {
+#     newscale_package <- "ggnewscale"
+#     manage_packages(newscale_package)
+#   }
 
-  # if (first_genotype) {
-  #   p1 <- plot_genotype_heatmap(genotype_file)
-  #   p2 <- p1 + new_scale_fill()
-  #   plot_continuous_heatmap(contineous_file)
-  # } else if (first_contineous) {
-  #   p1 <- plot_continuous_heatmap(contineous_file)
-  #   p2 <- p1 + new_scale_fill()
-  #   plot_genotype_heatmap(genotype_file)
-  # }
-  # NEED NEW PLOT ONLY THIS FUNCTION
-}
+#   if (first_genotype) {
+#     p1 <- plot_genotype_heatmap(genotype_file)
+#     p2 <- p1 + new_scale_fill()
+#     plot_continuous_heatmap(contineous_file)
+#   } else if (first_contineous) {
+#     p1 <- plot_continuous_heatmap(contineous_file)
+#     p2 <- p1 + new_scale_fill()
+#     plot_genotype_heatmap(genotype_file)
+#   }
+#   # NEED NEW PLOT ONLY THIS FUNCTION
+# }
 
 # Set constant dimensions for the PDF
 pdf_width <- 20  
