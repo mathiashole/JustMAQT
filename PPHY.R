@@ -164,8 +164,6 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
 
 }
 
-name(opt)
-
 ## NEED work on this function
 check_both_heatmaps <- function(genotype_file, contineous_file){
   # Check if both contineous_file and genotype_file are provided
@@ -174,11 +172,11 @@ check_both_heatmaps <- function(genotype_file, contineous_file){
     manage_packages(newscale_package)
 
     # Get the names of the passed arguments
-    args <- commandArgs(trailingOnly = TRUE)
+    opt_names <- names(opt)
 
     # Identify the order of arguments
-    genotype_index <- grep("--genotype", args)
-    contineous_index <- grep("--contineous", args)
+    genotype_index <- which(opt_names == "genotype")
+    contineous_index <- which(opt_names == "countineous")
     
     # Check which file was specified first
     if (genotype_index < contineous_index) {
