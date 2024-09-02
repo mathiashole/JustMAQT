@@ -165,6 +165,8 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
 }
 
 
+keyword_index <- grep(opt$keyword)
+print(keyword_index)
 
 check_both_heatmaps <- function(genotype_file, contineous_file){
   # Check if both contineous_file and genotype_file are provided
