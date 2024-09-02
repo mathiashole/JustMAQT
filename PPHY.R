@@ -165,27 +165,40 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
 }
 
 
-args <- commandArgs(trailingOnly = TRUE)
-keyword_index <- grep("--keyword" ,args)
-print(keyword_index)
-# check_both_heatmaps <- function(genotype_file, contineous_file){
-#   # Check if both contineous_file and genotype_file are provided
-#   if ((!is.null(genotype_file) && !is.null(contineous_file))) {
-#     newscale_package <- "ggnewscale"
-#     manage_packages(newscale_package)
-#   }
 
-#   if (first_genotype) {
-#     p1 <- plot_genotype_heatmap(genotype_file)
-#     p2 <- p1 + new_scale_fill()
-#     plot_continuous_heatmap(contineous_file)
-#   } else if (first_contineous) {
-#     p1 <- plot_continuous_heatmap(contineous_file)
-#     p2 <- p1 + new_scale_fill()
-#     plot_genotype_heatmap(genotype_file)
-#   }
-#   # NEED NEW PLOT ONLY THIS FUNCTION
-# }
+check_both_heatmaps <- function(genotype_file, contineous_file){
+  # Check if both contineous_file and genotype_file are provided
+  if ((!is.null(genotype_file) && !is.null(contineous_file))) {
+    newscale_package <- "ggnewscale"
+    manage_packages(newscale_package)
+
+    # Get the names of the passed arguments
+    args <- commandArgs(trailingOnly = TRUE)
+
+    # Identify the order of arguments
+    genotype_index <- grep("--genotype", args)
+    contineous_index <- grep("--contineous", args)
+    
+    # Check which file was specified first
+    if (genotype_index < contineous_index) {
+      # If --genotype was specified first
+      p1 <- plot_genotype_heatmap(genotype_file)
+      p2 <- p1 + new_scale_fill()
+      plot_continuous_heatmap(contineous_file)
+    } else if (genotype_index > contineous_index) {
+      # If --contineous was specified first
+      p1 <- plot_continuous_heatmap(contineous_file)
+      p2 <- p1 + new_scale_fill()
+      plot_genotype_heatmap(genotype_file)
+    }
+    # NEED NEW PLOT ONLY THIS FUNCTION
+      # Return the last generated graph
+      return(final_plot)
+
+  } else {
+    stop("Both genotype_file and contineous_file must be provided.")
+  }
+}
 
 # Set constant dimensions for the PDF
 pdf_width <- 20  
