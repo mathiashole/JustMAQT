@@ -164,7 +164,7 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
 
 }
 
-
+## NEED work on this function
 check_both_heatmaps <- function(genotype_file, contineous_file){
   # Check if both contineous_file and genotype_file are provided
   if ((!is.null(genotype_file) && !is.null(contineous_file))) {
