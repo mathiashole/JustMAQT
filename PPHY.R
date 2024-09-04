@@ -152,7 +152,7 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
     tryCatch({
       # Read the contineous data file (assuming it's a data frame)
       contineous_data <- read_data_table(contineous_file)
-      print("here ok")
+      print(contineous_data)
 
       p <- gheatmap(tree_plot, contineous_data, offset = offset, width = width, font_size = font_size,
                         colnames_angle = colnames_angle, hjust = hjust, colnames_offset_y = 0.25) +
