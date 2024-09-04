@@ -105,7 +105,7 @@ apply_alignment <- function(p, alignment_file, layout_option) {
 # Function to create a gheatmap
 # need debug heatmap
 # bug ther are in aplication color pallet
-plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, width = 0.5, font_size = 3, 
+plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, width = 0.5, 
                           colnames_angle = -45, hjust = 0, color_palette = "Set3") {
 
   # Check if both alignment_file and genotype_file are provided or if neither is provided
@@ -126,7 +126,7 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
       colors <- brewer.pal(length(unique_phenotypes), color_palette)
       
       # Generate the heat map
-      p <- gheatmap(tree_plot, phenotype_data, offset = offset, width = width, font.size = font_size, 
+      p <- gheatmap(tree_plot, phenotype_data, offset = offset, width = width, 
                     colnames_angle = colnames_angle, hjust = hjust) +
         scale_fill_manual(breaks = unique_phenotypes, values = colors, name = "Phenotype")
     }, error = function(e) {
