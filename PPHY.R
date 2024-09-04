@@ -122,13 +122,15 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
       unique_phenotypes <- unique(unlist(phenotype_data))
       
       # Create the color palette using RColorBrewer
-      # colors <- brewer.pal(length(unique_phenotypes), color_palette)
-      if (length(unique_phenotypes) <= 12) {
+      if (length(unique_phenotypes) <= 12) { 
+          # Check if the number of unique phenotypes is less than or equal to 12
           colors <- brewer.pal(length(unique_phenotypes), "Set3")
-      } else if (length(unique_phenotypes) <= 20) {
+      } else if (length(unique_phenotypes) <= 20) { 
+          # If the number of unique phenotypes is greater than 12
           palette_tandem <- c(brewer.pal(12, "Set3"), brewer.pal(12, "Paired"))
           colors <- palette_tandem[1:length(unique_phenotypes)]
       } else {
+          # If the number of unique phenotypes exceeds 20
           stop("The number of unique genotypes exceeds the number of colors in the selected palette.")
       }
       
