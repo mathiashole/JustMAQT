@@ -123,7 +123,6 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
       
       # Create the color palette using RColorBrewer
       # colors <- brewer.pal(length(unique_phenotypes), color_palette)
-      # Verificar si la cantidad de colores es soportada por la paleta
       if (length(unique_phenotypes) <= 12) {
           colors <- brewer.pal(length(unique_phenotypes), "Set3")
       } else if (length(unique_phenotypes) <= 20) {
