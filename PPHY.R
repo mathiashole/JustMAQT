@@ -154,6 +154,7 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
       contineous_data <- read_data_table(contineous_file)
       numeric_data <- as.data.frame(contineous_data[,c(-1)])
       rownames(numeric_data) <- contineous_data[,1]
+      contineous_data <- numeric_data
 
       p <- gheatmap(tree_plot, contineous_data, offset = offset, width = width, font_size = font_size,
                         colnames_angle = colnames_angle, hjust = hjust, colnames_offset_y = 0.25) +
