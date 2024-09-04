@@ -105,7 +105,7 @@ apply_alignment <- function(p, alignment_file, layout_option) {
 # Function to create a gheatmap
 # need debug number of color
 plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, width = 0.5, 
-                          colnames_angle = -45, hjust = 0, color_palette = "Set3") {
+                          colnames_angle = -45, hjust = 0) {
 
   # Check if both alignment_file and genotype_file are provided or if neither is provided
   if ((!is.null(alignment_file) && !is.null(genotype_file))) {
@@ -122,7 +122,15 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
       unique_phenotypes <- unique(unlist(phenotype_data))
       
       # Create the color palette using RColorBrewer
-      colors <- brewer.pal(length(unique_phenotypes), color_palette)
+      # colors <- brewer.pal(length(unique_phenotypes), color_palette)
+      # Verificar si la cantidad de colores es soportada por la paleta
+      if (length(unique_phenotypes) <= 12) {
+          colors <- brewer.pal(length(unique_phenotypes), "Set3")
+      } else if (length(unique_phenotypes) <= 20) {
+
+      } else {
+          stop("El número de fenotipos únicos excede la cantidad de colores en la paleta seleccionada.")
+      }
       
       # Generate the heat map
       p <- gheatmap(tree_plot, phenotype_data, offset = offset, width = width, 
