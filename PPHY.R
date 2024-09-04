@@ -103,7 +103,7 @@ apply_alignment <- function(p, alignment_file, layout_option) {
 }
 
 # Function to create a gheatmap
-# need debug heatmap
+# need debug number of color
 plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, width = 0.5, 
                           colnames_angle = -45, hjust = 0, color_palette = "Set3") {
 
