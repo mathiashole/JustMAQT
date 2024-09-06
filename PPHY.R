@@ -202,7 +202,7 @@ check_both_heatmaps <- function(genotype_file, contineous_file){
       p2 <- plot_genotype_heatmap(genotype_file)
     }
       # Return the last generated graph
-      return(final_plot)
+      return(p2)
 
   } else {
     stop("Both genotype_file and contineous_file must be provided.")
