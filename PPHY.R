@@ -390,3 +390,7 @@ if (cluster_option == "auto") {
   # Show success message
   cat("The graph has been saved to", output_pdf, "\n")
 }
+
+save_phylogenetic_plot <- function(p, genotype_file = NULL, continuous_file = NULL, phy_file, alignment, pdf_width, pdf_height) {
+
+}
