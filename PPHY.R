@@ -426,3 +426,4 @@ save_phylogenetic_plot <- function(p, genotype_file = NULL, continuous_file = NU
     cat("The graph with the provided heatmap has been saved to", output_pdf, "\n")
   }
 }
+}
