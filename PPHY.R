@@ -293,6 +293,16 @@ if (cluster_option == "auto") {
   # Save the graph to a PDF file with specified dimensions
   # output_pdf <- sub("\\..+$", ".pdf", opt$phy)
   # ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
+
+  save_phylogenetic_plot(
+  p, 
+  genotype_file = opt$genotype, 
+  continuous_file = opt$countineous, 
+  phy_file = opt$phy, 
+  alignment = opt$alignment, 
+  pdf_width = pdf_width, 
+  pdf_height = pdf_height
+  )
   
   # Show success message
   cat("The graph has been saved to", output_pdf, "\n")
@@ -357,6 +367,16 @@ if (cluster_option == "auto") {
 # Save the graph to a PDF file with specified dimensions
   # output_pdf <- sub("\\..+$", ".pdf", opt$phy)
   # ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
+
+  save_phylogenetic_plot(
+  p, 
+  genotype_file = opt$genotype, 
+  continuous_file = opt$countineous, 
+  phy_file = opt$phy, 
+  alignment = opt$alignment, 
+  pdf_width = pdf_width, 
+  pdf_height = pdf_height
+  )
   
   # Show success message
   cat("The graph has been saved to", output_pdf, "\n")
@@ -386,6 +406,16 @@ if (cluster_option == "auto") {
   # Save the graph to a PDF file with specified dimensions
   # output_pdf <- sub("\\..+$", ".pdf", opt$phy)
   # ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
+
+  save_phylogenetic_plot(
+  p, 
+  genotype_file = opt$genotype, 
+  continuous_file = opt$countineous, 
+  phy_file = opt$phy, 
+  alignment = opt$alignment, 
+  pdf_width = pdf_width, 
+  pdf_height = pdf_height
+  )
   
   # Show success message
   cat("The graph has been saved to", output_pdf, "\n")
