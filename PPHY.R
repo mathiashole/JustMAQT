@@ -176,7 +176,7 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
 }
 
 ## NEED work on this function
-check_both_heatmaps <- function(p, genotype_file, contineous_file){
+check_both_heatmaps <- function(p, genotype_file, contineous_file, alignment_file){
   # Check if both contineous_file and genotype_file are provided
   if ((!is.null(genotype_file) && !is.null(contineous_file))) {
     newscale_package <- "ggnewscale"
@@ -192,14 +192,14 @@ check_both_heatmaps <- function(p, genotype_file, contineous_file){
     # Check which file was specified first
     if (genotype_index < contineous_index) {
       # If --genotype was specified first
-      p1 <- plot_genotype_heatmap(genotype_file)
+      p1 <- plot_genotype_heatmap(p, genotype_file, alignment_file)
       p1 <- p1 + new_scale_fill()
-      p2 <- plot_continuous_heatmap(contineous_file)
+      p2 <- plot_continuous_heatmap(p1, contineous_file, alignment_file)
     } else if (genotype_index > contineous_index) {
       # If --contineous was specified first
-      p1 <- plot_continuous_heatmap(contineous_file)
+      p1 <- plot_continuous_heatmap(p1, contineous_file, alignment_file)
       p1 <- p1 + new_scale_fill()
-      p2 <- plot_genotype_heatmap(genotype_file)
+      p2 <- plot_genotype_heatmap(p, genotype_file, alignment_file)
     }
       # Return the last generated graph
       return(p2)
@@ -207,10 +207,10 @@ check_both_heatmaps <- function(p, genotype_file, contineous_file){
 
   } else if (!is.null(genotype_file)) {
     # If there is only genotype
-    return(plot_genotype_heatmap(p, genotype_file))
+    return(plot_genotype_heatmap(p, genotype_file, alignment_file))
   } else if (!is.null(contineous_file)) {
     # If there is only continuous variable
-    return(plot_continuous_heatmap(p, contineous_file))
+    return(plot_continuous_heatmap(p, contineous_file, alignment_file))
   } else {
     stop("Debe proporcionar al menos uno de los archivos: genotype o contineous.")
   }
