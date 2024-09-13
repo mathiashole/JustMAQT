@@ -291,8 +291,8 @@ if (cluster_option == "auto") {
   p <- plot_continuous_heatmap(p, opt$countineous, opt$alignment)
 
   # Save the graph to a PDF file with specified dimensions
-  output_pdf <- sub("\\..+$", ".pdf", opt$phy)
-  ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
+  # output_pdf <- sub("\\..+$", ".pdf", opt$phy)
+  # ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
   
   # Show success message
   cat("The graph has been saved to", output_pdf, "\n")
@@ -355,8 +355,8 @@ if (cluster_option == "auto") {
   p <- plot_continuous_heatmap(p, opt$countineous, opt$alignment)
 
 # Save the graph to a PDF file with specified dimensions
-  output_pdf <- sub("\\..+$", ".pdf", opt$phy)
-  ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
+  # output_pdf <- sub("\\..+$", ".pdf", opt$phy)
+  # ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
   
   # Show success message
   cat("The graph has been saved to", output_pdf, "\n")
@@ -384,8 +384,8 @@ if (cluster_option == "auto") {
   p <- plot_continuous_heatmap(p, opt$countineous, opt$alignment)
   
   # Save the graph to a PDF file with specified dimensions
-  output_pdf <- sub("\\..+$", ".pdf", opt$phy)
-  ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
+  # output_pdf <- sub("\\..+$", ".pdf", opt$phy)
+  # ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)
   
   # Show success message
   cat("The graph has been saved to", output_pdf, "\n")
