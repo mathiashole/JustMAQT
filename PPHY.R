@@ -231,7 +231,7 @@ save_phylogenetic_plot <- function(p, genotype_file = NULL, continuous_file = NU
     ggsave(output_continuous, plot = p_continuous, device = "pdf", width = pdf_width, height = pdf_height)  # Save plot
     
     # 3. Phylogeny with both heatmaps
-    p_both <- check_both_heatmaps(p, opt$genotype, opt$countineous)  # Generate phylogeny with both heatmaps
+    p_both <- check_both_heatmaps(p, opt$genotype, opt$countineous, opt$alignment)  # Generate phylogeny with both heatmaps
     output_both <- sub("\\..+$", "_both_heatmaps.pdf", opt$phy)  # Create output file for both heatmaps
     ggsave(output_both, plot = p_both, device = "pdf", width = pdf_width, height = pdf_height)  # Save plot
 
@@ -245,7 +245,7 @@ save_phylogenetic_plot <- function(p, genotype_file = NULL, continuous_file = NU
     cat("The base phylogeny graph has been saved to", output_pdf, "\n")
   } else {
     # If only one (genotype or continuous) is provided, generate a plot with the respective heatmap
-    p <- check_both_heatmaps(p, opt$genotype, opt$countineous)  # Generate plot with either genotype or continuous heatmap
+    p <- check_both_heatmaps(p, opt$genotype, opt$countineous, opt$alignment)  # Generate plot with either genotype or continuous heatmap
     output_pdf <- sub("\\..+$", ".pdf", opt$phy)  # Create output file for the respective heatmap plot
     ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)  # Save plot
     cat("The graph with the provided heatmap has been saved to", output_pdf, "\n")
