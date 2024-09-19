@@ -16,7 +16,7 @@
 -   Heatmaps option for continuous values or genotypes.
 -   Command-line interface.
 
-## :hammer: Usage
+## :wrench: Usage
 
 To use the phylogenetic tree plotting script, follow these steps:
 
