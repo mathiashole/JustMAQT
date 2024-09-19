@@ -193,12 +193,12 @@ check_both_heatmaps <- function(p, genotype_file, contineous_file, alignment_fil
     if (genotype_index < contineous_index) {
       # If --genotype was specified first
       p1 <- plot_genotype_heatmap(p, genotype_file, alignment_file)
-      p1 <- p1 + new_scale_fill()
+      p2 <- p1 + new_scale_fill()
       p2 <- plot_continuous_heatmap(p1, contineous_file, alignment_file)
     } else if (genotype_index > contineous_index) {
       # If --contineous was specified first
       p1 <- plot_continuous_heatmap(p1, contineous_file, alignment_file)
-      p1 <- p1 + new_scale_fill()
+      p2 <- p1 + new_scale_fill()
       p2 <- plot_genotype_heatmap(p, genotype_file, alignment_file)
     }
       # Return the last generated graph
