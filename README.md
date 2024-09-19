@@ -20,10 +20,12 @@
 
 To use the phylogenetic tree plotting script, follow these steps:
 
--   Clone or download the script from the repository [Link](https://github.com/mathiashole/JustMAQT).
--   Ensure you have the required R packages: `ggtree, treeio, ape, RColorBrewer, optparse, cluster, factoextra, and ggplot2`.
--   Open a terminal and navigate to the folder where the script is located.
--   Run the script with the necessary arguments. Key options include the phylogenetic tree file, keywords for coloring, tree layout, and optional files for alignment, genotype, or continuous values.
+1. Download or clone the script from the repository.
+2. Ensure the required R packages are installed: `ggtree`, `treeio`, `ape`, `RColorBrewer`, `optparse`, `cluster`, `factoextra`, and `ggplot2`.
+3. **Option 1: Using the terminal**  
+   Open a terminal, navigate to the folder containing the script, and run the script with the appropriate arguments.
+4. **Option 2: Using RStudio**  
+   Open the script directly in RStudio and run it from there, passing the arguments manually or setting them as variables within the script.
 
 ## :hammer: in progress ...
 
