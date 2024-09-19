@@ -197,7 +197,7 @@ check_both_heatmaps <- function(p, genotype_file, contineous_file, alignment_fil
       p2 <- plot_continuous_heatmap(p2, contineous_file, alignment_file)
     } else if (genotype_index > contineous_index) {
       # If --contineous was specified first
-      p1 <- plot_continuous_heatmap(p1, contineous_file, alignment_file)
+      p1 <- plot_continuous_heatmap(p, contineous_file, alignment_file)
       p2 <- p1 + new_scale_fill()
       p2 <- plot_genotype_heatmap(p2, genotype_file, alignment_file)
     }
