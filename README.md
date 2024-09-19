@@ -8,6 +8,14 @@
 
 ## :book: Features
 
+-   Plotting phylogenetic trees using input from a variety of file formats.
+-   Customizable tree layouts (rectangular, circular, equal_angle, etc.).
+-   Color-coding tree branches based on specified keywords.
+-   Option to root the tree at a specified ID.
+-   Clustering options 
+-   Heatmaps option for continuous values or genotypes.
+-   Command-line interface.
+
 ## :hammer: in progress ...
 
 
