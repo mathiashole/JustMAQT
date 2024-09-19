@@ -345,8 +345,8 @@ if (cluster_option == "auto") {
   pdf_height = pdf_height
   )
   
-  # Show success message
-  cat("The graph has been saved to", output_pdf, "\n")
+  # # Show success message
+  # cat("The graph has been saved to", output_pdf, "\n")
 
   
 } else if (grepl("^[0-9]+$", cluster_option)) {
@@ -419,8 +419,8 @@ if (cluster_option == "auto") {
   pdf_height = pdf_height
   )
   
-  # Show success message
-  cat("The graph has been saved to", output_pdf, "\n")
+  # # Show success message
+  # cat("The graph has been saved to", output_pdf, "\n")
 
 } else {
   cat("Automatic clustering disabled.\n")
@@ -458,6 +458,6 @@ if (cluster_option == "auto") {
   pdf_height = pdf_height
   )
   
-  # Show success message
-  cat("The graph has been saved to", output_pdf, "\n")
+  # # Show success message
+  # cat("The graph has been saved to", output_pdf, "\n")
 }
