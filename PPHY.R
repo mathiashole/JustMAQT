@@ -217,7 +217,7 @@ check_both_heatmaps <- function(p, genotype_file, contineous_file, alignment_fil
 }
 
 save_phylogenetic_plot <- function(p, genotype_file = NULL, continuous_file = NULL, phy_file, alignment, pdf_width, pdf_height) {
-  
+  # Make offset variable on order to put args
   # Case 1: Both genotype and continuous files are provided
   if (!is.null(genotype_file) && !is.null(continuous_file)) {
   
