@@ -104,7 +104,7 @@ apply_alignment <- function(p, alignment_file, layout_option) {
 
 # Function to create a gheatmap
 # need debug if there are empty data
-plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offset = 3, width = 0.17, 
+plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offset = 4, width = 0.17, 
                           colnames_angle = -45, hjust = 0) {
 
   # Check if both alignment_file and genotype_file are provided or if neither is provided
@@ -152,7 +152,7 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
 
 # NEED ADVICED TO SCALE
 # Function to create a continuous value heatmap
-plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, offset = 7.5, width = 0.17, 
+plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, offset = 6.5, width = 0.17, 
                           colnames_angle = -45, hjust = 0){
   
   # Check if both alignment_file and genotype_file are provided or if neither is provided
