@@ -104,7 +104,7 @@ apply_alignment <- function(p, alignment_file, layout_option) {
 
 # Function to create a gheatmap
 # need debug if there are empty data
-plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, width = 0.5, 
+plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offset = 5, width = 0.17, 
                           colnames_angle = -45, hjust = 0) {
 
   # Check if both alignment_file and genotype_file are provided or if neither is provided
@@ -123,7 +123,7 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
       # Get number of columns
       number_cols <- length(phenotype_data)
       # Create number width
-      width <- number_cols * 0.17
+      width <- number_cols * width
       
       # Create the color palette using RColorBrewer
       if (length(unique_phenotypes) <= 12) { 
@@ -152,7 +152,7 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
 
 # NEED ADVICED TO SCALE
 # Function to create a continuous value heatmap
-plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, offset = 8, width = 0.5, 
+plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, offset = 8, width = 0.17, 
                           colnames_angle = -45, hjust = 0){
   
   # Check if both alignment_file and genotype_file are provided or if neither is provided
@@ -168,7 +168,7 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
       # Get number of columns
       number_cols <- length(contineous_data)
       # Create number width
-      width <- number_cols * 0.17
+      width <- number_cols * width
 
       p <- gheatmap(tree_plot, contineous_data, offset = offset, width = width, colnames_angle = colnames_angle,
                         hjust = hjust, colnames_offset_y = 0.25) +  
