@@ -166,7 +166,7 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
       # Read the contineous data file (assuming it's a data frame)
       contineous_data <- read_data_table(contineous_file)
       # Get number of columns
-      number_cols <- length(contineous_file)
+      number_cols <- length(contineous_data)
       # Create number width
       width <- number_cols * 0.17
 
