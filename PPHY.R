@@ -120,6 +120,10 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
 
       # Get the unique values ​​of the genotype
       unique_phenotypes <- unique(unlist(phenotype_data))
+      # Get number of columns
+      number_cols <- length(genotype_file)
+      # Create number width
+      width <- number_cols * 0.17
       
       # Create the color palette using RColorBrewer
       if (length(unique_phenotypes) <= 12) { 
