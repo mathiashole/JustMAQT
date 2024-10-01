@@ -8,7 +8,7 @@ manage_packages(required_packages)
 
 # Define command line options
 option_list <- list(
-  # make_option(c("--config"), type = "character", default = NULL, help = "Archivo de configuración", metavar = "FILE"),
+  make_option(c("--config"), type = "character", default = NULL, help = "Archivo de configuración", metavar = "FILE"),
   make_option(c("--phy"), type = "character", default = NULL, help = "Archivo de filogenia", metavar = "FILE"),
   make_option(c("--keyword"), type = "character", default = NULL, help = "Palabras para colorear separadas por espacios", metavar = "WORDS"),
   make_option(c("--alignment"), type = "character", default = NULL, help = "Archivo de alineamiento", metavar = "FILE"),
@@ -27,16 +27,22 @@ option_list <- list(
 # Parse arguments
 opt <- parse_args(OptionParser(option_list = option_list))
 
-# # If there is a configuration file, charged it
 if (!is.null(opt$config)) {
   config <- read.csv(opt$config, stringsAsFactors = FALSE)
-  for (i in 1:nrow(config)) {
-    if (is.null(opt[[config$argument[i]]])) {
-      opt[[config$argument[i]]] <- config$value[i]
+
+  if (!all(c("argument", "value") %in% colnames(config))) {
+    stop("El archivo de configuración debe tener columnas 'argument' y 'value'.")
+  }
+# # If there is a configuration file, charged it
+  for (i in seq_len(nrow(config))) {
+    arg_name <- config$argument[i]
+    arg_value <- config$value[i]
+    
+    if (!is.null(arg_name) && !is.null(arg_value)) {
+      opt[[arg_name]] <- arg_value
     }
   }
 }
-
 print(opt)
 
 # Check required arguments
