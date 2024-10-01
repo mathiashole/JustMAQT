@@ -27,6 +27,17 @@ option_list <- list(
 # Parse arguments
 opt <- parse_args(OptionParser(option_list = option_list))
 
+# If there is a configuration file, charged it
+if (!is.null(opt$config)) {
+  config <- read.csv(opt$config, stringsAsFactors = FALSE)
+  for (i in 1:nrow(config)) {
+    # Assign each configuration argument to the opt object if it has not been manually specified
+    if (is.null(opt[[config$argument[i]]])) {
+      opt[[config$argument[i]]] <- config$value[i]
+    }
+  }
+}
+
 # Check required arguments
 if (is.null(opt$phy)) {
   stop("You must specify a phylogeny file with --phy")
