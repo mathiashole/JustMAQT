@@ -8,7 +8,6 @@ manage_packages(required_packages)
 
 # Define command line options
 option_list <- list(
-  # make_option(c("--config"), type = "character", default = NULL, help = "Archivo de configuración", metavar = "FILE"),
   make_option(c("--phy"), type = "character", default = NULL, help = "Archivo de filogenia", metavar = "FILE"),
   make_option(c("--keyword"), type = "character", default = NULL, help = "Palabras para colorear separadas por espacios", metavar = "WORDS"),
   make_option(c("--alignment"), type = "character", default = NULL, help = "Archivo de alineamiento", metavar = "FILE"),
