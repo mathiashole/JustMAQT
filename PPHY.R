@@ -23,7 +23,23 @@ option_list <- list(
 ############)
 
 # Parse arguments
-opt <- parse_args(OptionParser(option_list = option_list))
+# opt <- parse_args(OptionParser(option_list = option_list))
+
+# Function to parse arguments
+parse_arguments <- function(arg_list = NULL) {
+  if (is.null(arg_list)) {
+    parser <- OptionParser(option_list = option_list)
+    opts <- parse_args(parser)
+  } else {
+    parser <- OptionParser(option_list = option_list)
+    opts <- parse_args(parser, args = arg_list)
+  }
+  return(opts)
+}
+
+# Call the function and print the options
+opts <- parse_arguments()
+print(opts)
 
 # Check required arguments
 if (is.null(opt$phy)) {
