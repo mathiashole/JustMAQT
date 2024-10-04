@@ -29,6 +29,19 @@ To use the phylogenetic tree plotting script, follow these steps:
 
 ## :hammer: in progress ...
 
+## :bulb: Quick Examples
+
+```{r, eval = FALSE}
+args <- c("PPHY.R",
+          "--phy", "/home/usuario/Proyectos/acca/phylo_retrotransposons/trim_gypsy_RT_Asellowiana-TEs-TElib_Egranids_TElib_Guava-TEs-TElib.fasta.contree",
+          "--keyword", shQuote("Asellowiana Egrandis Guava"),
+          "--layout", "roundrect",
+          "--genotype", "/home/usuario/Proyectos/acca/phylo_retrotransposons/va_genotypofile.tsv",
+          "--countineous", "/home/usuario/Proyectos/acca/phylo_retrotransposons/va_prueba_contineous.tsv")
+
+# Execution command
+system2("Rscript", args = args)
+```
 
 ## :sparkling_heart: Contributing
 
