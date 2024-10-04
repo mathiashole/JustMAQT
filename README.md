@@ -29,7 +29,7 @@ To use the phylogenetic tree plotting script, follow these steps:
 
 ## :hammer: in progress ...
 
-## :bulb: Quick Examples
+## :bulb: R Quick Examples
 
 ```{r, eval = FALSE}
 args <- c("PPHY.R",
