@@ -8,14 +8,14 @@ manage_packages(required_packages)
 
 # Define command line options
 option_list <- list(
-  make_option(c("--phy"), type = "character", default = NULL, help = "Archivo de filogenia", metavar = "FILE"),
-  make_option(c("--keyword"), type = "character", default = NULL, help = "Palabras para colorear separadas por espacios", metavar = "WORDS"),
-  make_option(c("--alignment"), type = "character", default = NULL, help = "Archivo de alineamiento", metavar = "FILE"),
-  make_option(c("--root"), type = "character", default = NULL, help = "Raíz del árbol", metavar = "NODE"),
-  make_option(c("--layout"), type = "character", default = "rectangular", help = "Tipo de layout del árbol (rectangular, equal_angle, daylight, circular, roundrect)", metavar = "LAYOUT"),
-  make_option(c("--genotype"), type = "character", default = NULL, help = "Archivo de genotipo", metavar = "FILE"),
-  make_option(c("--countineous"), type = "character", default = NULL, help = "Archivo de valor continuos", metavar = "FILE"),
-  make_option(c("--cluster"), type = "character", default = "no", help = "Clustering automático: AUTO, número para especificar k, o NO para desactivar", metavar = "CLUSTER")
+  make_option(c("--phy"), type = "character", default = NULL, help = "Phylogeny file", metavar = "FILE"),
+  make_option(c("--keyword"), type = "character", default = NULL, help = "Coloring words separated by spaces", metavar = "WORDS"),
+  make_option(c("--alignment"), type = "character", default = NULL, help = "Alignment file", metavar = "FILE"),
+  make_option(c("--root"), type = "character", default = NULL, help = "tree root", metavar = "NODE"),
+  make_option(c("--layout"), type = "character", default = "rectangular", help = "Tree layout type (rectangular, equal_angle, daylight, circular, roundrect)", metavar = "LAYOUT"),
+  make_option(c("--genotype"), type = "character", default = NULL, help = "Genotype file", metavar = "FILE"),
+  make_option(c("--countineous"), type = "character", default = NULL, help = "Continuous value file", metavar = "FILE"),
+  make_option(c("--cluster"), type = "character", default = "no", help = "Automatic clustering: AUTO, number to specify k, or NO to disable", metavar = "CLUSTER")
 )
 
 ############
