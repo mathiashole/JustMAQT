@@ -33,11 +33,11 @@ To use the phylogenetic tree plotting script, follow these steps:
 
 ```{r, eval = FALSE}
 args <- c("PPHY.R",
-          "--phy", "/home/usuario/Proyectos/acca/phylo_retrotransposons/trim_gypsy_RT_Asellowiana-TEs-TElib_Egranids_TElib_Guava-TEs-TElib.fasta.contree",
-          "--keyword", shQuote("Asellowiana Egrandis Guava"),
+          "--phy", "/path/phylogeny_file",
+          "--keyword", shQuote("species1 species2 species4"),
           "--layout", "roundrect",
-          "--genotype", "/home/usuario/Proyectos/acca/phylo_retrotransposons/va_genotypofile.tsv",
-          "--countineous", "/home/usuario/Proyectos/acca/phylo_retrotransposons/va_prueba_contineous.tsv")
+          "--genotype", "/path/genotype_data_file",
+          "--countineous", "/path/contineous_data_file")
 
 # Execution command
 system2("Rscript", args = args)
