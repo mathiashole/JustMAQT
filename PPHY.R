@@ -414,6 +414,25 @@ if (cluster_option == "auto") {
       geom_cladelabel(node = nodes[[i]], label = paste("Node", nodes[[i]]), offset = 5)
   }
 
+    p <- p %<+% data + 
+    geom_tiplab(aes(color = I(color))) +  # Paint species labels
+    geom_text2(aes(subset = !isTip, label = label), hjust = -.3) +  # Show bootstrap values
+    geom_treescale() +
+    theme(legend.position = "none")  # Hide color legend
+
+  # Apply alignment if specified
+  p <- apply_alignment(p, opt$alignment, opt$layout)
+
+  save_phylogenetic_plot(
+  p, 
+  genotype_file = opt$genotype, 
+  continuous_file = opt$countineous, 
+  phy_file = opt$phy, 
+  alignment = opt$alignment, 
+  pdf_width = pdf_width, 
+  pdf_height = pdf_height
+  )
+
 } else {
   cat("Automatic clustering disabled.\n")
   
