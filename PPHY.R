@@ -399,6 +399,20 @@ if (cluster_option == "auto") {
   
   # # Show success message
   # cat("The graph has been saved to", output_pdf, "\n")
+} else if (is_numeric_list(cluster_option)) {
+  # List of specific nodes provided by user
+  nodes <- as.numeric(strsplit(cluster_option, " ")[[1]])
+  cat("Highlighting nodes:", nodes, "\n")
+  
+  num_colors <- length(nodes)
+  colors <- brewer.pal(num_colors, "Set3")
+  
+  p <- ggtree(tree, layout = opt$layout)
+  
+  for (i in seq_along(nodes)) {
+    p <- p + geom_hilight(node = nodes[[i]], fill = colors[i], alpha = 0.2) +
+      geom_cladelabel(node = nodes[[i]], label = paste("Node", nodes[[i]]), offset = 5)
+  }
 
 } else {
   cat("Automatic clustering disabled.\n")
