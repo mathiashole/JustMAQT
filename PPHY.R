@@ -349,28 +349,19 @@ if (cluster_option == "auto") {
 } else if (grepl("^[0-9]+$", cluster_option)) {
   k <- as.numeric(cluster_option)
   cat("Automatic clustering activated with k =", k, "\n")
+  dist_matrix <- cophenetic(tree)# Calculate distance matrix
+  hc <- hclust(as.dist(dist_matrix), method = "average")# Perform hierarchical clustering
   
-  # Calculate distance matrix
-  dist_matrix <- cophenetic(tree)
+  clusters <- cutree(hc, k = k)# Cut the tree into k clusters
+  tip_labels <- tree$tip.label# Obtain leaf labels
   
-  # Perform hierarchical clustering
-  hc <- hclust(as.dist(dist_matrix), method = "average")
-  
-  # Cut the tree into k clusters
-  clusters <- cutree(hc, k = k)
-  
-  # Obtain leaf labels
-  tip_labels <- tree$tip.label
-  
-  # Create a list of groups
-  groups <- list()
+  groups <- list()# Create a list of groups
   for (i in 1:k) {
     group_name <- paste("Cluster", i)
     groups[[group_name]] <- tip_labels[clusters == i]
   }
   
-  # Identify nodes for each clade
-  nodes <- lapply(groups, function(tips) {
+  nodes <- lapply(groups, function(tips) {# Identify nodes for each clade
     MRCA(tree, tips)
   })
   
