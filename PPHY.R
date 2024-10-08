@@ -15,7 +15,7 @@ option_list <- list(
   make_option(c("--layout"), type = "character", default = "rectangular", help = "Tree layout type (rectangular, equal_angle, daylight, circular, roundrect)", metavar = "LAYOUT"),
   make_option(c("--genotype"), type = "character", default = NULL, help = "Genotype file", metavar = "FILE"),
   make_option(c("--countineous"), type = "character", default = NULL, help = "Continuous value file", metavar = "FILE"),
-  make_option(c("--cluster"), type = "character", default = "no", help = "Automatic clustering: AUTO, number to specify k, or NO to disable", metavar = "CLUSTER")
+  make_option(c("--cluster"), type = "character", default = "no", help = "Clustering options: AUTO, number of clusters, NO to disable, or a list of nodes", metavar = "CLUSTER")
 )
 
 ############
