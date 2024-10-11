@@ -91,8 +91,6 @@ apply_alignment <- function(p, alignment_file, layout_option) {
   if (!is.null(alignment_file)) {
     tryCatch({
       p <- msaplot(p, fasta = alignment_file)
-      # al_read <- readDNAStringSet(alignment_file, format = "fasta")
-      # BrowseSeqs(al_read, highlight=0)
       
     }, error = function(e) {
       stop("Error applying alignment: Check if the IDs in the alignment file match the tree tip labels.")
