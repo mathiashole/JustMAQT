@@ -54,7 +54,7 @@ if (!is.null(opt$keyword)) {
   }
 }
 
-# Root the tree si se especifica
+# Root the tree if specified
 if (!is.null(opt$root)) {
   tree <- root(tree, outgroup = opt$root)
 }
