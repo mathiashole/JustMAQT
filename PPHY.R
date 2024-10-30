@@ -34,6 +34,9 @@ if (is.null(opt$phy)) {
 # Read phylogenetic tree
 tree <- read.tree(opt$phy)
 
+# Set branch length option
+branch_len_option <- if (opt$branch_length == "none") "none" else "branch.length"
+
 # Check if the tree contains tags
 if (length(tree$tip.label) == 0) {
   stop("The tree does not contain tip tags.")
