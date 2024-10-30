@@ -260,10 +260,7 @@ save_phylogenetic_plot <- function(p, genotype_file = NULL, continuous_file = NU
     
     # Case 3: Neither genotype nor continuous files are provided
     output_pdf <- sub("\\..+$", ".pdf", phy_file)  # Create output file for the basic phylogeny plot
-    ggsave(output_pdf, plot = p, device = "pdf", 
-       width = pdf_width, height = pdf_height, 
-       units = "in", limitsize = FALSE) # try another option
-    # ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)  # Save the basic phylogeny plot
+    ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)  # Save the basic phylogeny plot
     cat("The base phylogeny graph has been saved to", output_pdf, "\n")
     
   }
@@ -453,8 +450,6 @@ if (cluster_option == "auto") {
 
   # Apply alignment if specified
   p <- apply_alignment(p, opt$alignment, opt$layout)
-
-  p <- p + coord_cartesian(clip = "off") # try another option
 
   save_phylogenetic_plot(
   p, 
