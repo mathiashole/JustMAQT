@@ -449,7 +449,7 @@ if (cluster_option == "auto") {
     theme(legend.position = "none")  # Hide color legend
 
   # Apply alignment if specified
-  p <- apply_alignment(p, opt$alignment, opt$layout)
+  p <- apply_alignment(p, opt$alignment, opt$layout, plot.margin = unit(c(5, 5, 5, 5),"cm"))
 
   save_phylogenetic_plot(
   p, 
