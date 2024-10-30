@@ -439,7 +439,7 @@ if (cluster_option == "auto") {
   cat("Automatic clustering disabled.\n")
   
   # Create ggtree object with specified layout
-  p <- ggtree(tree, layout = opt$layout)
+  p <- ggtree(tree, layout = opt$layout, branch.length = branch_len_option) ## try no length option
   
   # Add colors to tree branches
   p <- p %<+% data + 
