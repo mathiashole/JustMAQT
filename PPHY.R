@@ -260,7 +260,11 @@ save_phylogenetic_plot <- function(p, genotype_file = NULL, continuous_file = NU
     
     # Case 3: Neither genotype nor continuous files are provided
     output_pdf <- sub("\\..+$", ".pdf", phy_file)  # Create output file for the basic phylogeny plot
-    ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)  # Save the basic phylogeny plot
+    theme_update(plot.margin = unit(c(1, 1, 1, 1), "cm")) #try expand margin
+    ggsave(output_pdf, plot = p, device = "pdf", 
+       width = pdf_width, height = pdf_height, 
+       units = "in", limitsize = FALSE)
+    #ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)  # Save the basic phylogeny plot
     cat("The base phylogeny graph has been saved to", output_pdf, "\n")
     
   }
