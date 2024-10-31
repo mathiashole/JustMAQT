@@ -409,7 +409,8 @@ if (cluster_option == "auto") {
   cat("Highlighting nodes:", nodes, "\n")
   
   num_colors <- length(nodes)
-  colors <- brewer.pal(num_colors, "Set3")
+  # colors <- brewer.pal(num_colors, "Set3")
+  colors <- brewer.pal(min(num_colors, 12), "Set3")
   
   p <- ggtree(tree, layout = opt$layout)
   
