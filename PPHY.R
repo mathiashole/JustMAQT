@@ -449,6 +449,8 @@ if (cluster_option == "auto") {
     geom_treescale() + 
     theme(legend.position = "none")
 
+  print(p)
+  
   # Apply alignment if specified
   p <- apply_alignment(p, opt$alignment, opt$layout)
 
