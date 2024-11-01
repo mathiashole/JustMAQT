@@ -468,7 +468,8 @@ if (cluster_option == "auto") {
     # geom_text(aes(label = node), hjust = -.3) +
     geom_treescale() + 
     theme(legend.position = "none")
-  # aplly function to final
+  
+  # aplly annotation branch
   p <- apply_annotations(p, opt$annotations)
 
   # Apply alignment if specified
