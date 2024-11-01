@@ -11,6 +11,7 @@ option_list <- list(
   make_option(c("--phy"), type = "character", default = NULL, help = "Phylogeny file", metavar = "FILE"),
   make_option(c("--keyword"), type = "character", default = NULL, help = "Coloring words separated by spaces", metavar = "WORDS"),
   # make_option(c("--number"), type = "character", default = "bootstrap", help = "Node labeling: 'node' or 'bootstrap' (default: 'bootstrap')", metavar = "NUMBER"),
+  make_option(c("--annotations"), type = "character", default = "tiplab", help = "Top annotations of tree (tiplab, tippoint)", metavar = "ANNOTATIONS"),
   make_option(c("--alignment"), type = "character", default = NULL, help = "Alignment file", metavar = "FILE"),
   make_option(c("--root"), type = "character", default = NULL, help = "tree root", metavar = "NODE"),
   make_option(c("--layout"), type = "character", default = "rectangular", help = "Tree layout type (rectangular, equal_angle, daylight, circular, roundrect)", metavar = "LAYOUT"),
