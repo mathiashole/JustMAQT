@@ -461,8 +461,9 @@ if (cluster_option == "auto") {
   
   # Add colors to tree branches
   p <- p %<+% data + 
-    geom_tiplab(aes(color = I(color))) +  # Paint species labels
-    geom_tippoint(aes(color= I(color))) + # try point color
+    # geom_tiplab(aes(color = I(color))) +  # Paint species labels
+    # geom_tippoint(aes(color= I(color))) + # try point color
+    p <- apply_annotations(p, data, opt$annotations)
     geom_text2(aes(subset = !isTip, label = label), hjust = -.3) + # Show bootstrap values
     # geom_text(aes(label = node), hjust = -.3) +
     geom_treescale() + 
