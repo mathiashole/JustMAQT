@@ -463,11 +463,13 @@ if (cluster_option == "auto") {
   p <- p %<+% data + 
     # geom_tiplab(aes(color = I(color))) +  # Paint species labels
     # geom_tippoint(aes(color= I(color))) + # try point color
-    p <- apply_annotations(p, opt$annotations)
+    # p <- apply_annotations(p, opt$annotations)
     geom_text2(aes(subset = !isTip, label = label), hjust = -.3) + # Show bootstrap values
     # geom_text(aes(label = node), hjust = -.3) +
     geom_treescale() + 
     theme(legend.position = "none")
+  # aplly function to final
+  p <- apply_annotations(p, opt$annotations)
 
   # Apply alignment if specified
   p <- apply_alignment(p, opt$alignment, opt$layout)
