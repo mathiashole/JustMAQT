@@ -64,6 +64,20 @@ if (!is.null(opt$root)) {
   tree <- root(tree, outgroup = opt$root)
 }
 
+# Function to apply annotations
+apply_annotations <- function(p, data, annotation_option) {
+  p <- p %<+% data # Add the data to the chart
+  # Apply id or point annotations
+  if (annotation_option == "tiplab" || annotation_option == "both") {
+    p <- p + geom_tiplab(aes(color = I(color))) # Paint species labels
+  } 
+  if (annotation_option == "tippoint" || annotation_option == "both") {
+    p <- p + geom_tippoint(aes(color = I(color)))  # Paint color dots
+  }
+
+  return(p)
+}
+
 # Function to read genotype data from different formats without using the tools library
 read_data_table <- function(file) {
   file_ext <- tolower(sub(".*\\.", "", basename(file)))
