@@ -398,8 +398,7 @@ if (cluster_option == "auto") {
   }
   
   p <- p %<+% data + 
-    # geom_tiplab(aes(color = I(color))) +  # Color the species labels
-    # geom_text2(aes(subset = !isTip, label = label), hjust = -.3) +  # Show bootstrap values
+
     geom_treescale() +
     theme(legend.position = "none")  # Hide color legend
   # Aplly annotation branch
