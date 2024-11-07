@@ -23,7 +23,7 @@ option_list <- list(
 
 ############
 # FUNCTION #
-############)
+############
 
 # Parse arguments
 opt <- parse_args(OptionParser(option_list = option_list))
@@ -342,8 +342,7 @@ if (cluster_option == "auto") {
   }
   
   p <- p %<+% data + 
-    # geom_tiplab(aes(color = I(color))) +  # Paint species labels
-    # geom_text2(aes(subset = !isTip, label = label), hjust = -.3) +  # Show bootstrap values
+
     geom_treescale() +
     theme(legend.position = "none")  # Hide color legend
   # aplly annotation branch
