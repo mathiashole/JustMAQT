@@ -9,9 +9,17 @@ is_numeric_list <- function(input) {
 }
 
 # Function to manage packages, installing if not available
-manage_packages <- function(pkg) {
-  if (!requireNamespace(pkg, quietly = TRUE)) {
-    install.packages(pkg, dependencies = TRUE)
+# manage_packages <- function(pkg) {
+#   if (!requireNamespace(pkg, quietly = TRUE)) {
+#     install.packages(pkg, dependencies = TRUE)
+#   }
+#   library(pkg, character.only = TRUE)
+# }
+manage_packages <- function(pkgs) {
+  for (pkg in pkgs) {
+    if (!requireNamespace(pkg, quietly = TRUE)) {
+      install.packages(pkg, dependencies = TRUE)
+    }
+    library(pkg, character.only = TRUE)
   }
-  library(pkg, character.only = TRUE)
 }
