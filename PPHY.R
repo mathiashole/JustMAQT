@@ -116,12 +116,7 @@ apply_alignment <- function(p, alignment_file, layout_option) {
       stop("Error applying alignment: Check if the IDs in the alignment file match the tree tip labels.")
     })
   }
-  # Try to apply alignment
-  # tryCatch({
-  #   p <- msaplot(p, fasta = alignment_file)
-  # }, error = function(e) {
-  #   stop("Error applying alignment: Check if the IDs in the alignment file match the tree tip labels.")
-  # })
+  
   return(p)
 }
 
