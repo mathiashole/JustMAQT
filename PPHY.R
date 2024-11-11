@@ -102,20 +102,31 @@ read_data_table <- function(file) {
 # Function to apply alignment to the tree plot if alignment file is specified
 apply_alignment <- function(p, alignment_file, layout_option) {
 
+  # Return the original plot if no alignment file is provided
+  if (is.null(alignment_file)) {
+    return(p)
+  }
+
   # Check if layout is "daylight" or "equal_angle"
   if (layout_option %in% c("daylight", "equal_angle")) {
     warning("Alignment cannot be applied with 'daylight' or 'equal_angle' layout. The function will not be executed.")
     return(p)  # Return the original plot without applying alignment
   }
 
-  if (!is.null(alignment_file)) {
-    tryCatch({
-      p <- msaplot(p, fasta = alignment_file)
+  # if (!is.null(alignment_file)) {
+  #   tryCatch({
+  #     p <- msaplot(p, fasta = alignment_file)
       
-    }, error = function(e) {
-      stop("Error applying alignment: Check if the IDs in the alignment file match the tree tip labels.")
-    })
-  }
+  #   }, error = function(e) {
+  #     stop("Error applying alignment: Check if the IDs in the alignment file match the tree tip labels.")
+  #   })
+  # }
+  # Try to apply alignment
+  tryCatch({
+    p <- msaplot(p, fasta = alignment_file)
+  }, error = function(e) {
+    stop("Error applying alignment: Check if the IDs in the alignment file match the tree tip labels.")
+  })
   return(p)
 }
 
