@@ -493,6 +493,4 @@ if (cluster_option == "auto") {
   pdf_height = pdf_height
   )
   
-  # # Show success message
-  # cat("The graph has been saved to", output_pdf, "\n")
 }
