@@ -67,7 +67,6 @@ if (!is.null(opt$root)) {
 
 # Function to apply annotations
 apply_annotations <- function(p, annotation_option) {
-  # p <- p %<+% data # Add the data to the chart
   # Apply id or point annotations
   if (annotation_option == "tiplab" || annotation_option == "both") {
     p <- p + geom_tiplab(aes(color = I(color))) # Paint species labels
