@@ -154,6 +154,10 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
       #     # If the number of unique phenotypes exceeds 20
       #     stop("The number of unique genotypes exceeds the number of colors in the selected palette.")
       # }
+      if (length(unique_phenotypes) <= 3) {
+        # Assign manual colors for 1 or 2 unique phenotypes
+        # colors <- c("red", "blue")[1:length(unique_phenotypes)]
+        colors <- brewer.pal(3, "Dark2")[1:length(unique_phenotypes)]
       if (length(unique_phenotypes) <= 12) { 
         colors <- brewer.pal(length(unique_phenotypes), "Set3")
       } else if (length(unique_phenotypes) <= 20) {
