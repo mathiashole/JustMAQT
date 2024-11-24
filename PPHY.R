@@ -121,7 +121,7 @@ apply_alignment <- function(p, alignment_file, layout_option) {
 
 # Function to create a gheatmap
 # need debug if there are empty data
-plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offset = 4, width = 0.17, 
+plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offset = 0.1, width = 0.17, 
                           colnames_angle = -45, hjust = 0) {
 
   # Check if both alignment_file and genotype_file are provided or if neither is provided
@@ -181,7 +181,7 @@ plot_genotype_heatmap <- function(tree_plot, genotype_file, alignment_file, offs
 
 # NEED ADVICED TO SCALE
 # Function to create a continuous value heatmap
-plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, offset = 0.5, width = 0.17, 
+plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, offset = 0.1, width = 0.17, 
                           colnames_angle = -45, hjust = 0){
   
   # Check if both alignment_file and genotype_file are provided or if neither is provided
@@ -201,7 +201,7 @@ plot_continuous_heatmap <- function(tree_plot, contineous_file, alignment_file, 
 
       p <- gheatmap(tree_plot, contineous_data, offset = offset, width = width, colnames_angle = colnames_angle,
                         hjust = hjust, colnames_offset_y = 0.25) +  
-        scale_fill_viridis_c(option="B", name="continuous\nvalue")
+        scale_fill_viridis_c(option="B", name="continuous\nvalue", direction = -1)
 
     }, error = function(e) {
       stop("Error applying contineous plot on phylogenetic: Check if the IDs in the contineous file match the tree tip labels.")
