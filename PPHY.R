@@ -262,17 +262,22 @@ save_phylogenetic_plot <- function(p, genotype_file = NULL, continuous_file = NU
     p_genotype <- plot_genotype_heatmap(p, genotype_file, alignment)
     output_genotype <- sub("\\..+$", "_genotype.pdf", phy_file)  # Create output file for genotype heatmap
     ggsave(output_genotype, plot = p_genotype, device = "pdf", width = pdf_width, height = pdf_height)  # Save plot
+    output_png <- sub("\\..+$", "_genotype.png", phy_file)  # Create output file for the basic phylogeny plot
+    ggsave(output_png, plot = p, dpi = 600, width = pdf_width, height = pdf_height)
     
     # 2. Phylogeny with continuous heatmap
     p_continuous <- plot_continuous_heatmap(p, continuous_file, alignment)
     output_continuous <- sub("\\..+$", "_continuous.pdf", phy_file)  # Create output file for continuous heatmap
     ggsave(output_continuous, plot = p_continuous, device = "pdf", width = pdf_width, height = pdf_height)  # Save plot
-    
+    output_png <- sub("\\..+$", "_continuous.png", phy_file)  # Create output file for the basic phylogeny plot
+    ggsave(output_png, plot = p, dpi = 600, width = pdf_width, height = pdf_height)
+
     # 3. Phylogeny with both heatmaps
     p_both <- check_both_heatmaps(p, genotype_file, continuous_file, alignment)  # Generate phylogeny with both heatmaps
     output_both <- sub("\\..+$", "_both_heatmaps.pdf", phy_file)  # Create output file for both heatmaps
     ggsave(output_both, plot = p_both, device = "pdf", width = pdf_width, height = pdf_height)  # Save plot
-
+    output_png <- sub("\\..+$", "_both_heatmaps.png", phy_file)  # Create output file for the basic phylogeny plot
+    ggsave(output_png, plot = p, dpi = 600, width = pdf_width, height = pdf_height)
     # Print the names of the files that were saved
     cat("The graphs have been saved to", output_genotype, output_continuous, "and", output_both, "\n")
     
@@ -282,6 +287,8 @@ save_phylogenetic_plot <- function(p, genotype_file = NULL, continuous_file = NU
     p <- check_both_heatmaps(p, genotype_file, continuous_file, alignment)  # Generate plot with the provided heatmap
     output_pdf <- sub("\\..+$", ".pdf", phy_file)  # Create output file for the provided heatmap
     ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)  # Save plot
+    output_png <- sub("\\..+$", ".png", phy_file)  # Create output file for the basic phylogeny plot
+    ggsave(output_png, plot = p, dpi = 600, width = pdf_width, height = pdf_height)
     cat("The graph with the provided heatmap has been saved to", output_pdf, "\n")
     
   } else {
@@ -289,6 +296,8 @@ save_phylogenetic_plot <- function(p, genotype_file = NULL, continuous_file = NU
     # Case 3: Neither genotype nor continuous files are provided
     output_pdf <- sub("\\..+$", ".pdf", phy_file)  # Create output file for the basic phylogeny plot
     ggsave(output_pdf, plot = p, device = "pdf", width = pdf_width, height = pdf_height)  # Save the basic phylogeny plot
+    output_png <- sub("\\..+$", ".png", phy_file)  # Create output file for the basic phylogeny plot
+    ggsave(output_png, plot = p, dpi = 600, width = pdf_width, height = pdf_height)
     cat("The base phylogeny graph has been saved to", output_pdf, "\n")
     
   }
