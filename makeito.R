@@ -13,10 +13,14 @@ suppressPackageStartupMessages({
 tree_file <- NULL
 ids_file <- NULL
 header_file <- NULL
-keywords <- c()
+# keywords <- c()
 output_file <- NULL
 
+# Plot
+keywords <- c()
 heatmap_file <- NULL
+
+# Defoult colors
 continuous_palette <- "viridis"
 discrete_palette <- "Dark2"
 
