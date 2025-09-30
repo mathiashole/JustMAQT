@@ -48,6 +48,8 @@ while (i <= length(args)) {
   } else if (args[i] %in% c("--out", "-o")) {
     output_file <- args[i + 1]
     i <- i + 2
+  } else if (args[i] == "--heatmap") {
+    heatmap_files <- c(heatmap_files, args[i + 1]); i <- i + 2
   } else {
     stop(paste("Unknown argument:", args[i]))
   }
