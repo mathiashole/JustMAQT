@@ -5,6 +5,8 @@ suppressPackageStartupMessages({
   library(stringr)
   library(ape)
   library(RColorBrewer)
+  library(readr)
+  library(viridisLite)
 })
 
 # ---- Initialize variables ----
