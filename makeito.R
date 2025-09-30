@@ -1,0 +1,96 @@
+#!/usr/bin/env Rscript
+
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(stringr)
+  library(ape)
+  library(RColorBrewer)
+})
+
+# ---- Initialize variables ----
+tree_file <- NULL
+ids_file <- NULL
+header_file <- NULL
+keywords <- c()
+output_file <- NULL
+
+# ---- Parsing arguments ----
+args <- commandArgs(trailingOnly = TRUE)
+i <- 1
+while (i <= length(args)) {
+  if (args[i] %in% c("--tree", "-t")) {
+    tree_file <- args[i + 1]
+    i <- i + 2
+  } else if (args[i] %in% c("--ids", "-id")) {
+    ids_file <- args[i + 1]
+    i <- i + 2
+  } else if (args[i] %in% c("--header", "-h")) {
+    header_file <- args[i + 1]
+    i <- i + 2
+  } else if (args[i] %in% c("--keywords", "-k")) {
+    # collect all keywords up to the next flag
+    j <- i + 1
+    while (j <= length(args) && !startsWith(args[j], "--") && !startsWith(args[j], "-")) {
+      keywords <- c(keywords, args[j])
+      j <- j + 1
+    }
+    i <- j
+  } else if (args[i] %in% c("--out", "-o")) {
+    output_file <- args[i + 1]
+    i <- i + 2
+  } else {
+    stop(paste("Unknown argument:", args[i]))
+  }
+}
+
+# ---- Validation ----
+if (is.null(tree_file) && is.null(ids_file)) stop("Error: You must provide either --tree or --ids")
+if (!is.null(tree_file) && !is.null(ids_file)) stop("Error: Provide only one of --tree or --ids, not both")
+if (length(keywords) == 0) stop("Error: You must provide at least one keyword with --keywords")
+if (is.null(header_file)) stop("Error: You must provide --header")
+if (is.null(output_file)) stop("Error: You must provide --out")
+
+# ---- Gets id ----
+ids <- c()
+if (!is.null(tree_file)) {
+  tree <- read.tree(tree_file)
+  ids <- tree$tip.label
+} else {
+  ids <- readLines(ids_file)
+}
+
+# ---- Read header ----
+header <- readLines(header_file)
+
+# ---- Colors palette ----
+pal <- RColorBrewer::brewer.pal(max(3, length(keywords)), "Dark2")
+names(pal) <- keywords
+
+# ---- Find matches ----
+matches <- lapply(ids, function(id) {
+  found <- keywords[sapply(keywords, function(k) str_detect(id, k))]
+  if (length(found) == 0) return(NULL)
+  keyword <- found[1]
+  data.frame(
+    ID = id,
+    symbol = 2,
+    size = 10,
+    color = pal[keyword],
+    fill = 1,
+    position = -1,
+    label = keyword,
+    stringsAsFactors = FALSE
+  )
+})
+
+data_block <- do.call(rbind, matches)
+
+# ---- Create final file ----
+writeLines(c(
+  header,
+  "DATA",
+  apply(data_block, 1, paste, collapse = ",")
+), con = output_file)
+
+cat("Archivo generado:", output_file, "\n")
+
