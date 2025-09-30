@@ -16,6 +16,10 @@ header_file <- NULL
 keywords <- c()
 output_file <- NULL
 
+heatmap_file <- NULL
+continuous_palette <- "viridis"
+discrete_palette <- "Dark2"
+
 # ---- Parsing arguments ----
 args <- commandArgs(trailingOnly = TRUE)
 i <- 1
