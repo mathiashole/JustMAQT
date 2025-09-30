@@ -70,17 +70,20 @@ names(pal) <- keywords
 matches <- lapply(ids, function(id) {
   found <- keywords[sapply(keywords, function(k) str_detect(id, k))]
   if (length(found) == 0) return(NULL)
-  keyword <- found[1]
-  data.frame(
-    ID = id,
-    symbol = 2,
-    size = 10,
-    color = pal[keyword],
-    fill = 1,
-    position = -1,
-    label = keyword,
-    stringsAsFactors = FALSE
-  )
+  
+  # Generate a row for each keyword that matches
+  do.call(rbind, lapply(found, function(keyword) {
+    data.frame(
+      ID = id,
+      symbol = 2,      # circle
+      size = 10,
+      color = pal[keyword],
+      fill = 1,
+      position = -1,
+      label = keyword,
+      stringsAsFactors = FALSE
+    )
+  }))
 })
 
 data_block <- do.call(rbind, matches)
