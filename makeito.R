@@ -105,6 +105,12 @@ matches <- lapply(ids, function(id) {
 
 data_block <- do.call(rbind, matches)
 
+  out_lines <- c(
+    header,
+    "DATA",
+    apply(data_block, 1, paste, collapse = ",")
+  )
+
 }
 
 # ---- Heatmap mode ----
