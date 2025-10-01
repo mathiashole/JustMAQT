@@ -104,6 +104,20 @@ matches <- lapply(ids, function(id) {
 
 data_block <- do.call(rbind, matches)
 
+# # ---- Heatmap mode ----
+# for (hm_file in heatmap_files) {
+#   df <- read_tsv(hm_file, show_col_types = FALSE)
+#   df[is.na(df)] <- "X"
+  
+#   hm_block <- c(
+#     header,   # ya incluye DATASET_HEATMAP, FIELD_LABELS, colores, etc.
+#     "DATA",
+#     apply(df, 1, function(x) paste(x, collapse = "\t"))
+#   )
+  
+#   out_lines <- c(out_lines, "", hm_block)
+# }
+
 # ---- Create final file ----
 writeLines(c(
   header,
