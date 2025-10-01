@@ -62,7 +62,8 @@ while (i <= length(args)) {
 # ---- Validation ----
 if (is.null(tree_file) && is.null(ids_file)) stop("Error: You must provide either --tree or --ids")
 if (!is.null(tree_file) && !is.null(ids_file)) stop("Error: Provide only one of --tree or --ids, not both")
-if (length(keywords) == 0 && length(heatmap_files) == 0) stop("Error: You must provide at least one keyword with --keywords or one heatmap with --heatmap")
+if (length(keywords) == 0 && is.null(heatmap_file)) stop("Error: You must provide either --keywords or --heatmap")
+if (!is.null(keywords) && !is.null(heatmap_file)) stop("Error: Choose only one mode: keywords OR heatmap")
 if (is.null(header_file)) stop("Error: You must provide --header")
 if (is.null(output_file)) stop("Error: You must provide --out")
 
