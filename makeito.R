@@ -126,11 +126,13 @@ if (!is.null(heatmap_file)) {
 }
 
 # ---- Create final file ----
-writeLines(c(
-  header,
-  "DATA",
-  apply(data_block, 1, paste, collapse = ",")
-), con = output_file)
+# writeLines(c(
+#   header,
+#   "DATA",
+#   apply(data_block, 1, paste, collapse = ",")
+# ), con = output_file)
+writeLines(out_lines, con = output_file)
+cat("File saved in:", output_file, "\n")
 
 cat("File save in:", output_file, "\n")
 
