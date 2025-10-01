@@ -79,6 +79,7 @@ if (!is.null(tree_file)) {
 header <- readLines(header_file)
 
 # ---- Colors palette ----
+if(length(keywords) > 0) {
 pal <- RColorBrewer::brewer.pal(max(3, length(keywords)), "Dark2")
 names(pal) <- keywords
 
@@ -103,6 +104,8 @@ matches <- lapply(ids, function(id) {
 })
 
 data_block <- do.call(rbind, matches)
+
+}
 
 # ---- Heatmap mode ----
 if (!is.null(heatmap_file)) {
