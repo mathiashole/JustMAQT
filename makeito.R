@@ -79,9 +79,10 @@ if (!is.null(tree_file)) {
 # ---- Read header ----
 header <- readLines(header_file)
 
-# ---- Colors palette ----
+
 if(length(keywords) > 0) {
 
+# ---- Colors palette ----
 if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
   pal <- unlist(strsplit(discrete_palette, "\\s+"))
   if (length(pal) < length(keywords)) {
