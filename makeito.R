@@ -140,6 +140,9 @@ if (!is.null(heatmap_file)) {
   # Extract column names (except first one, whiche is ID)
   col_labels <- colnames(df)[-1]
 
+  # Create the dynamic FIELD line
+  field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = "\t"))
+
   out_lines <- c(
     header,
     # "DATA",
