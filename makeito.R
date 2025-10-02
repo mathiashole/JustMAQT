@@ -137,6 +137,9 @@ if (!is.null(heatmap_file)) {
   df <- read_tsv(heatmap_file, show_col_types = FALSE)
   df[is.na(df)] <- "X"
   
+  # Extract column names (except first one, whiche is ID)
+  col_labels <- colnames(df)[-1]
+
   out_lines <- c(
     header,
     # "DATA",
