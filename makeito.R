@@ -139,7 +139,7 @@ if (!is.null(heatmap_file)) {
   
   out_lines <- c(
     header,
-    "DATA",
+    # "DATA",
     apply(df, 1, function(x) paste(x, collapse = "\t"))
   )
 }
@@ -153,5 +153,5 @@ if (!is.null(heatmap_file)) {
 writeLines(out_lines, con = output_file)
 cat("File saved in:", output_file, "\n")
 
-cat("File save in:", output_file, "\n")
+# cat("File save in:", output_file, "\n")
 
