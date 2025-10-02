@@ -98,8 +98,8 @@ if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
   names(pal) <- keywords
 }
 
-pal <- RColorBrewer::brewer.pal(max(3, length(keywords)), "Dark2")
-names(pal) <- keywords
+# pal <- RColorBrewer::brewer.pal(max(3, length(keywords)), "Dark2")
+# names(pal) <- keywords
 
 # ---- Find matches ----
 matches <- lapply(ids, function(id) {
