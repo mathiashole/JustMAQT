@@ -143,6 +143,13 @@ if (!is.null(heatmap_file)) {
   # Create the dynamic FIELD line
   field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = "\t"))
 
+  # Replace in the header if FIELD_LABELS exists, if not add it
+  header_mod <- gsub("^FIELD_LABELS.*", field_labels_line, header)
+  if (identical(header, header_mod)) {
+    #If you didn't find FIELD_LABELS in the header, we add it at the end
+    header_mod <- c(header, field_labels_line)
+  }
+
   out_lines <- c(
     header,
     # "DATA",
