@@ -49,7 +49,8 @@ while (i <= length(args)) {
     output_file <- args[i + 1]
     i <- i + 2
   } else if (args[i] == "--heatmap") {
-    heatmap_files <- c(heatmap_files, args[i + 1]); i <- i + 2
+    heatmap_file <- args[i + 1]
+    i <- i + 2
   } else if (args[i] == "--continuous-palette") {
     continuous_palette <- args[i + 1]; i <- i + 2
   } else if (args[i] == "--discrete-palette") {
