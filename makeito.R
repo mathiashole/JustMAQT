@@ -89,15 +89,14 @@ if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
       stop("Error: Not enough colors provided for all keywords.")
     }
     pal <- pal[1:length(keywords)]
-} else {
-    # Use RColorBrewer
+  } else {
+    # Usar RColorBrewer con la paleta especificada
     pal <- RColorBrewer::brewer.pal(
       max(3, length(keywords)), 
       discrete_palette
     )
   }
   names(pal) <- keywords
-}
 
 # pal <- RColorBrewer::brewer.pal(max(3, length(keywords)), "Dark2")
 # names(pal) <- keywords
