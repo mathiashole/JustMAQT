@@ -139,8 +139,11 @@ if (!is.null(heatmap_file)) {
   
   if (ext %in% c("csv", "CSV")) {
     df <- read.csv(heatmap_file, stringsAsFactors = FALSE)
+  } else {
+    # Default to TSV
+    df <- readr::read_tsv(heatmap_file, show_col_types = FALSE)
   }
-  
+
   df <- read_tsv(heatmap_file, show_col_types = FALSE)
   df[is.na(df)] <- "X"
   
