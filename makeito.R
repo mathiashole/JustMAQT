@@ -178,8 +178,15 @@ if (!is.null(heatmap_file)) {
 
 # ---- Procesar barplot ----
 if (!is.null(barplot_file)) {
-  # read file
-  df <- read.csv(barplot_file, stringsAsFactors = FALSE)
+  # Detect file extension
+  ext <- tools::file_ext(heatmap_file)
+  
+  if (ext %in% c("csv", "CSV")) {
+    df <- read.csv(heatmap_file, stringsAsFactors = FALSE)
+  } else {
+    df <- readr::read_tsv(heatmap_file, show_col_types = FALSE)
+  }
+
   
 }
 
