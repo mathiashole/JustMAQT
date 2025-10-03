@@ -179,7 +179,7 @@ if (!is.null(heatmap_file)) {
 # ---- Procesar barplot ----
 if (!is.null(barplot_file)) {
   # Detect file extension
-  ext <- tools::file_ext(heatmap_file)
+  ext <- tools::file_ext(barplot_file)
   
   if (ext %in% c("csv", "CSV")) {
     df <- read.csv(heatmap_file, stringsAsFactors = FALSE)
