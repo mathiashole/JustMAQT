@@ -190,8 +190,12 @@ if (!is.null(barplot_file)) {
   if (ncol(df) < 2 || ncol(df) > 3) {
     stop("Barplot file must have 2 or 3 columns: ID,value[,label]")
   }
-
-
+  # Craft output
+  out_lines <- c(
+    header,
+    "DATA",
+    apply(df, 1, function(x) paste(x, collapse = ","))
+  )
   
 }
 
