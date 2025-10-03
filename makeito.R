@@ -161,6 +161,3 @@ if (!is.null(heatmap_file)) {
 
 writeLines(out_lines, con = output_file)
 cat("File saved in:", output_file, "\n")
-
-# cat("File save in:", output_file, "\n")
-
