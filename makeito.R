@@ -134,6 +134,9 @@ data_block <- do.call(rbind, matches)
 
 # ---- Heatmap mode ----
 if (!is.null(heatmap_file)) {
+  # Detect file extension
+  ext <- tools::file_ext(heatmap_file)
+  
   df <- read_tsv(heatmap_file, show_col_types = FALSE)
   df[is.na(df)] <- "X"
   
