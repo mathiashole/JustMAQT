@@ -194,7 +194,6 @@ if (!is.null(barplot_file)) {
     "DATA",
     apply(df, 1, function(x) paste(x, collapse = ","))
   )
-  
 }
 
 # ---- Create final file ----
