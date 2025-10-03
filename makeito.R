@@ -52,6 +52,9 @@ while (i <= length(args)) {
   } else if (args[i] == "--heatmap") {
     heatmap_file <- args[i + 1]
     i <- i + 2
+  } else if (args[i] == "--barplot") {
+    barplot_file <- args[i + 1]
+    i <- i + 2
   } else if (args[i] == "--continuous-palette") {
     continuous_palette <- args[i + 1]; i <- i + 2
   } else if (args[i] == "--discrete-palette") {
