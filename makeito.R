@@ -182,9 +182,9 @@ if (!is.null(barplot_file)) {
   ext <- tools::file_ext(barplot_file)
   
   if (ext %in% c("csv", "CSV")) {
-    df <- read.csv(heatmap_file, stringsAsFactors = FALSE)
+    df <- read.csv(barplot_file, stringsAsFactors = FALSE)
   } else {
-    df <- readr::read_tsv(heatmap_file, show_col_types = FALSE)
+    df <- readr::read_tsv(barplot_file, show_col_types = FALSE)
   }
   # Minimum validation: must have 2 or 3 columns
   if (ncol(df) < 2 || ncol(df) > 3) {
