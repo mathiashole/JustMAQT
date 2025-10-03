@@ -70,6 +70,9 @@ if (!is.null(tree_file) && !is.null(ids_file)) stop("Error: Provide only one of 
 
 modes_selected <- sum(length(keywords) > 0, !is.null(heatmap_file), !is.null(barplot_file))
 
+if(modes_selected == 0) stop("Error: You must provide either --keywords or --heatmap or --barplot")
+
+
 if (length(keywords) == 0 && is.null(heatmap_file) && is.null(barplot_file)) stop("Error: You must provide either --keywords or --heatmap or --barplot")
 if (!is.null(keywords) && !is.null(heatmap_file) && !is.null(barplot_file)) stop("Error: Choose only one mode: keywords OR heatmap OR barplot")
 if (is.null(header_file)) stop("Error: You must provide --header")
