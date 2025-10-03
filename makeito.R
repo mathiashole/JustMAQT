@@ -178,7 +178,7 @@ if (!is.null(heatmap_file)) {
 
 # ---- Procesar barplot ----
 if (!is.null(barplot_file)) {
-  # Leer archivo CSV, separado por coma
+  # read file
   df <- read.csv(barplot_file, stringsAsFactors = FALSE)
   
 }
