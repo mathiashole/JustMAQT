@@ -186,6 +186,11 @@ if (!is.null(barplot_file)) {
   } else {
     df <- readr::read_tsv(heatmap_file, show_col_types = FALSE)
   }
+  # Minimum validation: must have 2 or 3 columns
+  if (ncol(df) < 2 || ncol(df) > 3) {
+    stop("Barplot file must have 2 or 3 columns: ID,value[,label]")
+  }
+
 
   
 }
