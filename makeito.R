@@ -144,7 +144,7 @@ if (!is.null(heatmap_file)) {
     df <- readr::read_tsv(heatmap_file, show_col_types = FALSE)
   }
 
-  df <- read_tsv(heatmap_file, show_col_types = FALSE)
+  # df <- read_tsv(heatmap_file, show_col_types = FALSE)
   df[is.na(df)] <- "X"
   
   # Extract column names (except first one, whiche is ID)
