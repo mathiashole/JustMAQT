@@ -72,9 +72,8 @@ modes_selected <- sum(length(keywords) > 0, !is.null(heatmap_file), !is.null(bar
 
 if(modes_selected == 0) stop("Error: You must provide either --keywords or --heatmap or --barplot")
 if(modes_selected > 1) stop("Error: Choose only one mode: keywords OR heatmap OR barplot")
-
-if (length(keywords) == 0 && is.null(heatmap_file) && is.null(barplot_file)) stop("Error: You must provide either --keywords or --heatmap or --barplot")
-if (!is.null(keywords) && !is.null(heatmap_file) && !is.null(barplot_file)) stop("Error: Choose only one mode: keywords OR heatmap OR barplot")
+# if (length(keywords) == 0 && is.null(heatmap_file) && is.null(barplot_file)) stop("Error: You must provide either --keywords or --heatmap or --barplot")
+# if (!is.null(keywords) && !is.null(heatmap_file) && !is.null(barplot_file)) stop("Error: Choose only one mode: keywords OR heatmap OR barplot")
 if (is.null(header_file)) stop("Error: You must provide --header")
 if (is.null(output_file)) stop("Error: You must provide --out")
 
