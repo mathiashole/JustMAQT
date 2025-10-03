@@ -19,6 +19,7 @@ output_file <- NULL
 # Plot
 keywords <- c()
 heatmap_file <- NULL
+barplot_file <- NULL
 
 # Defoult colors
 continuous_palette <- "viridis"
