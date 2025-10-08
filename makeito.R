@@ -65,7 +65,8 @@ while (i <= length(args)) {
   } else if (args[i] == "--discrete-palette") {
     discrete_palette <- args[i + 1]; i <- i + 2
   } else if (is.null(symbol_shape)) {
-
+    # Default shape: circle (2 en iTOL)
+    symbol_shape <- rep(2, length(keywords))
   } else {
     stop(paste("Unknown argument:", args[i]))
   }
