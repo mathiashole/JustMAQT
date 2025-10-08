@@ -64,6 +64,8 @@ while (i <= length(args)) {
     continuous_palette <- args[i + 1]; i <- i + 2
   } else if (args[i] == "--discrete-palette") {
     discrete_palette <- args[i + 1]; i <- i + 2
+  } else if (is.null(symbol_shape)) {
+
   } else {
     stop(paste("Unknown argument:", args[i]))
   }
