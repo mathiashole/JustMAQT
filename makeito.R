@@ -64,9 +64,13 @@ while (i <= length(args)) {
     continuous_palette <- args[i + 1]; i <- i + 2
   } else if (args[i] == "--discrete-palette") {
     discrete_palette <- args[i + 1]; i <- i + 2
-  } else if (is.null(symbol_shape)) {
-    # Default shape: circle (2 en iTOL)
-    symbol_shape <- rep(2, length(keywords))
+  } else if (args[i] == "--symbol-shape") {
+    # collect all shape codes up to the next flag
+    j <- i + 1
+    shapes <- c()
+    while (j <= length(args) && !startsWith(args[j], "--") && !startsWith(args[j], "-")) {
+      shapes <- c(shapes, args[j])
+      j <- j + 1
   } else {
     stop(paste("Unknown argument:", args[i]))
   }
