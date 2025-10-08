@@ -71,6 +71,9 @@ while (i <= length(args)) {
     while (j <= length(args) && !startsWith(args[j], "--") && !startsWith(args[j], "-")) {
       shapes <- c(shapes, args[j])
       j <- j + 1
+    }
+    symbol_shape <- as.numeric(shapes)
+    i <- j
   } else {
     stop(paste("Unknown argument:", args[i]))
   }
