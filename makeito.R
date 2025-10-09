@@ -68,12 +68,11 @@ while (i <= length(args)) {
   } else if (args[i] == "--keywords-shape") {
     # collect all shape codes up to the next flag
     j <- i + 1
-    shapes <- c()
     while (j <= length(args) && !startsWith(args[j], "--") && !startsWith(args[j], "-")) {
-      shapes <- c(shapes, args[j])
+      keywords_shape <- c(keywords_shape, args[j])
       j <- j + 1
     }
-    symbol_shape <- as.numeric(shapes)
+    # symbol_shape <- as.numeric(keywords_shape)
     i <- j
   } else {
     stop(paste("Unknown argument:", args[i]))
