@@ -18,6 +18,7 @@ output_file <- NULL
 
 # Plot
 keywords <- c()
+keywords_shape <- c()
 heatmap_file <- NULL
 barplot_file <- NULL
 binary_file <- NULL
@@ -64,7 +65,7 @@ while (i <= length(args)) {
     continuous_palette <- args[i + 1]; i <- i + 2
   } else if (args[i] == "--discrete-palette") {
     discrete_palette <- args[i + 1]; i <- i + 2
-  } else if (args[i] == "--symbol-shape") {
+  } else if (args[i] == "--keywords-shape") {
     # collect all shape codes up to the next flag
     j <- i + 1
     shapes <- c()
