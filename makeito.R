@@ -124,6 +124,8 @@ if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
 if (is.null(symbol_shape)) {
   # Default shape: circle (2 en iTOL)
   symbol_shape <- rep(2, length(keywords))
+} else if (length(symbol_shape) != length(keywords)) {
+  stop("Error: The number of shapes in --symbol-shape must match the number of keywords.")
 }
 
 # ---- Find matches ----
