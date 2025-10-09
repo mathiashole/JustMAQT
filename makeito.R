@@ -121,6 +121,11 @@ if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
   }
   names(pal) <- keywords
 
+if (is.null(symbol_shape)) {
+  # Default shape: circle (2 en iTOL)
+  symbol_shape <- rep(2, length(keywords))
+}
+
 # ---- Find matches ----
 matches <- lapply(ids, function(id) {
   found <- keywords[sapply(keywords, function(k) str_detect(id, k))]
