@@ -135,6 +135,11 @@ if (length(keywords) > 0) {
 
 # Parse --keywords-shape (format keyword:shape)
 shape_map <- list()
+if (length(keywords_shape) > 0) {
+  for (entry in keywords_shape) {
+
+  }
+}
 
 # ---- Find matches ----
 matches <- lapply(ids, function(id) {
