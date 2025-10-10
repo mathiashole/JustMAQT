@@ -154,9 +154,12 @@ matches <- lapply(ids, function(id) {
   
   # Generate a row for each keyword that matches
   do.call(rbind, lapply(found, function(keyword) {
+    shape <- if (!is.null(shape_map[[keyword]])) shape_map[[keyword]] else 2
+    color <- if (!is.null(pal[keyword])) pal[keyword] else "#000000"
     data.frame(
       ID = id,
-      symbol = 2,      # circle
+      # symbol = 2,      # circle
+      symbol = shape,
       size = 10,
       color = pal[keyword],
       fill = 1,
