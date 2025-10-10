@@ -82,13 +82,12 @@ while (i <= length(args)) {
 # ---- Validation ----
 if (is.null(tree_file) && is.null(ids_file)) stop("Error: You must provide either --tree or --ids")
 if (!is.null(tree_file) && !is.null(ids_file)) stop("Error: Provide only one of --tree or --ids, not both")
+if (is.null(header_file)) stop("Error: You must provide --header")
+if (is.null(output_file)) stop("Error: You must provide --out")
 
 modes_selected <- sum(length(keywords) > 0, !is.null(heatmap_file), !is.null(barplot_file), !is.null(binary_file))
 if(modes_selected == 0) stop("Error: You must provide either --keywords or --heatmap or --barplot or --binary")
 if(modes_selected > 1) stop("Error: Choose only one mode: keywords OR heatmap OR barplot OR binary")
-
-if (is.null(header_file)) stop("Error: You must provide --header")
-if (is.null(output_file)) stop("Error: You must provide --out")
 
 # ---- Gets id ----
 ids <- c()
