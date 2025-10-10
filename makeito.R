@@ -144,6 +144,9 @@ if (length(keywords_shape) > 0) {
   }
 }
 
+# Combine all relevant keywords (for matching IDs)
+all_keywords <- unique(c(keywords, names(shape_map)))
+
 # ---- Find matches ----
 matches <- lapply(ids, function(id) {
   found <- keywords[sapply(keywords, function(k) str_detect(id, k))]
