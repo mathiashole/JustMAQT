@@ -133,7 +133,7 @@ if (length(keywords) > 0) {
   pal <- c()
 }
 
-
+# Parse --keywords-shape (format keyword:shape)
 if (is.null(symbol_shape)) {
   # Default shape: circle (2 en iTOL)
   symbol_shape <- rep(2, length(keywords))
