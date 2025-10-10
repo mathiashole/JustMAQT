@@ -87,7 +87,11 @@ if (is.null(output_file)) stop("Error: You must provide --out")
 
 modes_selected <- sum(length(keywords) > 0, !is.null(heatmap_file), !is.null(barplot_file), !is.null(binary_file))
 if(modes_selected == 0) stop("Error: You must provide either --keywords or --heatmap or --barplot or --binary")
-if(modes_selected > 1) stop("Error: Choose only one mode: keywords OR heatmap OR barplot OR binary")
+if (modes_selected > 1 && modes_selected != (length(keywords) > 0) + (length(keywords_shape) > 0)) {
+  stop("Error: Only one mode allowed, except combining --keywords and --keywords-shape")
+}
+
+
 
 # ---- Gets id ----
 ids <- c()
