@@ -137,7 +137,10 @@ if (length(keywords) > 0) {
 shape_map <- list()
 if (length(keywords_shape) > 0) {
   for (entry in keywords_shape) {
-
+    if (!str_detect(entry, ":")) stop("Each --keywords-shape must be in format keyword:shape (e.g., Retro:3)")
+    parts <- str_split(entry, ":", simplify = TRUE)
+    kw <- parts[1]; sh <- as.numeric(parts[2])
+    shape_map[[kw]] <- sh
   }
 }
 
