@@ -105,20 +105,6 @@ header <- readLines(header_file)
 if(length(keywords) > 0) {
 
 # ---- Colors palette ----
-# if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
-#   pal <- unlist(strsplit(discrete_palette, "\\s+"))
-#   if (length(pal) < length(keywords)) {
-#       stop("Error: Not enough colors provided for all keywords.")
-#     }
-#     pal <- pal[1:length(keywords)]
-#   } else {
-#     # Usar RColorBrewer con la paleta especificada
-#     pal <- RColorBrewer::brewer.pal(
-#       max(3, length(keywords)), 
-#       discrete_palette
-#     )
-#   }
-#   names(pal) <- keywords
 if (length(keywords) > 0) {
   if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
     pal <- unlist(strsplit(discrete_palette, "\\s+"))
