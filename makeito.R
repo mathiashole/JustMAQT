@@ -90,8 +90,6 @@ if (modes_selected > 1 && modes_selected != (length(keywords) > 0) + (length(key
   stop("Error: Only one mode allowed, except combining --keywords and --keywords-shape")
 }
 
-
-
 # ---- Gets id ----
 ids <- c()
 if (!is.null(tree_file)) {
@@ -103,7 +101,6 @@ if (!is.null(tree_file)) {
 
 # ---- Read header ----
 header <- readLines(header_file)
-
 
 if(length(keywords) > 0) {
 
