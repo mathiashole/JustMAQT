@@ -26,7 +26,6 @@ binary_file <- NULL
 # Defoult colors
 continuous_palette <- "viridis"
 discrete_palette <- "Dark2"
-symbol_shape <- NULL
 
 # ---- Parsing arguments ----
 args <- commandArgs(trailingOnly = TRUE)
