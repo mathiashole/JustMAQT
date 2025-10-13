@@ -71,7 +71,6 @@ while (i <= length(args)) {
       keywords_shape <- c(keywords_shape, args[j])
       j <- j + 1
     }
-    # symbol_shape <- as.numeric(keywords_shape)
     i <- j
   } else {
     stop(paste("Unknown argument:", args[i]))
