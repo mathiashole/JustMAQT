@@ -193,7 +193,6 @@ if (!is.null(heatmap_file)) {
 
   out_lines <- c(
     header_mod,
-    # "DATA",
     apply(df, 1, function(x) paste(x, collapse = "\t"))
   )
 }
