@@ -13,7 +13,6 @@ suppressPackageStartupMessages({
 tree_file <- NULL
 ids_file <- NULL
 header_file <- NULL
-# keywords <- c()
 output_file <- NULL
 
 # Plot
