@@ -219,6 +219,8 @@ if (!is.null(barplot_file)) {
   )
 }
 
+# ---- Procesar multi-barplot ----
+
 # ---- Create final file ----
 writeLines(out_lines, con = output_file)
 cat("File saved in:", output_file, "\n")
