@@ -242,6 +242,8 @@ if (!is.null(multibarplot_file)) {
   col_labels <- colnames(df)[-1]
   n_fields <- length(col_labels)
 
+  # Assign automatic colors (Dark2 or Set2 palette)
+  pal <- brewer.pal(min(max(3, n_fields), 8), "Set2")[1:n_fields]
 
   # Validation: must have at least 3 columns (ID + 2+ values)
   if (ncol(df) < 3) {
