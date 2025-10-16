@@ -238,7 +238,7 @@ if (!is.null(multibarplot_file)) {
   # Validation: must have at least 3 columns (ID + 2+ values)
   if (ncol(df) < 3) {
     stop("Multi-barplot file must have at least 3 columns: ID and at least 2 numeric fields.")
-    
+
   # Replace NAs with 0
   df[is.na(df)] <- 0
 
@@ -257,6 +257,9 @@ if (!is.null(multibarplot_file)) {
     pal <- brewer.pal(min(max(3, n_fields), 8), discrete_palette)
   }
 
+  # Generate dynamic header lines
+  field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = ","))
+  field_colors_line <- paste("FIELD_COLORS", paste(pal, collapse = ","))
 
   }
 
