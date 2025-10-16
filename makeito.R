@@ -21,6 +21,7 @@ keywords_shape <- c()
 heatmap_file <- NULL
 barplot_file <- NULL
 binary_file <- NULL
+multibarplot_file <- NULL
 
 # Defoult colors
 continuous_palette <- "viridis"
