@@ -228,6 +228,13 @@ if (!is.null(multibarplot_file)) {
   # Detect file extension
   ext <- tools::file_ext(multibarplot_file)
 
+  if (ext %in% c("csv", "CSV")) {
+    df <- read.csv(multibarplot_file, stringsAsFactors = FALSE)
+  } else {
+    # Default to TSV
+    df <- readr::read_tsv(multibarplot_file, show_col_types = FALSE)
+  }
+
   # Validation: must have at least 3 columns (ID + 2+ values)
   if (ncol(df) < 3) {
     stop("Multi-barplot file must have at least 3 columns: ID and at least 2 numeric fields.")
