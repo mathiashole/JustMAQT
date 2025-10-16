@@ -238,6 +238,7 @@ if (!is.null(multibarplot_file)) {
   # Validation: must have at least 3 columns (ID + 2+ values)
   if (ncol(df) < 3) {
     stop("Multi-barplot file must have at least 3 columns: ID and at least 2 numeric fields.")
+  }
 
   # Replace NAs with 0
   df[is.na(df)] <- 0
@@ -261,6 +262,17 @@ if (!is.null(multibarplot_file)) {
   field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = ","))
   field_colors_line <- paste("FIELD_COLORS", paste(pal, collapse = ","))
 
+  # Replace existing lines or append if missing
+  if (any(grepl("^FIELD_LABELS", header))) {
+    header <- gsub("^FIELD_LABELS.*", field_labels_line, header)
+  } else {
+    header <- c(header, field_labels_line)
+  }
+
+  if (any(grepl("^FIELD_COLORS", header))) {
+    header <- gsub("^FIELD_COLORS.*", field_colors_line, header)
+  } else {
+    header <- c(header, field_colors_line)
   }
 
 }
