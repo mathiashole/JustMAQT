@@ -238,6 +238,11 @@ if (!is.null(multibarplot_file)) {
   # Replace NAs with 0
   df[is.na(df)] <- 0
 
+  # Extract column names except ID of header
+  col_labels <- colnames(df)[-1]
+  n_fields <- length(col_labels)
+
+
   # Validation: must have at least 3 columns (ID + 2+ values)
   if (ncol(df) < 3) {
     stop("Multi-barplot file must have at least 3 columns: ID and at least 2 numeric fields.")
