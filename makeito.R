@@ -235,6 +235,10 @@ if (!is.null(multibarplot_file)) {
     df <- readr::read_tsv(multibarplot_file, show_col_types = FALSE)
   }
 
+  # Validation: must have at least 3 columns (ID + 2+ values)
+  if (ncol(df) < 3) {
+    stop("Multi-barplot file must have at least 3 columns: ID and at least 2 numeric fields.")
+    
   # Replace NAs with 0
   df[is.na(df)] <- 0
 
@@ -253,9 +257,7 @@ if (!is.null(multibarplot_file)) {
     pal <- brewer.pal(min(max(3, n_fields), 8), discrete_palette)
   }
 
-  # Validation: must have at least 3 columns (ID + 2+ values)
-  if (ncol(df) < 3) {
-    stop("Multi-barplot file must have at least 3 columns: ID and at least 2 numeric fields.")
+
   }
 
 }
