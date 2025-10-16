@@ -224,6 +224,16 @@ if (!is.null(barplot_file)) {
 }
 
 # ---- Procesar multi-barplot ----
+if (!is.null(multibarplot_file)) {
+  # Detect file extension
+  ext <- tools::file_ext(multibarplot_file)
+
+  # Validation: must have at least 3 columns (ID + 2+ values)
+  if (ncol(df) < 3) {
+    stop("Multi-barplot file must have at least 3 columns: ID and at least 2 numeric fields.")
+  }
+
+}
 
 # ---- Create final file ----
 writeLines(out_lines, con = output_file)
