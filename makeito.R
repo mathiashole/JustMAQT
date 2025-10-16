@@ -235,6 +235,9 @@ if (!is.null(multibarplot_file)) {
     df <- readr::read_tsv(multibarplot_file, show_col_types = FALSE)
   }
 
+  # Replace NAs with 0
+  df[is.na(df)] <- 0
+
   # Validation: must have at least 3 columns (ID + 2+ values)
   if (ncol(df) < 3) {
     stop("Multi-barplot file must have at least 3 columns: ID and at least 2 numeric fields.")
