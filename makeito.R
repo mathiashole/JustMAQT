@@ -275,6 +275,12 @@ if (!is.null(multibarplot_file)) {
     header <- c(header, field_colors_line)
   }
 
+  # Build final dataset lines
+  out_lines <- c(
+    header,
+    "DATA",
+    apply(df, 1, function(x) paste(x, collapse = ","))
+  )
 }
 
 # ---- Create final file ----
