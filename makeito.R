@@ -287,6 +287,9 @@ if (!is.null(multibarplot_file)) {
   if (tolower(multibar_type) == "aligned") {
     align_line <- "ALIGN_FIELDS,1"
     side_line <- "SIDE_STACKED,0"
+  } else if (tolower(multibar_type) == "stacked") {
+    align_line <- "ALIGN_FIELDS,0"
+    side_line <- "SIDE_STACKED,1"
   }
 
   # Build final dataset lines
