@@ -22,6 +22,7 @@ heatmap_file <- NULL
 barplot_file <- NULL
 binary_file <- NULL
 multibarplot_file <- NULL
+multibar_type <- "default"  # options: default, aligned, stacked
 
 # Defoult colors
 continuous_palette <- "viridis"
