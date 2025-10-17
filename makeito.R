@@ -295,6 +295,13 @@ if (!is.null(multibarplot_file)) {
     side_line <- "SIDE_STACKED,0"
   }
 
+  # Replace or append in header
+  if (any(grepl("^ALIGN_FIELDS", header))) {
+    header <- gsub("^ALIGN_FIELDS.*", align_line, header)
+  } else {
+    header <- c(header, align_line)
+  }
+
   # Build final dataset lines
   out_lines <- c(
     header,
