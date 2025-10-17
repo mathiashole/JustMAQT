@@ -302,7 +302,6 @@ if (!is.null(multibarplot_file)) {
     header <- c(header, align_line)
   }
 
-
   if (any(grepl("^SIDE_STACKED", header))) {
     header <- gsub("^SIDE_STACKED.*", side_line, header)
   } else {
