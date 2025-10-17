@@ -60,6 +60,9 @@ while (i <= length(args)) {
   } else if (args[i] == "--multibarplot") {
     multibarplot_file <- args[i + 1]
     i <- i + 2
+  } else if (args[i] == "--multibar-type") {
+    multibar_type <- args[i + 1]
+    i <- i + 2
   } else if (args[i] == "--binary") {
     binary_file <- args[i + 1]
     i <- i + 2
