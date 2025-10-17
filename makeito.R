@@ -283,6 +283,8 @@ if (!is.null(multibarplot_file)) {
     header <- c(header, field_colors_line)
   }
 
+  # ---- Add multibar layout configuration ----
+
   # Build final dataset lines
   out_lines <- c(
     header,
