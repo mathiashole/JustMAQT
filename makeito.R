@@ -96,6 +96,10 @@ if (modes_selected > 1 && modes_selected != (length(keywords) > 0) + (length(key
   stop("Error: Only one mode allowed, except combining --keywords and --keywords-shape")
 }
 
+if (!tolower(multibar_type) %in% c("default", "aligned", "stacked")) {
+  stop("Error: --multibar-type must be one of 'default', 'aligned', or 'stacked'.")
+}
+
 # ---- Gets id ----
 ids <- c()
 if (!is.null(tree_file)) {
