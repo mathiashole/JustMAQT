@@ -284,6 +284,10 @@ if (!is.null(multibarplot_file)) {
   }
 
   # ---- Add multibar layout configuration ----
+  if (tolower(multibar_type) == "aligned") {
+    align_line <- "ALIGN_FIELDS,1"
+    side_line <- "SIDE_STACKED,0"
+  }
 
   # Build final dataset lines
   out_lines <- c(
