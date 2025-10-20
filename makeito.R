@@ -257,6 +257,7 @@ if (!is.null(multibarplot_file)) {
 
   # # Assign automatic colors (Dark2 or Set2 palette)
   # pal <- brewer.pal(min(max(3, n_fields), 8), "Set2")[1:n_fields]
+  
   # Generate color palette dynamically
   if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
     pal <- unlist(strsplit(discrete_palette, "\\s+"))
