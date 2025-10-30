@@ -321,7 +321,7 @@ if (!is.null(multibarplot_file)) {
   )
 }
 
-# ---- another secction ----
+
 
 # ---- Create final file ----
 writeLines(out_lines, con = output_file)
