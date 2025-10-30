@@ -321,6 +321,18 @@ if (!is.null(multibarplot_file)) {
   )
 }
 
+# ---- Procesar boxplot ----
+if (!is.null(boxplot_file)) {
+
+
+  # Build output
+  out_lines <- c(
+    header,
+    "DATA",
+    comment_line,
+    apply(df, 1, function(x) paste(x, collapse = ","))
+  )
+}
 
 
 # ---- Create final file ----
