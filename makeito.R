@@ -331,6 +331,11 @@ if (!is.null(boxplot_file)) {
     df <- readr::read_tsv(boxplot_file, show_col_types = FALSE)
   }
 
+  # Validation: must have at least 3 columns (ID + ≥2 values)
+  if (ncol(df) < 3) {
+    stop("Boxplot file must have at least 3 columns: ID and at least 2 numeric values.")
+  }
+
 
   # Build output
   out_lines <- c(
