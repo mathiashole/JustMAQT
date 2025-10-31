@@ -323,6 +323,11 @@ if (!is.null(multibarplot_file)) {
 
 # ---- Procesar boxplot ----
 if (!is.null(boxplot_file)) {
+  # Detect file extension
+  ext <- tools::file_ext(boxplot_file)
+  if (ext %in% c("csv", "CSV")) {
+    df <- read.csv(boxplot_file, stringsAsFactors = FALSE)
+  }
 
 
   # Build output
