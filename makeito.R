@@ -339,6 +339,10 @@ if (!is.null(boxplot_file)) {
   # Replace NA with empty values
   df[is.na(df)] <- ""
 
+  # Extract column names (excluding ID)
+  col_labels <- colnames(df)[-1]
+  n_fields <- length(col_labels)
+
   # Build output
   out_lines <- c(
     header,
