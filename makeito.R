@@ -343,6 +343,13 @@ if (!is.null(boxplot_file)) {
   col_labels <- colnames(df)[-1]
   n_fields <- length(col_labels)
 
+  # Assign palette
+  if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
+    pal <- unlist(strsplit(discrete_palette, "\\s+"))
+    if (length(pal) < 1) pal <- pal[1]
+  }
+
+
   # Build output
   out_lines <- c(
     header,
