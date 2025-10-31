@@ -351,7 +351,6 @@ if (!is.null(boxplot_file)) {
     pal <- brewer.pal(3, discrete_palette)[1]
   }
 
-
   # Build output
   out_lines <- c(
     header,
