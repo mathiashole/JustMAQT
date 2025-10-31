@@ -336,6 +336,8 @@ if (!is.null(boxplot_file)) {
     stop("Boxplot file must have at least 3 columns: ID and at least 2 numeric values.")
   }
 
+  # Replace NA with empty values
+  df[is.na(df)] <- ""
 
   # Build output
   out_lines <- c(
