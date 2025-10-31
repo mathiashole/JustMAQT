@@ -347,6 +347,8 @@ if (!is.null(boxplot_file)) {
   if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
     pal <- unlist(strsplit(discrete_palette, "\\s+"))
     if (length(pal) < 1) pal <- pal[1]
+  } else {
+    pal <- brewer.pal(3, discrete_palette)[1]
   }
 
 
