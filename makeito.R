@@ -327,6 +327,8 @@ if (!is.null(boxplot_file)) {
   ext <- tools::file_ext(boxplot_file)
   if (ext %in% c("csv", "CSV")) {
     df <- read.csv(boxplot_file, stringsAsFactors = FALSE)
+  } else {
+    df <- readr::read_tsv(boxplot_file, show_col_types = FALSE)
   }
 
 
