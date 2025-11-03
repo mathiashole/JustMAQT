@@ -351,6 +351,12 @@ if (!is.null(boxplot_file)) {
     pal <- brewer.pal(3, discrete_palette)[1]
   }
 
+  if (any(grepl("^COLOR", header))) {
+    header <- gsub("^COLOR.*", color_line, header)
+  } else {
+    header <- c(header, color_line)
+  }
+
   # Build output
   out_lines <- c(
     header,
