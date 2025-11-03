@@ -351,6 +351,13 @@ if (!is.null(boxplot_file)) {
     pal <- brewer.pal(3, discrete_palette)[1]
   }
 
+  # Replace or append in header
+  if (any(grepl("^FIELD_LABELS", header))) {
+    header <- gsub("^FIELD_LABELS.*", field_labels_line, header)
+  } else {
+    header <- c(header, field_labels_line)
+  }
+
   if (any(grepl("^COLOR", header))) {
     header <- gsub("^COLOR.*", color_line, header)
   } else {
