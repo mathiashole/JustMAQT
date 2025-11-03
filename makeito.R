@@ -351,6 +351,10 @@ if (!is.null(boxplot_file)) {
     pal <- brewer.pal(3, discrete_palette)[1]
   }
 
+  # Create FIELD_LABELS and COLOR line
+  field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = ","))
+  color_line <- paste("COLOR", pal)
+
   # Replace or append in header
   if (any(grepl("^FIELD_LABELS", header))) {
     header <- gsub("^FIELD_LABELS.*", field_labels_line, header)
