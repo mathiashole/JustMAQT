@@ -350,7 +350,7 @@ if (!is.null(boxplot_file)) {
   } else {
     pal <- brewer.pal(3, discrete_palette)[1]
   }
-
+## DEBUGG
   # Create FIELD_LABELS and COLOR line
   field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = ","))
   color_line <- paste("COLOR", pal)
@@ -367,6 +367,7 @@ if (!is.null(boxplot_file)) {
   } else {
     header <- c(header, color_line)
   }
+## here
 
   # Build output
   out_lines <- c(
