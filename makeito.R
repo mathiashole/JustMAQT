@@ -367,7 +367,6 @@ if (!is.null(boxplot_file)) {
   } else {
     header <- c(header, color_line)
   }
-## here
 
   # Build output
   out_lines <- c(
