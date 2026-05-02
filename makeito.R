@@ -212,8 +212,12 @@ if (!is.null(heatmap_file)) {
     "VALUE_SIZE_FACTOR\t1"
   )
 
-  # Replace in the header if FIELD_LABELS exists, if not add it
-  header_mod <- gsub("^FIELD_LABELS.*", field_labels_line, header)
+  # Remove any existing conflicting lines from the header (FIELD_LABELS, MARGIN, STRIP_WIDTH, COLOR_MIN, COLOR_MAX, DISPLAY_VALUES, VALUE_AUTO_COLOR, VALUE_SIZE_FACTOR)
+  clean_header <- header[!grepl("^(FIELD_LABELS|MARGIN|STRIP_WIDTH|COLOR_MIN|COLOR_MAX|DISPLAY_VALUES|VALUE_AUTO_COLOR|VALUE_SIZE_FACTOR)", gsub("^#", "", header))]
+
+  ## Replace in the header if FIELD_LABELS exists, if not add it
+  # header_mod <- gsub("^FIELD_LABELS.*", field_labels_line, header)
+
   if (identical(header, header_mod)) {
     #If you didn't find FIELD_LABELS in the header, we add it at the end
     header_mod <- c(header, field_labels_line)
