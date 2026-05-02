@@ -217,11 +217,13 @@ if (!is.null(heatmap_file)) {
 
   ## Replace in the header if FIELD_LABELS exists, if not add it
   # header_mod <- gsub("^FIELD_LABELS.*", field_labels_line, header)
+  # Final header will be the cleaned header plus the new FIELD_LABELS line and custom settings
+  header_mod <- c(clean_header, field_labels_line, custom_settings)
 
-  if (identical(header, header_mod)) {
-    #If you didn't find FIELD_LABELS in the header, we add it at the end
-    header_mod <- c(header, field_labels_line)
-  }
+  # if (identical(header, header_mod)) {
+  #   #If you didn't find FIELD_LABELS in the header, we add it at the end
+  #   header_mod <- c(header, field_labels_line)
+  # }
 
   out_lines <- c(
     header_mod,
