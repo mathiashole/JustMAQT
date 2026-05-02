@@ -198,21 +198,26 @@ if (!is.null(heatmap_file)) {
   # Extract column names (except first one, whiche is ID)
   col_labels <- colnames(df)[-1]
 
-  # # Create the dynamic FIELD line
-  # field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = "\t"))
+  # Create the dynamic FIELD line
+  field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = "\t"))
 
-  # # Replace in the header if FIELD_LABELS exists, if not add it
-  # header_mod <- gsub("^FIELD_LABELS.*", field_labels_line, header)
-  # if (identical(header, header_mod)) {
-  #   #If you didn't find FIELD_LABELS in the header, we add it at the end
-  #   header_mod <- c(header, field_labels_line)
-  # }
-  heatmap_header <- c(
-    "DATASET_HEATMAP",
-    "SEPARATOR COMMA",
-    paste0("DATASET_LABEL,Dominios_", tools::file_path_sans_ext(basename(heatmap_file))),
-    "COLOR,#424242",
+  # Vizual configuration for heatmap (you can adjust colors and sizes as needed)
+  custom_settings <- c(
+    "MARGIN\t50",
+    "STRIP_WIDTH\t30",
+    "COLOR_MIN\t#ffffff",    # Withe for the minimum (e.g. 0)
+    "COLOR_MAX\t#08519c",    # dark blue for the maximum (e.g. 1)
+    "DISPLAY_VALUES\toriginal", # Show original values in the cells
+    "VALUE_AUTO_COLOR\t1",      # Chagne text color based on value for better visibility
+    "VALUE_SIZE_FACTOR\t1"
   )
+
+  # Replace in the header if FIELD_LABELS exists, if not add it
+  header_mod <- gsub("^FIELD_LABELS.*", field_labels_line, header)
+  if (identical(header, header_mod)) {
+    #If you didn't find FIELD_LABELS in the header, we add it at the end
+    header_mod <- c(header, field_labels_line)
+  }
 
   out_lines <- c(
     header_mod,
