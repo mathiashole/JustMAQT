@@ -198,15 +198,21 @@ if (!is.null(heatmap_file)) {
   # Extract column names (except first one, whiche is ID)
   col_labels <- colnames(df)[-1]
 
-  # Create the dynamic FIELD line
-  field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = "\t"))
+  # # Create the dynamic FIELD line
+  # field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = "\t"))
 
-  # Replace in the header if FIELD_LABELS exists, if not add it
-  header_mod <- gsub("^FIELD_LABELS.*", field_labels_line, header)
-  if (identical(header, header_mod)) {
-    #If you didn't find FIELD_LABELS in the header, we add it at the end
-    header_mod <- c(header, field_labels_line)
-  }
+  # # Replace in the header if FIELD_LABELS exists, if not add it
+  # header_mod <- gsub("^FIELD_LABELS.*", field_labels_line, header)
+  # if (identical(header, header_mod)) {
+  #   #If you didn't find FIELD_LABELS in the header, we add it at the end
+  #   header_mod <- c(header, field_labels_line)
+  # }
+  heatmap_header <- c(
+    "DATASET_HEATMAP",
+    "SEPARATOR COMMA",
+    paste0("DATASET_LABEL,Dominios_", tools::file_path_sans_ext(basename(heatmap_file))),
+    "COLOR,#424242",
+  )
 
   out_lines <- c(
     header_mod,
