@@ -192,38 +192,23 @@ if (!is.null(heatmap_file)) {
   }
 
   # df <- read_tsv(heatmap_file, show_col_types = FALSE)
-  # df[is.na(df)] <- "X"
-  df[is.na(df)] <- 0
+  df[is.na(df)] <- "X"
   
   # Extract column names (except first one, whiche is ID)
   col_labels <- colnames(df)[-1]
 
   # Create the dynamic FIELD line
-  field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = "\t"))
+  field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = "\t"), sep = "\t")
 
-  # Vizual configuration for heatmap (you can adjust colors and sizes as needed)
-  custom_settings <- c(
-    "MARGIN\t50",
-    "STRIP_WIDTH\t30",
-    "COLOR_MIN\t#ffffff",    # Withe for the minimum (e.g. 0)
-    "COLOR_MAX\t#08519c",    # dark blue for the maximum (e.g. 1)
-    "DISPLAY_VALUES\toriginal", # Show original values in the cells
-    "VALUE_AUTO_COLOR\t1",      # Chagne text color based on value for better visibility
-    "VALUE_SIZE_FACTOR\t1"
-  )
+  header <- gsub("DATASET_LABEL ", "DATASET_LABEL\t", header)
+  header <- gsub("COLOR ", "COLOR\t", header)
 
-  # Remove any existing conflicting lines from the header (FIELD_LABELS, MARGIN, STRIP_WIDTH, COLOR_MIN, COLOR_MAX, DISPLAY_VALUES, VALUE_AUTO_COLOR, VALUE_SIZE_FACTOR)
-  clean_header <- header[!grepl("^(FIELD_LABELS|MARGIN|STRIP_WIDTH|COLOR_MIN|COLOR_MAX|DISPLAY_VALUES|VALUE_AUTO_COLOR|VALUE_SIZE_FACTOR)", gsub("^#", "", header))]
-
-  ## Replace in the header if FIELD_LABELS exists, if not add it
-  # header_mod <- gsub("^FIELD_LABELS.*", field_labels_line, header)
-  # Final header will be the cleaned header plus the new FIELD_LABELS line and custom settings
-  header_mod <- c(clean_header, field_labels_line, custom_settings)
-
-  # if (identical(header, header_mod)) {
-  #   #If you didn't find FIELD_LABELS in the header, we add it at the end
-  #   header_mod <- c(header, field_labels_line)
-  # }
+  # Replace in the header if FIELD_LABELS exists, if not add it
+  header_mod <- gsub("^FIELD_LABELS.*", field_labels_line, header)
+  if (identical(header, header_mod)) {
+    #If you didn't find FIELD_LABELS in the header, we add it at the end
+    header_mod <- c(header, field_labels_line)
+  }
 
   out_lines <- c(
     header_mod,
