@@ -25,6 +25,10 @@ multibarplot_file <- NULL
 multibar_type <- "default"  # options: default, aligned, stacked
 boxplot_file <- NULL
 
+heatmap_independent <- FALSE
+heatmap_zscore <- FALSE
+heatmap_log <- FALSE
+
 # Defoult colors
 continuous_palette <- "viridis"
 discrete_palette <- "Dark2"
@@ -83,6 +87,9 @@ while (i <= length(args)) {
       j <- j + 1
     }
     i <- j
+  } else if (args[i] == "--heatmap-independent") {
+    heatmap_independent <- TRUE
+    i <- i + 1
   } else {
     stop(paste("Unknown argument:", args[i]))
   }
@@ -180,42 +187,84 @@ data_block <- do.call(rbind, matches)
 }
 
 # ---- Heatmap mode ----
+
+################################################################################################
 if (!is.null(heatmap_file)) {
-  # Detect file extension
   ext <- tools::file_ext(heatmap_file)
-  
   if (ext %in% c("csv", "CSV")) {
-    df <- read.csv(heatmap_file, stringsAsFactors = FALSE)
+    df <- read.csv(heatmap_file, stringsAsFactors = FALSE, check.names = FALSE)
   } else {
-    # Default to TSV
     df <- readr::read_tsv(heatmap_file, show_col_types = FALSE)
   }
 
-  # df <- read_tsv(heatmap_file, show_col_types = FALSE)
-  df[is.na(df)] <- "X"
-  
-  # Extract column names (except first one, whiche is ID)
+  df[is.na(df)] <- 0
   col_labels <- colnames(df)[-1]
 
-  # Create the dynamic FIELD line
-  field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = "\t"), sep = "\t")
+  # 1.
+  header_base <- c(
+    "DATASET_HEATMAP",
+    "SEPARATOR\tTAB",
+    paste0("DATASET_LABEL\t", "Heatmap_Generado"),
+    "COLOR\t#ff0000",
+    paste0("FIELD_LABELS\t", paste(col_labels, collapse = "\t")),
+    "MARGIN\t50",
+    "STRIP_WIDTH\t35",
+    "COLOR_MIN\t#f7fbff",
+    "COLOR_MAX\t#084594",
+    "DISPLAY_VALUES\toriginal",
+    "VALUE_AUTO_COLOR\t1",
+    "VALUE_SIZE_FACTOR\t0.8",
+    "SHOW_LABELS\t1"
+  )
 
-  header <- gsub("DATASET_LABEL ", "DATASET_LABEL\t", header)
-  header <- gsub("COLOR ", "COLOR\t", header)
+  # 2.
+  data_lines <- apply(df, 1, function(x) paste(x, collapse = "\t"))
 
-  # Replace in the header if FIELD_LABELS exists, if not add it
-  header_mod <- gsub("^FIELD_LABELS.*", field_labels_line, header)
-  if (identical(header, header_mod)) {
-    #If you didn't find FIELD_LABELS in the header, we add it at the end
-    header_mod <- c(header, field_labels_line)
-  }
-
+  # 3.
   out_lines <- c(
-    header_mod,
+    header_base,
     "DATA",
-    apply(df, 1, function(x) paste(x, collapse = "\t"))
+    data_lines
   )
 }
+
+#########################################################################################
+# if (!is.null(heatmap_file)) {
+#   # Detect file extension
+#   ext <- tools::file_ext(heatmap_file)
+  
+#   if (ext %in% c("csv", "CSV")) {
+#     df <- read.csv(heatmap_file, stringsAsFactors = FALSE)
+#   } else {
+#     # Default to TSV
+#     df <- readr::read_tsv(heatmap_file, show_col_types = FALSE)
+#   }
+
+#   # df <- read_tsv(heatmap_file, show_col_types = FALSE)
+#   df[is.na(df)] <- "X"
+  
+#   # Extract column names (except first one, whiche is ID)
+#   col_labels <- colnames(df)[-1]
+
+#   # Create the dynamic FIELD line
+#   field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = "\t"), sep = "\t")
+
+#   header <- gsub("DATASET_LABEL ", "DATASET_LABEL\t", header)
+#   header <- gsub("COLOR ", "COLOR\t", header)
+
+#   # Replace in the header if FIELD_LABELS exists, if not add it
+#   header_mod <- gsub("^FIELD_LABELS.*", field_labels_line, header)
+#   if (identical(header, header_mod)) {
+#     #If you didn't find FIELD_LABELS in the header, we add it at the end
+#     header_mod <- c(header, field_labels_line)
+#   }
+
+#   out_lines <- c(
+#     header_mod,
+#     "DATA",
+#     apply(df, 1, function(x) paste(x, collapse = "\t"))
+#   )
+# }
 
 # ---- Procesar barplot ----
 if (!is.null(barplot_file)) {
