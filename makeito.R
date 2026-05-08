@@ -7,7 +7,7 @@ suppressPackageStartupMessages({
   library(RColorBrewer)
   library(readr)
   library(viridisLite)
-})
+}) # Suppress package loading messages for cleaner output
 
 # ---- Initialize variables ----
 tree_file <- NULL
