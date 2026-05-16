@@ -10,6 +10,12 @@ suppressPackageStartupMessages({
   library(viridisLite)
 }) # Suppress package loading messages for cleaner output
 
+# ---- Helper functions ----
+
+'%||%' <- function(a, b) {
+  if (!is.null(a)) a else b
+}
+
 # ---- Initialize variables ----
 tree_file <- NULL
 ids_file <- NULL
