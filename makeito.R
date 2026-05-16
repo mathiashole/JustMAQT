@@ -38,12 +38,11 @@ if (str_detect(palette_name, "#")) {
 
 # ---- Parse config file ----
 
-# args <- commandArgs(trailingOnly = TRUE)
+args <- commandArgs(trailingOnly = TRUE)
 
-# if (length(args) < 2 || args[1] != "--config") {
-#   stop("Usage: makeito.R --config config.yaml")
-# }
-
+if (length(args) < 2 || args[1] != "--config") {
+  stop("\nUsage:\n  Rscript script.R --config config.yaml\n")
+}
 # config_file <- args[2]
 
 # if (!file.exists(config_file)) {
