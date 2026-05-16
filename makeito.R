@@ -43,13 +43,14 @@ args <- commandArgs(trailingOnly = TRUE)
 if (length(args) < 2 || args[1] != "--config") {
   stop("\nUsage:\n  Rscript script.R --config config.yaml\n")
 }
-# config_file <- args[2]
 
-# if (!file.exists(config_file)) {
-#   stop(paste("Config file not found:", config_file))
-# }
+config_file <- args[2]
 
-# config <- yaml::read_yaml(config_file)
+if (!file.exists(config_file)) {
+  stop("Config file not found: ", config_file)
+}
+
+config <- yaml::read_yaml(config_file)
 
 # ---- Initialize variables ----
 tree_file <- NULL
