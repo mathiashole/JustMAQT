@@ -28,7 +28,15 @@ read_input_table <- function(file) {
 
 generate_palette <- function(n, palette_name) {
 
+if (str_detect(palette_name, "#")) {
+    pal <- unlist(strsplit(palette_name, "\\s+"))
+    if (length(pal) < n) { stop("Error: Not enough colors provided for fields.")
+    }
+    return(pal[1:n])
+  }
+  brewer.pal(max(3, n), palette_name)[1:n]
 }
+
 
 # ---- Initialize variables ----
 tree_file <- NULL
