@@ -41,6 +41,10 @@ if (str_detect(palette_name, "#")) {
 
 args <- commandArgs(trailingOnly = TRUE)
 
+if (length(args) < 2 || args[1] != "--config") {
+  stop("Usage: makeito.R --config config.yaml")
+}
+
 # ---- Initialize variables ----
 tree_file <- NULL
 ids_file <- NULL
