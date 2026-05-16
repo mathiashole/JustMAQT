@@ -57,6 +57,8 @@ config <- yaml::read_yaml(config_file)
 tree_file <- config$input$tree
 ids_file <- config$input$ids %% NULL
 header_file <- config$input$header
+dataset_type <- config$dataset$type
+dataset_file <- config$dataset$file
 
 # ---- Initialize variables ----
 tree_file <- NULL
