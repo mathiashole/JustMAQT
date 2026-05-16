@@ -37,6 +37,9 @@ if (str_detect(palette_name, "#")) {
   brewer.pal(max(3, n), palette_name)[1:n]
 }
 
+# ---- Parse config file ----
+
+args <- commandArgs(trailingOnly = TRUE)
 
 # ---- Initialize variables ----
 tree_file <- NULL
