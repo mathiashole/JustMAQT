@@ -20,8 +20,15 @@ read_input_table <- function(file) {
 
   ext <- tools::file_ext(file)
 
+  if (tolower(ext) == "csv") {
 
+    read.csv(
+      file,
+      stringsAsFactors = FALSE,
+      check.names = FALSE
+    )
 
+  }
 }
 
 # ---- Initialize variables ----
