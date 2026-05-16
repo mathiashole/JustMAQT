@@ -22,18 +22,11 @@ read_input_table <- function(file) {
 
   if (tolower(ext) == "csv") {
 
-    read.csv(
-      file,
-      stringsAsFactors = FALSE,
-      check.names = FALSE
-    )
+    read.csv(file, stringsAsFactors = FALSE, check.names = FALSE)
 
   } else {
 
-    readr::read_tsv(
-      file,
-      show_col_types = FALSE
-    )
+    readr::read_tsv(file, show_col_types = FALSE)
 
   }
 
