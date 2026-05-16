@@ -52,6 +52,10 @@ if (!file.exists(config_file)) {
 
 config <- yaml::read_yaml(config_file)
 
+# ---- Read congig values ----
+
+tree_file <- config$input$tree
+
 # ---- Initialize variables ----
 tree_file <- NULL
 ids_file <- NULL
