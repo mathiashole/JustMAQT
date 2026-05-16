@@ -66,6 +66,7 @@ dataset_options <- config$dataset$options %||% list()
 
 if (is.null(tree_file) && is.null(ids_file)) stop("You must provide either input$tree or input$ids")
 if (!is.null(tree_file) && !is.null(ids_file)) stop("Provide only one of input$tree or input$ids")
+if (is.null(header_file)) stop("itol$header is required")
 
 # ---- Initialize variables ----
 tree_file <- NULL
