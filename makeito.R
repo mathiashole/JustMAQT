@@ -51,6 +51,8 @@ if (!file.exists(config_file)) {
   stop(paste("Config file not found:", config_file))
 }
 
+config <- yaml::read_yaml(config_file)
+
 # ---- Initialize variables ----
 tree_file <- NULL
 ids_file <- NULL
