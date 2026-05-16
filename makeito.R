@@ -19,15 +19,10 @@ suppressPackageStartupMessages({
 read_input_table <- function(file) {
 
   ext <- tools::file_ext(file)
-
   if (tolower(ext) == "csv") {
-
     read.csv(file, stringsAsFactors = FALSE, check.names = FALSE)
-
   } else {
-
     readr::read_tsv(file, show_col_types = FALSE)
-
   }
 }
 
