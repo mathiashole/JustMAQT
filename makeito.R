@@ -12,7 +12,7 @@ suppressPackageStartupMessages({
 
 # ---- Helper functions ----
 
-'%||%' <- function(a, b) {
+`%||%` <- function(a, b) {
   if (!is.null(a)) a else b
 }
 
