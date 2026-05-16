@@ -59,6 +59,7 @@ ids_file <- config$input$ids %% NULL
 header_file <- config$input$header
 dataset_type <- config$dataset$type
 dataset_file <- config$dataset$file
+output_file <- config$output$file
 
 # ---- Initialize variables ----
 tree_file <- NULL
