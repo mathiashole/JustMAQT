@@ -16,6 +16,12 @@ suppressPackageStartupMessages({
   if (!is.null(a)) a else b
 }
 
+read_input_table <- function(file) {
+
+
+
+}
+
 # ---- Initialize variables ----
 tree_file <- NULL
 ids_file <- NULL
