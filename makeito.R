@@ -60,6 +60,7 @@ header_file <- config$input$header
 dataset_type <- config$dataset$type
 dataset_file <- config$dataset$file
 output_file <- config$output$file
+dataset_options <- config$dataset$options %||% list()
 
 # ---- Initialize variables ----
 tree_file <- NULL
