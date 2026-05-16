@@ -26,6 +26,10 @@ read_input_table <- function(file) {
   }
 }
 
+generate_palette <- function(n, palette_name) {
+
+}
+
 # ---- Initialize variables ----
 tree_file <- NULL
 ids_file <- NULL
