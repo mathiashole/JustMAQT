@@ -68,6 +68,7 @@ if (is.null(tree_file) && is.null(ids_file)) stop("You must provide either input
 if (!is.null(tree_file) && !is.null(ids_file)) stop("Provide only one of input$tree or input$ids")
 if (is.null(header_file)) stop("itol$header is required")
 if (!file.exists(header_file)) stop("Header file not found: ", header_file)
+if (is.null(dataset_type)) stop("dataset$type is required")
 
 # ---- Initialize variables ----
 tree_file <- NULL
