@@ -28,7 +28,15 @@ read_input_table <- function(file) {
       check.names = FALSE
     )
 
+  } else {
+
+    readr::read_tsv(
+      file,
+      show_col_types = FALSE
+    )
+
   }
+
 }
 
 # ---- Initialize variables ----
