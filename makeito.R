@@ -45,6 +45,12 @@ if (length(args) < 2 || args[1] != "--config") {
   stop("Usage: makeito.R --config config.yaml")
 }
 
+config_file <- args[2]
+
+if (!file.exists(config_file)) {
+  stop(paste("Config file not found:", config_file))
+}
+
 # ---- Initialize variables ----
 tree_file <- NULL
 ids_file <- NULL
