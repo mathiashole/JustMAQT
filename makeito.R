@@ -62,6 +62,10 @@ dataset_file <- config$dataset$file
 output_file <- config$output$file
 dataset_options <- config$dataset$options %||% list()
 
+# ---- Validate config ----
+
+if (is.null(tree_file) && is.null(ids_file)) stop("You must provide either input$tree or input$ids")
+
 # ---- Initialize variables ----
 tree_file <- NULL
 ids_file <- NULL
