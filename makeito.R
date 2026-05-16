@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
 
 suppressPackageStartupMessages({
+  library(yaml)
   library(dplyr)
   library(stringr)
   library(ape)
