@@ -18,6 +18,8 @@ suppressPackageStartupMessages({
 
 read_input_table <- function(file) {
 
+  ext <- tools::file_ext(file)
+
 
 
 }
