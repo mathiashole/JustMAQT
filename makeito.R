@@ -86,6 +86,7 @@ if (!is.null(tree_file)) {
 
 if (!file.exists(header_file)) stop("Header file not found: ", header_file)
 header <- readLines(header_file)
+out_lines <- NULL # inicialization for avoid errors in case of missing dataset
 
 # ---- Initialize variables ----
 tree_file <- NULL
