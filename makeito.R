@@ -62,6 +62,10 @@ dataset_file <- config$dataset$file %||% NULL
 output_file <- config$output$file %||% NULL
 dataset_options <- config$dataset$options %||% list()
 
+# Palettes defoults options
+continuous_palette <- config$palette$continuous %||% "viridis"
+discrete_palette    <- config$palette$discrete %||% "Dark2"
+
 # ---- Validate config ----
 
 if (is.null(tree_file) && is.null(ids_file)) stop("You must provide either input$tree or input$ids")
