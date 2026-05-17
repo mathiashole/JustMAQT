@@ -60,11 +60,13 @@ header_file <- config$input$header %||% NULL
 dataset_type <- config$dataset$type %||% NULL
 dataset_file <- config$dataset$file %||% NULL
 output_file <- config$output$file %||% NULL
-dataset_options <- config$dataset$options %||% list()
 
 # Palettes defoults options
 continuous_palette <- config$palette$continuous %||% "viridis"
 discrete_palette    <- config$palette$discrete %||% "Dark2"
+
+# Options specific dictionary for each dataset type
+dataset_options <- config$dataset$options %||% list()
 
 # ---- Validate config ----
 
