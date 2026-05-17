@@ -78,6 +78,9 @@ if (is.null(output_file)) stop("output$file is required")
 if (!is.null(tree_file)) {
   if (!file.exists(tree_file)) stop("Tree file not found: ", tree_file)
   tree <- read.tree(tree_file)
+} else {
+  if (!file.exists(ids_file)) stop("IDs file not found: ", ids_file)
+  ids <- readLines(ids_file)
 }
 
 # ---- Initialize variables ----
