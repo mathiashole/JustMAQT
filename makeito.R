@@ -68,6 +68,10 @@ discrete_palette    <- config$palette$discrete %||% "Dark2"
 # Options specific dictionary for each dataset type
 dataset_options <- config$dataset$options %||% list()
 
+# Keywords mode options
+keywords       <- dataset_options$keywords %||% c()
+keywords_shape <- dataset_options$keywords_shape %||% c()
+
 # ---- Validate config ----
 
 if (is.null(tree_file) && is.null(ids_file)) stop("You must provide either input$tree or input$ids")
