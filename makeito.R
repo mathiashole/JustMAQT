@@ -76,7 +76,8 @@ if (is.null(output_file)) stop("output$file is required")
 # ---- Read Ids and Tree ----
 
 if (!is.null(tree_file)) {
-
+  
+  tree <- read.tree(tree_file)
 }
 
 # ---- Initialize variables ----
