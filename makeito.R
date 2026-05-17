@@ -88,119 +88,119 @@ if (!file.exists(header_file)) stop("Header file not found: ", header_file)
 header <- readLines(header_file)
 out_lines <- NULL # inicialization for avoid errors in case of missing dataset
 
-# ---- Initialize variables ----
-tree_file <- NULL
-ids_file <- NULL
-header_file <- NULL
-output_file <- NULL
+# # ---- Initialize variables ----
+# tree_file <- NULL
+# ids_file <- NULL
+# header_file <- NULL
+# output_file <- NULL
 
-# Plot
-keywords <- c()
-keywords_shape <- c()
-heatmap_file <- NULL
-barplot_file <- NULL
-binary_file <- NULL
-multibarplot_file <- NULL
-multibar_type <- "default"  # options: default, aligned, stacked
-boxplot_file <- NULL
+# # Plot
+# keywords <- c()
+# keywords_shape <- c()
+# heatmap_file <- NULL
+# barplot_file <- NULL
+# binary_file <- NULL
+# multibarplot_file <- NULL
+# multibar_type <- "default"  # options: default, aligned, stacked
+# boxplot_file <- NULL
 
-heatmap_independent <- FALSE
-heatmap_zscore <- FALSE
-heatmap_log <- FALSE
+# heatmap_independent <- FALSE
+# heatmap_zscore <- FALSE
+# heatmap_log <- FALSE
 
-# Defoult colors
-continuous_palette <- "viridis"
-discrete_palette <- "Dark2"
+# # Defoult colors
+# continuous_palette <- "viridis"
+# discrete_palette <- "Dark2"
 
-# ---- Parsing arguments ----
-args <- commandArgs(trailingOnly = TRUE)
-i <- 1
-while (i <= length(args)) {
-  if (args[i] %in% c("--tree", "-t")) {
-    tree_file <- args[i + 1]
-    i <- i + 2
-  } else if (args[i] %in% c("--ids", "-id")) {
-    ids_file <- args[i + 1]
-    i <- i + 2
-  } else if (args[i] %in% c("--header", "-h")) {
-    header_file <- args[i + 1]
-    i <- i + 2
-  } else if (args[i] %in% c("--keywords", "-k")) {
-    # collect all keywords up to the next flag
-    j <- i + 1
-    while (j <= length(args) && !startsWith(args[j], "--") && !startsWith(args[j], "-")) {
-      keywords <- c(keywords, args[j])
-      j <- j + 1
-    }
-    i <- j
-  } else if (args[i] %in% c("--out", "-o")) {
-    output_file <- args[i + 1]
-    i <- i + 2
-  } else if (args[i] == "--heatmap") {
-    heatmap_file <- args[i + 1]
-    i <- i + 2
-  } else if (args[i] == "--barplot") {
-    barplot_file <- args[i + 1]
-    i <- i + 2
-  } else if (args[i] == "--multibarplot") {
-    multibarplot_file <- args[i + 1]
-    i <- i + 2
-  } else if (args[i] == "--multibar-type") {
-    multibar_type <- args[i + 1]
-    i <- i + 2
-  } else if (args[i] == "--binary") {
-    binary_file <- args[i + 1]
-    i <- i + 2
-  } else if (args[i] == "--boxplot") {
-    boxplot_file <- args[i + 1]
-  i <- i + 2
-  } else if (args[i] == "--continuous-palette") {
-    continuous_palette <- args[i + 1]; i <- i + 2
-  } else if (args[i] == "--discrete-palette") {
-    discrete_palette <- args[i + 1]; i <- i + 2
-  } else if (args[i] == "--keywords-shape") {
-    # collect all shape codes up to the next flag
-    j <- i + 1
-    while (j <= length(args) && !startsWith(args[j], "--") && !startsWith(args[j], "-")) {
-      keywords_shape <- c(keywords_shape, args[j])
-      j <- j + 1
-    }
-    i <- j
-  } else if (args[i] == "--heatmap-independent") {
-    heatmap_independent <- TRUE
-    i <- i + 1
-  } else {
-    stop(paste("Unknown argument:", args[i]))
-  }
-}
+# # ---- Parsing arguments ----
+# args <- commandArgs(trailingOnly = TRUE)
+# i <- 1
+# while (i <= length(args)) {
+#   if (args[i] %in% c("--tree", "-t")) {
+#     tree_file <- args[i + 1]
+#     i <- i + 2
+#   } else if (args[i] %in% c("--ids", "-id")) {
+#     ids_file <- args[i + 1]
+#     i <- i + 2
+#   } else if (args[i] %in% c("--header", "-h")) {
+#     header_file <- args[i + 1]
+#     i <- i + 2
+#   } else if (args[i] %in% c("--keywords", "-k")) {
+#     # collect all keywords up to the next flag
+#     j <- i + 1
+#     while (j <= length(args) && !startsWith(args[j], "--") && !startsWith(args[j], "-")) {
+#       keywords <- c(keywords, args[j])
+#       j <- j + 1
+#     }
+#     i <- j
+#   } else if (args[i] %in% c("--out", "-o")) {
+#     output_file <- args[i + 1]
+#     i <- i + 2
+#   } else if (args[i] == "--heatmap") {
+#     heatmap_file <- args[i + 1]
+#     i <- i + 2
+#   } else if (args[i] == "--barplot") {
+#     barplot_file <- args[i + 1]
+#     i <- i + 2
+#   } else if (args[i] == "--multibarplot") {
+#     multibarplot_file <- args[i + 1]
+#     i <- i + 2
+#   } else if (args[i] == "--multibar-type") {
+#     multibar_type <- args[i + 1]
+#     i <- i + 2
+#   } else if (args[i] == "--binary") {
+#     binary_file <- args[i + 1]
+#     i <- i + 2
+#   } else if (args[i] == "--boxplot") {
+#     boxplot_file <- args[i + 1]
+#   i <- i + 2
+#   } else if (args[i] == "--continuous-palette") {
+#     continuous_palette <- args[i + 1]; i <- i + 2
+#   } else if (args[i] == "--discrete-palette") {
+#     discrete_palette <- args[i + 1]; i <- i + 2
+#   } else if (args[i] == "--keywords-shape") {
+#     # collect all shape codes up to the next flag
+#     j <- i + 1
+#     while (j <= length(args) && !startsWith(args[j], "--") && !startsWith(args[j], "-")) {
+#       keywords_shape <- c(keywords_shape, args[j])
+#       j <- j + 1
+#     }
+#     i <- j
+#   } else if (args[i] == "--heatmap-independent") {
+#     heatmap_independent <- TRUE
+#     i <- i + 1
+#   } else {
+#     stop(paste("Unknown argument:", args[i]))
+#   }
+# }
 
-# ---- Validation ----
-if (is.null(tree_file) && is.null(ids_file)) stop("Error: You must provide either --tree or --ids")
-if (!is.null(tree_file) && !is.null(ids_file)) stop("Error: Provide only one of --tree or --ids, not both")
-if (is.null(header_file)) stop("Error: You must provide --header")
-if (is.null(output_file)) stop("Error: You must provide --out")
+# # ---- Validation ----
+# if (is.null(tree_file) && is.null(ids_file)) stop("Error: You must provide either --tree or --ids")
+# if (!is.null(tree_file) && !is.null(ids_file)) stop("Error: Provide only one of --tree or --ids, not both")
+# if (is.null(header_file)) stop("Error: You must provide --header")
+# if (is.null(output_file)) stop("Error: You must provide --out")
 
-modes_selected <- sum(length(keywords) > 0, length(keywords_shape) > 0, !is.null(heatmap_file), !is.null(barplot_file), !is.null(binary_file))
-if(modes_selected == 0) stop("Error: You must provide either --keywords or --heatmap or --barplot or --binary")
-if (modes_selected > 1 && modes_selected != (length(keywords) > 0) + (length(keywords_shape) > 0)) {
-  stop("Error: Only one mode allowed, except combining --keywords and --keywords-shape")
-}
+# modes_selected <- sum(length(keywords) > 0, length(keywords_shape) > 0, !is.null(heatmap_file), !is.null(barplot_file), !is.null(binary_file))
+# if(modes_selected == 0) stop("Error: You must provide either --keywords or --heatmap or --barplot or --binary")
+# if (modes_selected > 1 && modes_selected != (length(keywords) > 0) + (length(keywords_shape) > 0)) {
+#   stop("Error: Only one mode allowed, except combining --keywords and --keywords-shape")
+# }
 
-if (!tolower(multibar_type) %in% c("default", "aligned", "stacked")) {
-  stop("Error: --multibar-type must be one of 'default', 'aligned', or 'stacked'.")
-}
+# if (!tolower(multibar_type) %in% c("default", "aligned", "stacked")) {
+#   stop("Error: --multibar-type must be one of 'default', 'aligned', or 'stacked'.")
+# }
 
-# ---- Gets id ----
-ids <- c()
-if (!is.null(tree_file)) {
-  tree <- read.tree(tree_file)
-  ids <- tree$tip.label
-} else {
-  ids <- readLines(ids_file)
-}
+# # ---- Gets id ----
+# ids <- c()
+# if (!is.null(tree_file)) {
+#   tree <- read.tree(tree_file)
+#   ids <- tree$tip.label
+# } else {
+#   ids <- readLines(ids_file)
+# }
 
-# ---- Read header ----
-header <- readLines(header_file)
+# # ---- Read header ----
+# header <- readLines(header_file)
 
 if(length(keywords) > 0) {
 
