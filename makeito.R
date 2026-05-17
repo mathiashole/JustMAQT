@@ -73,6 +73,12 @@ if (is.null(dataset_file)) stop("dataset$file is required")
 if (!file.exists(dataset_file)) stop("Dataset file not found: ", dataset_file)
 if (is.null(output_file)) stop("output$file is required")
 
+# ---- Read Ids and Tree ----
+
+if (!is.null(tree_file)) {
+
+}
+
 # ---- Initialize variables ----
 tree_file <- NULL
 ids_file <- NULL
