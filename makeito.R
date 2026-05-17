@@ -54,12 +54,12 @@ config <- yaml::read_yaml(config_file)
 
 # ---- Read config values ----
 
-tree_file <- config$input$tree
-ids_file <- config$input$ids %% NULL
-header_file <- config$input$header
-dataset_type <- config$dataset$type
-dataset_file <- config$dataset$file
-output_file <- config$output$file
+tree_file <- config$input$tree %||% NULL
+ids_file <- config$input$ids %||% NULL
+header_file <- config$input$header %||% NULL
+dataset_type <- config$dataset$type %||% NULL
+dataset_file <- config$dataset$file %||% NULL
+output_file <- config$output$file %||% NULL
 dataset_options <- config$dataset$options %||% list()
 
 # ---- Validate config ----
