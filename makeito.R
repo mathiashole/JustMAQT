@@ -84,6 +84,7 @@ if (!is.null(tree_file)) {
   ids <- readLines(ids_file)
 }
 
+if (!file.exists(header_file)) stop("Header file not found: ", header_file)
 header <- readLines(header_file)
 
 # ---- Initialize variables ----
