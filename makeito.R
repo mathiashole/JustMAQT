@@ -84,6 +84,8 @@ if (!is.null(tree_file)) {
   ids <- readLines(ids_file)
 }
 
+header <- readLines(header_file)
+
 # ---- Initialize variables ----
 tree_file <- NULL
 ids_file <- NULL
