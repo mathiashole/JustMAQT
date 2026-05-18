@@ -144,6 +144,7 @@ matches <- lapply(ids, function(id) {
 } else if (dataset_type == "heatmap") {
 # 2. Heatmap mode
 df <- read_input_table(dataset_file)
+df[is.na(df)] <- 0
 
 
 
