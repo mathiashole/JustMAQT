@@ -101,6 +101,10 @@ if (!is.null(tree_file)) {
 header <- readLines(header_file)
 out_lines <- NULL # inicialization for avoid errors in case of missing dataset
 
+# ---- Modes selection ----
+
+# 1. Keywords mode
+
 # # ---- Initialize variables ----
 # tree_file <- NULL
 # ids_file <- NULL
