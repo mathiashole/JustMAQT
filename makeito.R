@@ -129,7 +129,11 @@ matches <- lapply(ids, function(id) {
     
     do.call(rbind, lapply(found, function(keyword) {
       shape <- if (!is.null(shape_map[[keyword]])) shape_map[[keyword]] else 2
-
+      data.frame(
+        ID = id, symbol = shape, size = 10, color = pal[keyword],
+        fill = 1, position = -1, label = keyword, stringsAsFactors = FALSE
+      )
+    }))
   })
 
 
