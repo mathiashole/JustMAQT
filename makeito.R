@@ -110,9 +110,9 @@ if (dataset_type == "keywords") {
       if (length(pal) < length(keywords)) stop("Error: Not enough colors provided for keywords.")
         pal <- pal[1:length(keywords)]
 } else {
-      pal <- brewer.pal(max(3, length(keywords)), discrete_palette)
-    }
-    names(pal) <- keywords
+    pal <- brewer.pal(max(3, length(keywords)), discrete_palette)[1:length(keywords)]
+  }
+  names(pal) <- keywords
 }
 # 1. Keywords mode
 
