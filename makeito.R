@@ -145,7 +145,7 @@ matches <- lapply(ids, function(id) {
 # 2. Heatmap mode
 df <- read_input_table(dataset_file)
 df[is.na(df)] <- 0
-
+col_labels <- colnames(df)[-1]
 
 
 }
