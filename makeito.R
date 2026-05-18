@@ -141,6 +141,10 @@ matches <- lapply(ids, function(id) {
     out_lines <- c(header, "DATA", do.call(paste, c(data_block, sep = ",")))
   }
 
+} else if (dataset_type == "heatmap") {
+# 2. Heatmap mode
+
+
 }
 # 1. Keywords mode
 
