@@ -136,6 +136,10 @@ matches <- lapply(ids, function(id) {
     }))
   })
 
+  data_block <- do.call(rbind, matches)
+  if (!is.null(data_block)) {
+    out_lines <- c(header, "DATA", do.call(paste, c(data_block, sep = ",")))
+  }
 
 }
 # 1. Keywords mode
