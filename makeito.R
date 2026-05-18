@@ -105,7 +105,10 @@ out_lines <- NULL # inicialization for avoid errors in case of missing dataset
 
 if (dataset_type == "keywords") {
   if (length(keywords) == 0) stop("Error: the keywords mode requires at least one keyword in dataset$options$keywords")
-
+    if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
+      pal <- unlist(strsplit(discrete_palette, "\\s+"))
+      if (length(pal) < length(keywords)) stop("Error: Not enough colors provided for keywords.")
+        pal <- pal[1:length(keywords)]
 } else {
       pal <- brewer.pal(max(3, length(keywords)), discrete_palette)
     }
