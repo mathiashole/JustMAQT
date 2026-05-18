@@ -81,6 +81,11 @@ if (is.null(dataset_type)) stop("dataset$type is required")
 if (is.null(dataset_file)) stop("dataset$file is required")
 if (is.null(output_file)) stop("output$file is required")
 
+# keywords mode validation
+if (dataset_type != "keywords") {
+
+}
+
 # ---- Read Ids and Tree ----
 
 if (!is.null(tree_file)) {
