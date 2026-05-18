@@ -83,7 +83,8 @@ if (is.null(output_file)) stop("output$file is required")
 
 # keywords mode validation
 if (dataset_type != "keywords") {
-
+  if (is.null(dataset_file)) stop("dataset$file is required for this mode")
+  if (!file.exists(dataset_file)) stop("Dataset file not found: ", dataset_file)
 }
 
 # ---- Read Ids and Tree ----
