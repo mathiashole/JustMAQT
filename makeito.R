@@ -113,6 +113,15 @@ if (dataset_type == "keywords") {
     pal <- brewer.pal(max(3, length(keywords)), discrete_palette)[1:length(keywords)]
   }
   names(pal) <- keywords
+
+shape_map <- list()
+  if (length(keywords_shape) > 0) {
+    for (entry in keywords_shape) {
+
+    }
+  }
+
+
 }
 # 1. Keywords mode
 
