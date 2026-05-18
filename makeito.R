@@ -103,6 +103,10 @@ out_lines <- NULL # inicialization for avoid errors in case of missing dataset
 
 # ---- Modes selection ----
 
+if (dataset_type == "keywords") {
+  if (length(keywords) == 0) stop("Error: El modo 'keywords' requiere una lista en dataset$options$keywords")
+  mode <- "keywords"
+}
 # 1. Keywords mode
 
 # # ---- Initialize variables ----
