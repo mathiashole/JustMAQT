@@ -79,7 +79,6 @@ if (is.null(header_file)) stop("itol$header is required")
 if (!file.exists(header_file)) stop("Header file not found: ", header_file)
 if (is.null(dataset_type)) stop("dataset$type is required")
 if (is.null(dataset_file)) stop("dataset$file is required")
-if (!file.exists(dataset_file)) stop("Dataset file not found: ", dataset_file)
 if (is.null(output_file)) stop("output$file is required")
 
 # ---- Read Ids and Tree ----
