@@ -104,8 +104,12 @@ out_lines <- NULL # inicialization for avoid errors in case of missing dataset
 # ---- Modes selection ----
 
 if (dataset_type == "keywords") {
-  if (length(keywords) == 0) stop("Error: El modo 'keywords' requiere una lista en dataset$options$keywords")
-  mode <- "keywords"
+  if (length(keywords) == 0) stop("Error: the keywords mode requires at least one keyword in dataset$options$keywords")
+
+} else {
+      pal <- brewer.pal(max(3, length(keywords)), discrete_palette)
+    }
+    names(pal) <- keywords
 }
 # 1. Keywords mode
 
