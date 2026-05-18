@@ -117,7 +117,9 @@ if (dataset_type == "keywords") {
 shape_map <- list()
   if (length(keywords_shape) > 0) {
     for (entry in keywords_shape) {
-
+      if (!str_detect(entry, ":")) stop("Format error in keywords_shape. Use keyword:shape")
+      parts <- str_split(entry, ":", simplify = TRUE)
+      shape_map[[parts[1]]] <- as.numeric(parts[2])
     }
   }
 
