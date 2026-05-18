@@ -123,6 +123,11 @@ shape_map <- list()
     }
   }
 
+matches <- lapply(ids, function(id) {
+    found <- keywords[sapply(keywords, function(k) str_detect(id, k))]
+
+  })
+
 
 }
 # 1. Keywords mode
