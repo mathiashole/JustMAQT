@@ -125,6 +125,10 @@ shape_map <- list()
 
 matches <- lapply(ids, function(id) {
     found <- keywords[sapply(keywords, function(k) str_detect(id, k))]
+    if (length(found) == 0) return(NULL)
+    
+    do.call(rbind, lapply(found, function(keyword) {
+      shape <- if (!is.null(shape_map[[keyword]])) shape_map[[keyword]] else 2
 
   })
 
