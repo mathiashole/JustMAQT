@@ -70,6 +70,7 @@ dataset_options <- config$dataset$options %||% list()
 
 # extracted specific options for each dataset type, with defoult values
 heatmap_file <- dataset_options$heatmap_file %||% NULL
+multibar_type   <- dataset_options$multibar_type %||% "default"
 
 # Keywords mode options
 keywords       <- dataset_options$keywords %||% c()
