@@ -65,16 +65,11 @@ output_file <- config$output$file %||% NULL
 continuous_palette <- config$palette$continuous %||% "viridis"
 discrete_palette    <- config$palette$discrete %||% "Dark2"
 
-# Options specific dictionary for each dataset type
+# Options dictionary
 dataset_options <- config$dataset$options %||% list()
-
-# extracted specific options for each dataset type, with defoult values
-heatmap_file <- dataset_options$heatmap_file %||% NULL
 multibar_type   <- dataset_options$multibar_type %||% "default"
-
-# Keywords mode options
-keywords       <- dataset_options$keywords %||% c()
-keywords_shape <- dataset_options$keywords_shape %||% c()
+keywords        <- dataset_options$keywords %||% c()
+keywords_shape  <- dataset_options$keywords_shape %||% c()
 
 # ---- Validate config ----
 
