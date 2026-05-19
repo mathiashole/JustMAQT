@@ -175,7 +175,9 @@ out_lines <- c(final_header, "DATA", data_lines)
 
   out_lines <- c(header, "DATA", do.call(paste, c(df, sep = ",")))
 
-} else if (dataset_type == "multibarplot") {}
+} else if (dataset_type == "multibarplot") {
+  # 4. Multi-barplot mode
+}
 # 1. Keywords mode
 
 # # ---- Initialize variables ----
