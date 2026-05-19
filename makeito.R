@@ -187,7 +187,7 @@ out_lines <- c(final_header, "DATA", data_lines)
   if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
     pal <- unlist(strsplit(discrete_palette, "\\s+"))[1:n_fields]
   } else {
-
+    pal <- brewer.pal(min(max(3, n_fields), 8), discrete_palette)[1:n_fields]
   }
 
 }
