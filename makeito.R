@@ -165,6 +165,8 @@ field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = "\t"), s
     final_header <- c(final_header, field_labels_line)
   }
 
+data_lines <- do.call(paste, c(df, sep = "\t"))
+
 }
 # 1. Keywords mode
 
