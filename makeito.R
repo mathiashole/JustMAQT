@@ -168,7 +168,9 @@ field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = "\t"), s
 data_lines <- do.call(paste, c(df, sep = "\t"))
 out_lines <- c(final_header, "DATA", data_lines)
 
-} else if (dataset_type == "barplot") {}
+} else if (dataset_type == "barplot") {
+# 3. Barplot mode
+}
 # 1. Keywords mode
 
 # # ---- Initialize variables ----
