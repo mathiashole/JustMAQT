@@ -202,6 +202,8 @@ out_lines <- c(final_header, "DATA", data_lines)
   header <- if (any(grepl("^ALIGN_FIELDS", header))) gsub("^ALIGN_FIELDS.*", align_line, header) else c(header, align_line)
   header <- if (any(grepl("^SIDE_STACKED", header))) gsub("^SIDE_STACKED.*", side_line, header) else c(header, side_line)
  
+  out_lines <- c(header, "DATA", do.call(paste, c(df, sep = ",")))
+
 }
 # 1. Keywords mode
 
