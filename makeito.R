@@ -181,6 +181,8 @@ out_lines <- c(final_header, "DATA", data_lines)
   if (ncol(df) < 3) stop("Multi-barplot file must have at least 3 columns: ID and at least 2 numeric fields.")
 
   df[is.na(df)] <- 0
+  col_labels <- colnames(df)[-1]
+  n_fields <- length(col_labels)
 
 }
 # 1. Keywords mode
