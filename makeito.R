@@ -183,6 +183,12 @@ out_lines <- c(final_header, "DATA", data_lines)
   df[is.na(df)] <- 0
   col_labels <- colnames(df)[-1]
   n_fields <- length(col_labels)
+  
+  if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
+
+  } else {
+
+  }
 
 }
 # 1. Keywords mode
