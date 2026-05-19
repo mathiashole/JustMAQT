@@ -160,8 +160,8 @@ final_header <- if(length(header) > 5) header else header_base
 # update field label with column
 field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = "\t"), sep = "\t")
   if (any(grepl("^FIELD_LABELS", final_header))) {
-
-  }
+    final_header <- gsub("^FIELD_LABELS.*", field_labels_line, final_header)
+  } 
 
 }
 # 1. Keywords mode
