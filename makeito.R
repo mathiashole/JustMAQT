@@ -185,7 +185,7 @@ out_lines <- c(final_header, "DATA", data_lines)
   n_fields <- length(col_labels)
   
   if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
-
+    pal <- unlist(strsplit(discrete_palette, "\\s+"))[1:n_fields]
   } else {
 
   }
