@@ -190,6 +190,9 @@ out_lines <- c(final_header, "DATA", data_lines)
     pal <- brewer.pal(min(max(3, n_fields), 8), discrete_palette)[1:n_fields]
   }
 
+  field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = ","), sep = ",")
+
+
 }
 # 1. Keywords mode
 
