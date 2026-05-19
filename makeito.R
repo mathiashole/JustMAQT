@@ -191,7 +191,7 @@ out_lines <- c(final_header, "DATA", data_lines)
   }
 
   field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = ","), sep = ",")
-
+  field_colors_line <- paste("FIELD_COLORS", paste(pal, collapse = ","), sep = ",")
 
 }
 # 1. Keywords mode
