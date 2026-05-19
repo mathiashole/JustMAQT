@@ -147,6 +147,9 @@ df <- read_input_table(dataset_file)
 df[is.na(df)] <- 0
 col_labels <- colnames(df)[-1]
 
+header_base <- c(
+
+) 
 
 }
 # 1. Keywords mode
