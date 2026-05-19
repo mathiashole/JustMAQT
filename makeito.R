@@ -154,6 +154,9 @@ header_base <- c(
   "DISPLAY_VALUES\toriginal", "VALUE_AUTO_COLOR\t1", "VALUE_SIZE_FACTOR\t0.8", "SHOW_LABELS\t1"
 ) 
 
+# if put header with options
+final_header <- if(length(header) > 5) header else header_base
+
 }
 # 1. Keywords mode
 
