@@ -208,6 +208,8 @@ out_lines <- c(final_header, "DATA", data_lines)
   # 5. Boxplot mode
 
   df <- read_input_table(dataset_file)
+  if (ncol(df) < 3) stop("Boxplot file must have at least 3 columns: ID and at least 2 numeric values.")
+
 } 
 # 1. Keywords mode
 
