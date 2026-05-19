@@ -173,6 +173,8 @@ out_lines <- c(final_header, "DATA", data_lines)
   df <- read_input_table(dataset_file)
   if (ncol(df) < 2 || ncol(df) > 3) stop("Barplot file must have 2 or 3 columns: ID,value[,label]")
 
+  out_lines <- c(header, "DATA", do.call(paste, c(df, sep = ",")))
+
 }
 # 1. Keywords mode
 
