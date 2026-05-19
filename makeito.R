@@ -178,6 +178,7 @@ out_lines <- c(final_header, "DATA", data_lines)
 } else if (dataset_type == "multibarplot") {
   # 4. Multi-barplot mode
   df <- read_input_table(dataset_file)
+  if (ncol(df) < 3) stop("Multi-barplot file must have at least 3 columns: ID and at least 2 numeric fields.")
 
 
 }
