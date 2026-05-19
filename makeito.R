@@ -206,6 +206,8 @@ out_lines <- c(final_header, "DATA", data_lines)
 
 } else if (dataset_type == "boxplot") {
   # 5. Boxplot mode
+
+  df <- read_input_table(dataset_file)
 } 
 # 1. Keywords mode
 
