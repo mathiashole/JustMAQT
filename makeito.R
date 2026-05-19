@@ -148,7 +148,10 @@ df[is.na(df)] <- 0
 col_labels <- colnames(df)[-1]
 
 header_base <- c(
-
+  "DATASET_HEATMAP", "SEPARATOR\tTAB", "DATASET_LABEL\tHeatmap_Generado",
+  "COLOR\t#ff0000", paste0("FIELD_LABELS\t", paste(col_labels, collapse = "\t")),
+  "MARGIN\t50", "STRIP_WIDTH\t35", "COLOR_MIN\t#f7fbff", "COLOR_MAX\t#084594",
+  "DISPLAY_VALUES\toriginal", "VALUE_AUTO_COLOR\t1", "VALUE_SIZE_FACTOR\t0.8", "SHOW_LABELS\t1"
 ) 
 
 }
