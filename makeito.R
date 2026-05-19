@@ -170,6 +170,8 @@ out_lines <- c(final_header, "DATA", data_lines)
 
 } else if (dataset_type == "barplot") {
 # 3. Barplot mode
+  df <- read_input_table(dataset_file)
+
 }
 # 1. Keywords mode
 
