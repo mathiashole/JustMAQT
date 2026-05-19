@@ -197,7 +197,7 @@ out_lines <- c(final_header, "DATA", data_lines)
   header <- if (any(grepl("^FIELD_COLORS", header))) gsub("^FIELD_COLORS.*", field_colors_line, header) else c(header, field_colors_line)
 
   align_line <- paste0("ALIGN_FIELDS,", if(multibar_type == "aligned") "1" else "0")
-
+  side_line  <- paste0("SIDE_STACKED,", if(multibar_type == "stacked") "1" else "0")
  
 }
 # 1. Keywords mode
