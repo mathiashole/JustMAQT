@@ -200,6 +200,7 @@ out_lines <- c(final_header, "DATA", data_lines)
   side_line  <- paste0("SIDE_STACKED,", if(multibar_type == "stacked") "1" else "0")
 
   header <- if (any(grepl("^ALIGN_FIELDS", header))) gsub("^ALIGN_FIELDS.*", align_line, header) else c(header, align_line)
+  header <- if (any(grepl("^SIDE_STACKED", header))) gsub("^SIDE_STACKED.*", side_line, header) else c(header, side_line)
  
 }
 # 1. Keywords mode
