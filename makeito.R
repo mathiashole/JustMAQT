@@ -213,6 +213,12 @@ out_lines <- c(final_header, "DATA", data_lines)
 
   col_labels <- colnames(df)[-1]
 
+  if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
+
+  } else {
+
+  }
+
 } 
 # 1. Keywords mode
 
