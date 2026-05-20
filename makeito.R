@@ -222,6 +222,9 @@ out_lines <- c(final_header, "DATA", data_lines)
   field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = ","), sep = ",")
   color_line <- paste("COLOR", pal, sep = ",")
 
+header <- if (any(grepl("^FIELD_LABELS", header))) gsub("^FIELD_LABELS.*", field_labels_line, header) else c(header, field_labels_line)
+
+
 } 
 # 1. Keywords mode
 
