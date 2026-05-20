@@ -216,7 +216,7 @@ out_lines <- c(final_header, "DATA", data_lines)
   if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
     pal <- unlist(strsplit(discrete_palette, "\\s+"))[1]
   } else {
-
+    pal <- brewer.pal(3, discrete_palette)[1]
   }
 
 } 
