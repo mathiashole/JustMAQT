@@ -356,275 +356,275 @@ if (!is.null(out_lines)) {
 # # ---- Read header ----
 # header <- readLines(header_file)
 
-if(length(keywords) > 0) {
+# if(length(keywords) > 0) {
 
-# ---- Colors palette ----
-if (length(keywords) > 0) {
-  if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
-    pal <- unlist(strsplit(discrete_palette, "\\s+"))
-    if (length(pal) < length(keywords)) stop("Error: Not enough colors provided for keywords.")
-    pal <- pal[1:length(keywords)]
-  } else {
-    pal <- brewer.pal(max(3, length(keywords)), discrete_palette)
-  }
-  names(pal) <- keywords
-} else {
-  pal <- c()
-}
+# # ---- Colors palette ----
+# if (length(keywords) > 0) {
+#   if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
+#     pal <- unlist(strsplit(discrete_palette, "\\s+"))
+#     if (length(pal) < length(keywords)) stop("Error: Not enough colors provided for keywords.")
+#     pal <- pal[1:length(keywords)]
+#   } else {
+#     pal <- brewer.pal(max(3, length(keywords)), discrete_palette)
+#   }
+#   names(pal) <- keywords
+# } else {
+#   pal <- c()
+# }
 
-# Parse --keywords-shape (format keyword:shape)
-shape_map <- list()
-if (length(keywords_shape) > 0) {
-  for (entry in keywords_shape) {
-    if (!str_detect(entry, ":")) stop("Each --keywords-shape must be in format keyword:shape (e.g., Retro:3)")
-    parts <- str_split(entry, ":", simplify = TRUE)
-    kw <- parts[1]; sh <- as.numeric(parts[2])
-    shape_map[[kw]] <- sh
-  }
-}
+# # Parse --keywords-shape (format keyword:shape)
+# shape_map <- list()
+# if (length(keywords_shape) > 0) {
+#   for (entry in keywords_shape) {
+#     if (!str_detect(entry, ":")) stop("Each --keywords-shape must be in format keyword:shape (e.g., Retro:3)")
+#     parts <- str_split(entry, ":", simplify = TRUE)
+#     kw <- parts[1]; sh <- as.numeric(parts[2])
+#     shape_map[[kw]] <- sh
+#   }
+# }
 
-# Combine all relevant keywords (for matching IDs)
-all_keywords <- unique(c(keywords, names(shape_map)))
+# # Combine all relevant keywords (for matching IDs)
+# all_keywords <- unique(c(keywords, names(shape_map)))
 
-# ---- Find matches ----
-matches <- lapply(ids, function(id) {
-  found <- keywords[sapply(keywords, function(k) str_detect(id, k))]
-  if (length(found) == 0) return(NULL)
+# # ---- Find matches ----
+# matches <- lapply(ids, function(id) {
+#   found <- keywords[sapply(keywords, function(k) str_detect(id, k))]
+#   if (length(found) == 0) return(NULL)
   
-  # Generate a row for each keyword that matches
-  do.call(rbind, lapply(found, function(keyword) {
-    shape <- if (!is.null(shape_map[[keyword]])) shape_map[[keyword]] else 2
-    color <- if (!is.null(pal[keyword])) pal[keyword] else "#000000"
-    data.frame(
-      ID = id,
-      # symbol = 2,      # circle
-      symbol = shape,
-      size = 10,
-      color = pal[keyword],
-      fill = 1,
-      position = -1,
-      label = keyword,
-      stringsAsFactors = FALSE
-    )
-  }))
-})
+#   # Generate a row for each keyword that matches
+#   do.call(rbind, lapply(found, function(keyword) {
+#     shape <- if (!is.null(shape_map[[keyword]])) shape_map[[keyword]] else 2
+#     color <- if (!is.null(pal[keyword])) pal[keyword] else "#000000"
+#     data.frame(
+#       ID = id,
+#       # symbol = 2,      # circle
+#       symbol = shape,
+#       size = 10,
+#       color = pal[keyword],
+#       fill = 1,
+#       position = -1,
+#       label = keyword,
+#       stringsAsFactors = FALSE
+#     )
+#   }))
+# })
 
-data_block <- do.call(rbind, matches)
+# data_block <- do.call(rbind, matches)
 
-  out_lines <- c(
-    header,
-    "DATA",
-    apply(data_block, 1, paste, collapse = ",")
-  )
+#   out_lines <- c(
+#     header,
+#     "DATA",
+#     apply(data_block, 1, paste, collapse = ",")
+#   )
 
-}
+# }
 
-# ---- Heatmap mode ----
+# # ---- Heatmap mode ----
 
-################################################################################################
-if (!is.null(heatmap_file)) {
-  ext <- tools::file_ext(heatmap_file)
-  if (ext %in% c("csv", "CSV")) {
-    df <- read.csv(heatmap_file, stringsAsFactors = FALSE, check.names = FALSE)
-  } else {
-    df <- readr::read_tsv(heatmap_file, show_col_types = FALSE)
-  }
+# ################################################################################################
+# if (!is.null(heatmap_file)) {
+#   ext <- tools::file_ext(heatmap_file)
+#   if (ext %in% c("csv", "CSV")) {
+#     df <- read.csv(heatmap_file, stringsAsFactors = FALSE, check.names = FALSE)
+#   } else {
+#     df <- readr::read_tsv(heatmap_file, show_col_types = FALSE)
+#   }
 
-  df[is.na(df)] <- 0
-  col_labels <- colnames(df)[-1]
+#   df[is.na(df)] <- 0
+#   col_labels <- colnames(df)[-1]
 
-  # 1.
-  header_base <- c(
-    "DATASET_HEATMAP",
-    "SEPARATOR\tTAB",
-    paste0("DATASET_LABEL\t", "Heatmap_Generado"),
-    "COLOR\t#ff0000",
-    paste0("FIELD_LABELS\t", paste(col_labels, collapse = "\t")),
-    "MARGIN\t50",
-    "STRIP_WIDTH\t35",
-    "COLOR_MIN\t#f7fbff",
-    "COLOR_MAX\t#084594",
-    "DISPLAY_VALUES\toriginal",
-    "VALUE_AUTO_COLOR\t1",
-    "VALUE_SIZE_FACTOR\t0.8",
-    "SHOW_LABELS\t1"
-  )
+#   # 1.
+#   header_base <- c(
+#     "DATASET_HEATMAP",
+#     "SEPARATOR\tTAB",
+#     paste0("DATASET_LABEL\t", "Heatmap_Generado"),
+#     "COLOR\t#ff0000",
+#     paste0("FIELD_LABELS\t", paste(col_labels, collapse = "\t")),
+#     "MARGIN\t50",
+#     "STRIP_WIDTH\t35",
+#     "COLOR_MIN\t#f7fbff",
+#     "COLOR_MAX\t#084594",
+#     "DISPLAY_VALUES\toriginal",
+#     "VALUE_AUTO_COLOR\t1",
+#     "VALUE_SIZE_FACTOR\t0.8",
+#     "SHOW_LABELS\t1"
+#   )
 
-  # 2.
-  data_lines <- apply(df, 1, function(x) paste(x, collapse = "\t"))
+#   # 2.
+#   data_lines <- apply(df, 1, function(x) paste(x, collapse = "\t"))
 
-  # 3.
-  out_lines <- c(
-    header_base,
-    "DATA",
-    data_lines
-  )
-}
+#   # 3.
+#   out_lines <- c(
+#     header_base,
+#     "DATA",
+#     data_lines
+#   )
+# }
 
-# ---- Procesar barplot ----
-if (!is.null(barplot_file)) {
-  # Detect file extension
-  ext <- tools::file_ext(barplot_file)
+# # ---- Procesar barplot ----
+# if (!is.null(barplot_file)) {
+#   # Detect file extension
+#   ext <- tools::file_ext(barplot_file)
   
-  if (ext %in% c("csv", "CSV")) {
-    df <- read.csv(barplot_file, stringsAsFactors = FALSE)
-  } else {
-    df <- readr::read_tsv(barplot_file, show_col_types = FALSE)
-  }
-  # Minimum validation: must have 2 or 3 columns
-  if (ncol(df) < 2 || ncol(df) > 3) {
-    stop("Barplot file must have 2 or 3 columns: ID,value[,label]")
-  }
-  # Craft output
-  out_lines <- c(
-    header,
-    "DATA",
-    apply(df, 1, function(x) paste(x, collapse = ","))
-  )
-}
+#   if (ext %in% c("csv", "CSV")) {
+#     df <- read.csv(barplot_file, stringsAsFactors = FALSE)
+#   } else {
+#     df <- readr::read_tsv(barplot_file, show_col_types = FALSE)
+#   }
+#   # Minimum validation: must have 2 or 3 columns
+#   if (ncol(df) < 2 || ncol(df) > 3) {
+#     stop("Barplot file must have 2 or 3 columns: ID,value[,label]")
+#   }
+#   # Craft output
+#   out_lines <- c(
+#     header,
+#     "DATA",
+#     apply(df, 1, function(x) paste(x, collapse = ","))
+#   )
+# }
 
-# ---- Procesar multi-barplot ----
-if (!is.null(multibarplot_file)) {
-  # Detect file extension
-  ext <- tools::file_ext(multibarplot_file)
+# # ---- Procesar multi-barplot ----
+# if (!is.null(multibarplot_file)) {
+#   # Detect file extension
+#   ext <- tools::file_ext(multibarplot_file)
 
-  if (ext %in% c("csv", "CSV")) {
-    df <- read.csv(multibarplot_file, stringsAsFactors = FALSE)
-  } else {
-    # Default to TSV
-    df <- readr::read_tsv(multibarplot_file, show_col_types = FALSE)
-  }
+#   if (ext %in% c("csv", "CSV")) {
+#     df <- read.csv(multibarplot_file, stringsAsFactors = FALSE)
+#   } else {
+#     # Default to TSV
+#     df <- readr::read_tsv(multibarplot_file, show_col_types = FALSE)
+#   }
 
-  # Validation: must have at least 3 columns (ID + 2+ values)
-  if (ncol(df) < 3) {
-    stop("Multi-barplot file must have at least 3 columns: ID and at least 2 numeric fields.")
-  }
+#   # Validation: must have at least 3 columns (ID + 2+ values)
+#   if (ncol(df) < 3) {
+#     stop("Multi-barplot file must have at least 3 columns: ID and at least 2 numeric fields.")
+#   }
 
-  # Replace NAs with 0
-  df[is.na(df)] <- 0
+#   # Replace NAs with 0
+#   df[is.na(df)] <- 0
 
-  # Extract column names except ID of header
-  col_labels <- colnames(df)[-1]
-  n_fields <- length(col_labels)
+#   # Extract column names except ID of header
+#   col_labels <- colnames(df)[-1]
+#   n_fields <- length(col_labels)
 
-  # # Assign automatic colors (Dark2 or Set2 palette)
-  # pal <- brewer.pal(min(max(3, n_fields), 8), "Set2")[1:n_fields]
+#   # # Assign automatic colors (Dark2 or Set2 palette)
+#   # pal <- brewer.pal(min(max(3, n_fields), 8), "Set2")[1:n_fields]
   
-  # Generate color palette dynamically
-  if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
-    pal <- unlist(strsplit(discrete_palette, "\\s+"))
-    if (length(pal) < n_fields) stop("Error: Not enough colors provided for fields.")
-    pal <- pal[1:n_fields]
-  } else {
-    pal <- brewer.pal(min(max(3, n_fields), 8), discrete_palette)
-  }
+#   # Generate color palette dynamically
+#   if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
+#     pal <- unlist(strsplit(discrete_palette, "\\s+"))
+#     if (length(pal) < n_fields) stop("Error: Not enough colors provided for fields.")
+#     pal <- pal[1:n_fields]
+#   } else {
+#     pal <- brewer.pal(min(max(3, n_fields), 8), discrete_palette)
+#   }
 
-  # Generate dynamic header lines
-  field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = ","))
-  field_colors_line <- paste("FIELD_COLORS", paste(pal, collapse = ","))
+#   # Generate dynamic header lines
+#   field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = ","))
+#   field_colors_line <- paste("FIELD_COLORS", paste(pal, collapse = ","))
 
-  # Replace existing lines or append if missing
-  if (any(grepl("^FIELD_LABELS", header))) {
-    header <- gsub("^FIELD_LABELS.*", field_labels_line, header)
-  } else {
-    header <- c(header, field_labels_line)
-  }
+#   # Replace existing lines or append if missing
+#   if (any(grepl("^FIELD_LABELS", header))) {
+#     header <- gsub("^FIELD_LABELS.*", field_labels_line, header)
+#   } else {
+#     header <- c(header, field_labels_line)
+#   }
 
-  if (any(grepl("^FIELD_COLORS", header))) {
-    header <- gsub("^FIELD_COLORS.*", field_colors_line, header)
-  } else {
-    header <- c(header, field_colors_line)
-  }
+#   if (any(grepl("^FIELD_COLORS", header))) {
+#     header <- gsub("^FIELD_COLORS.*", field_colors_line, header)
+#   } else {
+#     header <- c(header, field_colors_line)
+#   }
 
-  # ---- Add multibar layout configuration ----
-  if (tolower(multibar_type) == "aligned") {
-    align_line <- "ALIGN_FIELDS,1"
-    side_line <- "SIDE_STACKED,0"
-  } else if (tolower(multibar_type) == "stacked") {
-    align_line <- "ALIGN_FIELDS,0"
-    side_line <- "SIDE_STACKED,1"
-  } else {
-    align_line <- "ALIGN_FIELDS,0"
-    side_line <- "SIDE_STACKED,0"
-  }
+#   # ---- Add multibar layout configuration ----
+#   if (tolower(multibar_type) == "aligned") {
+#     align_line <- "ALIGN_FIELDS,1"
+#     side_line <- "SIDE_STACKED,0"
+#   } else if (tolower(multibar_type) == "stacked") {
+#     align_line <- "ALIGN_FIELDS,0"
+#     side_line <- "SIDE_STACKED,1"
+#   } else {
+#     align_line <- "ALIGN_FIELDS,0"
+#     side_line <- "SIDE_STACKED,0"
+#   }
 
-  # Replace or append in header
-  if (any(grepl("^ALIGN_FIELDS", header))) {
-    header <- gsub("^ALIGN_FIELDS.*", align_line, header)
-  } else {
-    header <- c(header, align_line)
-  }
+#   # Replace or append in header
+#   if (any(grepl("^ALIGN_FIELDS", header))) {
+#     header <- gsub("^ALIGN_FIELDS.*", align_line, header)
+#   } else {
+#     header <- c(header, align_line)
+#   }
 
-  if (any(grepl("^SIDE_STACKED", header))) {
-    header <- gsub("^SIDE_STACKED.*", side_line, header)
-  } else {
-    header <- c(header, side_line)
-  }
+#   if (any(grepl("^SIDE_STACKED", header))) {
+#     header <- gsub("^SIDE_STACKED.*", side_line, header)
+#   } else {
+#     header <- c(header, side_line)
+#   }
 
-  # Build final dataset lines
-  out_lines <- c(
-    header,
-    "DATA",
-    apply(df, 1, function(x) paste(x, collapse = ","))
-  )
-}
+#   # Build final dataset lines
+#   out_lines <- c(
+#     header,
+#     "DATA",
+#     apply(df, 1, function(x) paste(x, collapse = ","))
+#   )
+# }
 
-# ---- Procesar boxplot ----
-if (!is.null(boxplot_file)) {
-  # Detect file extension
-  ext <- tools::file_ext(boxplot_file)
-  if (ext %in% c("csv", "CSV")) {
-    df <- read.csv(boxplot_file, stringsAsFactors = FALSE)
-  } else {
-    df <- readr::read_tsv(boxplot_file, show_col_types = FALSE)
-  }
+# # ---- Procesar boxplot ----
+# if (!is.null(boxplot_file)) {
+#   # Detect file extension
+#   ext <- tools::file_ext(boxplot_file)
+#   if (ext %in% c("csv", "CSV")) {
+#     df <- read.csv(boxplot_file, stringsAsFactors = FALSE)
+#   } else {
+#     df <- readr::read_tsv(boxplot_file, show_col_types = FALSE)
+#   }
 
-  # Validation: must have at least 3 columns (ID + ≥2 values)
-  if (ncol(df) < 3) {
-    stop("Boxplot file must have at least 3 columns: ID and at least 2 numeric values.")
-  }
+#   # Validation: must have at least 3 columns (ID + ≥2 values)
+#   if (ncol(df) < 3) {
+#     stop("Boxplot file must have at least 3 columns: ID and at least 2 numeric values.")
+#   }
 
-  # Replace NA with empty values
-  df[is.na(df)] <- ""
+#   # Replace NA with empty values
+#   df[is.na(df)] <- ""
 
-  # Extract column names (excluding ID)
-  col_labels <- colnames(df)[-1]
-  n_fields <- length(col_labels)
+#   # Extract column names (excluding ID)
+#   col_labels <- colnames(df)[-1]
+#   n_fields <- length(col_labels)
 
-  # Assign palette
-  if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
-    pal <- unlist(strsplit(discrete_palette, "\\s+"))
-    if (length(pal) < 1) pal <- pal[1]
-  } else {
-    pal <- brewer.pal(3, discrete_palette)[1]
-  }
-## DEBUGG
-  # Create FIELD_LABELS and COLOR line
-  field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = ","))
-  color_line <- paste("COLOR", pal)
+#   # Assign palette
+#   if (!is.null(discrete_palette) && str_detect(discrete_palette, "#")) {
+#     pal <- unlist(strsplit(discrete_palette, "\\s+"))
+#     if (length(pal) < 1) pal <- pal[1]
+#   } else {
+#     pal <- brewer.pal(3, discrete_palette)[1]
+#   }
+# ## DEBUGG
+#   # Create FIELD_LABELS and COLOR line
+#   field_labels_line <- paste("FIELD_LABELS", paste(col_labels, collapse = ","))
+#   color_line <- paste("COLOR", pal)
 
-  # Replace or append in header
-  if (any(grepl("^FIELD_LABELS", header))) {
-    header <- gsub("^FIELD_LABELS.*", field_labels_line, header)
-  } else {
-    header <- c(header, field_labels_line)
-  }
+#   # Replace or append in header
+#   if (any(grepl("^FIELD_LABELS", header))) {
+#     header <- gsub("^FIELD_LABELS.*", field_labels_line, header)
+#   } else {
+#     header <- c(header, field_labels_line)
+#   }
 
-  if (any(grepl("^COLOR", header))) {
-    header <- gsub("^COLOR.*", color_line, header)
-  } else {
-    header <- c(header, color_line)
-  }
+#   if (any(grepl("^COLOR", header))) {
+#     header <- gsub("^COLOR.*", color_line, header)
+#   } else {
+#     header <- c(header, color_line)
+#   }
 
-  # Build output
-  out_lines <- c(
-    header,
-    "DATA",
-    comment_line,
-    apply(df, 1, function(x) paste(x, collapse = ","))
-  )
-}
+#   # Build output
+#   out_lines <- c(
+#     header,
+#     "DATA",
+#     comment_line,
+#     apply(df, 1, function(x) paste(x, collapse = ","))
+#   )
+# }
 
-# ---- Create final file ----
-writeLines(out_lines, con = output_file)
-cat("File saved in:", output_file, "\n")
+# # ---- Create final file ----
+# writeLines(out_lines, con = output_file)
+# cat("File saved in:", output_file, "\n")
