@@ -233,6 +233,12 @@ out_lines <- c(final_header, "DATA", data_lines)
 
 # ---- Create final file ----
 
+if (!is.null(out_lines)) {
+  writeLines(out_lines, con = output_file)
+
+} else {
+
+}
 
 # 1. Keywords mode
 
