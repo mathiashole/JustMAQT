@@ -235,7 +235,7 @@ out_lines <- c(final_header, "DATA", data_lines)
 
 if (!is.null(out_lines)) {
   writeLines(out_lines, con = output_file)
-
+  cat("File saved successfully in:", output_file, "\n")
 } else {
 
 }
