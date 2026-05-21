@@ -237,7 +237,7 @@ if (!is.null(out_lines)) {
   writeLines(out_lines, con = output_file)
   cat("File saved successfully in:", output_file, "\n")
 } else {
-
+  stop("Error: No data to write. Please check your configuration and dataset.")
 }
 
 # 1. Keywords mode
