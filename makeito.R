@@ -227,7 +227,9 @@ out_lines <- c(final_header, "DATA", data_lines)
 
   out_lines <- c(header, "DATA", do.call(paste, c(df, sep = ",")))
 
-} 
+} else {
+  stop("Unsupported dataset type: ", dataset_type)
+}
 # 1. Keywords mode
 
 # # ---- Initialize variables ----
