@@ -230,6 +230,10 @@ out_lines <- c(final_header, "DATA", data_lines)
 } else {
   stop("Unsupported dataset type: ", dataset_type)
 }
+
+# ---- Create final file ----
+
+
 # 1. Keywords mode
 
 # # ---- Initialize variables ----
